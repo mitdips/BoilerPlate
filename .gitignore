@@ -38,5 +38,6 @@ yarn-error.*
 app-example
 
 # Android
-.android/
-.ios/
+android/
+ios/
+yarn.lock
