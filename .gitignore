@@ -55,3 +55,4 @@ Android/
 certs/
 .env.local
 .env
+node_modules/
