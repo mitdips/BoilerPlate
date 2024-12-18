@@ -3,16 +3,9 @@
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "@redux/*": ["./lib/redux/*"],
-      "@utils/*": ["./lib/utils/*"],
-      "@type/*": ["./lib/type/*"],
-      "@api/*": ["./lib/api/*"],
-      "@atoms/*": ["./components/atoms/*"],
-      "@molecules/*": ["./components/molecules/*"],
-      "@organisms/*": ["./components/organisms/*"],
-      "@constants/*": ["./constants/*"],
-      "@templates/*": ["./components/templates/*"],
-      "@assets/*": ["./assets/*"]
+      "@/*": [
+        "./*"
+      ]
     }
   },
   "include": [
