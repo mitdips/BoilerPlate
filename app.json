@@ -15,14 +15,16 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.ips.boilerplate"
+      "bundleIdentifier": "com.ips.boilerplate",
+      "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.ips.boilerplate"
+      "package": "com.ips.boilerplate",
+      "googleServicesFile": "./google-services.json"
     },
     "web": {
       "bundler": "metro",
