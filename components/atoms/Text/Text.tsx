@@ -1,7 +1,7 @@
-import React, { memo, useMemo } from 'react';
-import { Text as LabelComp } from 'react-native-paper';
-import { LabelProps } from './Text.props';
-import { useAppTheme } from '@constants/theme';
+import React, { memo, useMemo } from "react";
+import { Text as LabelComp } from "react-native-paper";
+import { LabelProps } from "./Text.props";
+import { useAppTheme } from "@constants/theme";
 
 const Text: React.FC<LabelProps> = memo((props) => {
   const { color, style, children, variant, ...rest } = props;
@@ -13,7 +13,7 @@ const Text: React.FC<LabelProps> = memo((props) => {
     }
     if (variant) {
       _style.push({
-        fontFamily: `${variant ? variant : 'SF-Pro-Display-Regular_400'}`,
+        fontFamily: `${variant ? variant : "SpaceMono-Regular"}`,
       });
     }
     return _style;

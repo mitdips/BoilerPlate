@@ -1,17 +1,17 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   labelStyle: {
-    fontFamily: 'InterRegular',
+    fontFamily: "SpaceMono-Regular",
     fontSize: 14,
-    textAlign: 'center',
+    textAlign: "center",
   },
   contentStyle: {
-    width: '100%',
+    width: "100%",
     height: 48,
   },
   buttonStyle: {
-    width: '100%',
-    justifyContent: 'center',
+    width: "100%",
+    justifyContent: "center",
   },
 });
