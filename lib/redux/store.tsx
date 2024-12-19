@@ -8,20 +8,23 @@ import { persistReducer, PersistConfig, persistStore } from "redux-persist";
 import * as rp from "redux-persist";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import authReducer, { AuthState } from "./slices/auth";
+import themeReducer, { ThemeState } from "./slices/theme";
 
 export interface RootState {
   auth: AuthState;
+  theme: ThemeState;
 }
 
 const persistConfig = {
   key: "root",
   version: 1,
   storage: AsyncStorage,
-  whitelist: ["auth"],
+  whitelist: ["auth", "theme"],
 } as PersistConfig<RootState>;
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  theme: themeReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
