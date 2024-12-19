@@ -29,6 +29,8 @@ web-build/
 npm-debug.*
 yarn-debug.*
 yarn-error.*
+package-lock.json
+yarn.lock
 
 # macOS
 .DS_Store
@@ -40,13 +42,6 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
-# Android
-Android/
-android/
-
-# iOS
-ios/
-
 # Android & IOS folder
 ios/
 Android/
@@ -55,4 +50,3 @@ Android/
 certs/
 .env.local
 .env
-node_modules/
