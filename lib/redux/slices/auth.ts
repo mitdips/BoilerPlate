@@ -1,6 +1,5 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { User } from "@/lib/type/redux/slices/auth";
 import { createSlice } from "@reduxjs/toolkit";
-import { User } from "@type/redux/slices/auth";
 export interface AuthState {
   user: User;
 }
