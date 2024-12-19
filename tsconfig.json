@@ -10,7 +10,6 @@
       "@molecules/*": ["./components/molecules/*"],
       "@organisms/*": ["./components/organisms/*"],
       "@constants/*": ["./constants/*"],
-      
       "@templates/*": ["./components/templates/*"],
     }
   },

@@ -1,16 +1,16 @@
-import React from 'react';
-import '@assets/images/index';
+import React from "react";
+import "@assets/images/index";
 import {
   HeaderWithTextContainer,
   TextInHeader,
   IconCon,
   HeaderTextCon,
-} from './TitleWithButton.styles';
-import { Pressable } from 'react-native';
-import { router } from 'expo-router';
-import { TitleWithButtonProps } from './TitleWithButton.props';
-import Back from '@atoms/Illustrations/Back';
-import { useAppTheme } from '@constants/theme';
+} from "./TitleWithButton.styles";
+import { Pressable } from "react-native";
+import { router } from "expo-router";
+import { TitleWithButtonProps } from "./TitleWithButton.props";
+import Back from "@atoms/Illustrations/Back";
+import { useAppTheme } from "@constants/theme";
 
 const TitleWithButton: React.FC<TitleWithButtonProps> = ({
   text,
