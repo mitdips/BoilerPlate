@@ -43,7 +43,15 @@
           "backgroundColor": "#ffffff"
         }
       ],
-      "expo-font"
+      "expo-font",
+      [
+        "@sentry/react-native/expo",
+        {
+          "url": "https://sentry.io/",
+          "project": "boilerplate",
+          "organization": "itpathsolutions-yt"
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
