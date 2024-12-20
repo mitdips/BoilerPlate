@@ -47,7 +47,13 @@ export const ButtonView = styled(View)`
 
 export const NextButton = styled(Button)`
   border-width: 0px;
-  width: 80px;
+  width: 100px;
+`;
+
+export const NextText = styled(Text)`
+  font-size: ${scale(14)}px;
+  color: ${({ theme }: { theme: AppTheme }) => theme.colors.white};
+  text-align: center;
 `;
 
 export const HeroImage = styled(Image)`

@@ -17,16 +17,19 @@ const ScreenTemplate: React.FC<ScreenTemplateProps> = ({
   title,
   onBackPress,
   statusBarColor,
+  isHeader,
 }) => {
   const { colors } = useAppTheme();
   return (
     <SafeAreaContainer edges={title ? ["top", "left", "right"] : null}>
       <StatusBar
-        barStyle={"default"}
+        style={"auto"}
         backgroundColor={statusBarColor || colors.welcomeScreenBackground}
       />
       <Container backgroundColor={backgroundColor}>
-        <TitleWithButton text={title} onBackPress={onBackPress} />
+        {!!isHeader && (
+          <TitleWithButton text={title} onBackPress={onBackPress} />
+        )}
         {moreVisible && <MoreMenuButton />}
         <ScreenTemplateView>{children}</ScreenTemplateView>
       </Container>

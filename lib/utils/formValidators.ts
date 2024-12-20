@@ -11,7 +11,6 @@ export const composeValidators =
     );
 
 export const requiredValidator: Validator = (field, value) => {
-  console.log("value: ", value);
   if (!value) {
     return `${field} is required`;
   }

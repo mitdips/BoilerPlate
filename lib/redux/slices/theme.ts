@@ -10,7 +10,7 @@ export enum ThemeTypes {
 }
 
 const initialState: ThemeState = {
-  currentTheme: ThemeTypes.dark,
+  currentTheme: ThemeTypes.light,
 };
 
 const themeSlice = createSlice({

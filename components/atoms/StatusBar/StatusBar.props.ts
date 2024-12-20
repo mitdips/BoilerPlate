@@ -1,4 +1,4 @@
-import { StatusBar, StatusBarProps } from "react-native";
+import { StatusBar, StatusBarProps } from "expo-status-bar";
 
 export type RNStatusBarProps = React.ComponentProps<typeof StatusBar> &
   StatusBarProps;

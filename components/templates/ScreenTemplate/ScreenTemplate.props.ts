@@ -10,4 +10,5 @@ export type ScreenTemplateProps = {
   title?: string;
   onBackPress?: () => void;
   statusBarColor?: string;
+  isHeader?: boolean;
 };

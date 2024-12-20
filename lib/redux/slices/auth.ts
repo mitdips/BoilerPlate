@@ -1,7 +1,6 @@
 import { User } from "@/lib/type/redux/slices/auth";
 import { createSlice } from "@reduxjs/toolkit";
 export interface AuthState {
-  [x: string]: any;
   user: User;
   showOnBoarding: boolean;
 }

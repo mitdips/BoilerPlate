@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
-import SnapCarousel from "react-native-snap-carousel";
-import { CarouselItem, CarouselProps } from "./Carousel.props";
+import { CarouselItem, CarouselProps } from "./SwipeCarousel.props";
 import {
   ButtonView,
   Conatiner,
@@ -8,23 +7,25 @@ import {
   HeroText,
   MainContainer,
   NextButton,
+  NextText,
   PaginationContainer,
   StyledPagination,
   SubText,
-} from "./Carousel.styles";
+} from "./SwipeCarousel.styles";
 import { width } from "@/lib/utils/dimensions";
 import { router } from "expo-router";
 import { setShowOnBoarding } from "@/lib/redux/slices/auth";
 import { useDispatch } from "react-redux";
+import Carousel from "react-native-snap-carousel";
 
-const Carousel = ({ data }: CarouselProps) => {
+const SwipeCarousel = ({ data }: CarouselProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const carouselRef = useRef<any>();
   const dispatch = useDispatch();
   const handleNextPress = () => {
     if (activeIndex === 0) {
       setActiveIndex((prevValue) => {
-        carouselRef.current.snapToItem(prevValue + 1);
+        carouselRef?.current?.snapToItem(prevValue + 1);
         return prevValue + 1;
       });
     } else {
@@ -43,7 +44,7 @@ const Carousel = ({ data }: CarouselProps) => {
   };
   return (
     <MainContainer>
-      <SnapCarousel
+      <Carousel
         ref={carouselRef}
         data={data}
         renderItem={renderItem}
@@ -58,8 +59,8 @@ const Carousel = ({ data }: CarouselProps) => {
           activeDotIndex={activeIndex}
         />
         <ButtonView>
-          <NextButton mode="outlined" onPress={handleNextPress}>
-            Next
+          <NextButton mode="outlined" onPress={handleNextPress} color={"red"}>
+            <NextText>Next</NextText>
           </NextButton>
         </ButtonView>
       </PaginationContainer>
@@ -67,4 +68,4 @@ const Carousel = ({ data }: CarouselProps) => {
   );
 };
 
-export default Carousel;
+export default SwipeCarousel;

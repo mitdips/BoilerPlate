@@ -10,6 +10,7 @@
     "web": "expo start --web",
     "test": "jest --watchAll",
     "lint": "expo lint",
+    "postinstall": "patch-package",
     "rm:nm": "yarn cache clean && npm cache verify && npm cache clean --force && rm -rf node_modules && rm -rf package-lock.json && rm -rf yarn.lock && rm -rf android && rm -rf ios && rm -rf .expo"
   },
   "jest": {
@@ -41,6 +42,8 @@
     "expo-web-browser": "~14.0.1",
     "final-form": "^4.20.10",
     "firebase": "^11.1.0",
+    "patch-package": "^8.0.0",
+    "postinstall-postinstall": "^2.1.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-final-form": "^6.5.9",
@@ -54,6 +57,7 @@
     "react-native-snap-carousel": "^3.9.1",
     "react-native-svg": "15.8.0",
     "react-native-toast-notifications": "^3.4.0",
+    "react-native-web": "~0.19.13",
     "react-redux": "^9.2.0",
     "redux-persist": "^6.0.0",
     "styled-components": "^6.1.13"
