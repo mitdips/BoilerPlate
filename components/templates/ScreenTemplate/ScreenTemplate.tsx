@@ -7,6 +7,8 @@ import {
 import { ScreenTemplateProps } from "./ScreenTemplate.props";
 import TitleWithButton from "@molecules/TitleWithButton/TitleWithButton";
 import MoreMenuButton from "@molecules/MoreMenuButton/MoreMenuButton";
+import StatusBar from "@/components/atoms/StatusBar";
+import { useAppTheme } from "@/constants/theme";
 
 const ScreenTemplate: React.FC<ScreenTemplateProps> = ({
   children,
@@ -14,11 +16,20 @@ const ScreenTemplate: React.FC<ScreenTemplateProps> = ({
   moreVisible,
   title,
   onBackPress,
+  statusBarColor,
+  isHeader,
 }) => {
+  const { colors } = useAppTheme();
   return (
     <SafeAreaContainer edges={title ? ["top", "left", "right"] : null}>
+      <StatusBar
+        style={"auto"}
+        backgroundColor={statusBarColor || colors.welcomeScreenBackground}
+      />
       <Container backgroundColor={backgroundColor}>
-        <TitleWithButton text={title} onBackPress={onBackPress} />
+        {!!isHeader && (
+          <TitleWithButton text={title} onBackPress={onBackPress} />
+        )}
         {moreVisible && <MoreMenuButton />}
         <ScreenTemplateView>{children}</ScreenTemplateView>
       </Container>

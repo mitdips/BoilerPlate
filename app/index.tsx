@@ -2,6 +2,8 @@ import React from "react";
 import { Redirect, SplashScreen } from "expo-router";
 import * as Sentry from "@sentry/react-native";
 import { isRunningInExpoGo } from "expo";
+import { useSelector } from "react-redux";
+import { RootState } from "@/lib/redux/store";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -26,12 +28,15 @@ Sentry.init({
 
 const App = () => {
   const token = false;
+  const { showOnBoarding } = useSelector((state: RootState) => state.auth);
   return (
     <>
       {token ? (
         <Redirect href="/(protected)/(tabs)" />
-      ) : (
+      ) : showOnBoarding ? (
         <Redirect href="/(public)/welcome" />
+      ) : (
+        <Redirect href="/(public)/login" />
       )}
     </>
   );

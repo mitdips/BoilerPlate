@@ -1,4 +1,4 @@
-import { SafeAreaViewProps } from 'react-native-safe-area-context';
+import { SafeAreaViewProps } from "react-native-safe-area-context";
 
 export type ScreenTemplateProps = {
   children: React.ReactNode;
@@ -9,4 +9,6 @@ export type ScreenTemplateProps = {
   onAddButtonPress?: () => void;
   title?: string;
   onBackPress?: () => void;
+  statusBarColor?: string;
+  isHeader?: boolean;
 };

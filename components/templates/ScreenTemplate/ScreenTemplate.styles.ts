@@ -17,6 +17,7 @@ export const Container = styled(View)<{
 `;
 
 export const ScreenTemplateView = styled(View)`
+  /* padding: 0px 16px; */
   flex: 1;
 `;
 

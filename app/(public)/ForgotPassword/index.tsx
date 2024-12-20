@@ -10,7 +10,7 @@ import {
 } from "../login/LoginScreen.styles";
 import images from "../../../assets/index";
 import FormTemplate from "@/components/templates/FormTemplate/FormTemplate";
-import { ForgotPasswordFormData } from "./ForgotPasswordScreen.props";
+import { ForgotPasswordFormData } from "./ForgotPassword.props";
 import ForgotPasswordForm from "@/components/organisms/ForgotPasswordForm/ForgotPasswordForm";
 import ScreenTemplate from "@/components/templates/ScreenTemplate/ScreenTemplate";
 

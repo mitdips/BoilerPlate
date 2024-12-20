@@ -21,6 +21,9 @@ export const DefaultTheme = {
     warning: "#FFEA00",
     success: "#00FFC2",
     placeholderTextColor: "#0000006B",
+    welcomeScreenBackground: "#333849",
+    activeCarouselPage: "#5D81FD",
+    inActiveCarouselPage: "#D6DFFF",
     textinput: "#F5F9FE",
   },
 };
@@ -42,6 +45,9 @@ export const DarkTheme: AppTheme = {
     warning: "#FFC107",
     success: "#00FFC2",
     placeholderTextColor: "#888888",
+    welcomeScreenBackground: "#333849",
+    activeCarouselPage: "#5D81FD",
+    inActiveCarouselPage: "#D6DFFF",
     textinput: "#F5F9FE",
   },
 };
