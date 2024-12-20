@@ -1,7 +1,8 @@
-import Text from '@atoms/Text/Text';
-import View from '@atoms/View/View';
-import { styled } from '@utils/styled';
-import { TextInput } from 'react-native-paper';
+import { AppTheme } from "@/constants/theme";
+import Text from "@atoms/Text/Text";
+import View from "@atoms/View/View";
+import { styled } from "@utils/styled";
+import { TextInput } from "react-native-paper";
 
 export const LabelText = styled(Text)`
   font-size: 14px;
@@ -16,8 +17,14 @@ export const RNPTextInput = styled(TextInput)`
 `;
 
 export const InputErrorContainer = styled(View)<{ invalidValue?: boolean }>`
-  border-width: ${({ invalidValue }) => (invalidValue ? 1 : 0)}px;
-  border-color: ${({ invalidValue, theme }) =>
-    invalidValue ? theme.colors.errorText : undefined};
+  border-width: ${({ invalidValue }: { invalidValue: boolean }) =>
+    invalidValue ? 1 : 0}px;
+  border-color: ${({
+    invalidValue,
+    theme,
+  }: {
+    invalidValue: boolean;
+    theme: AppTheme;
+  }) => (invalidValue ? theme.colors.error : theme.colors.main)};
   border-radius: 10px;
 `;

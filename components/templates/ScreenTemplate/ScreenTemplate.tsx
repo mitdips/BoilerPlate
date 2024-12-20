@@ -16,11 +16,9 @@ const ScreenTemplate: React.FC<ScreenTemplateProps> = ({
   onBackPress,
 }) => {
   return (
-    <SafeAreaContainer
-      edges={title ? ["top", "left", "right"] : ["left", "right"]}
-    >
+    <SafeAreaContainer edges={title ? ["top", "left", "right"] : null}>
       <Container backgroundColor={backgroundColor}>
-        {!!title && <TitleWithButton text={title} onBackPress={onBackPress} />}
+        <TitleWithButton text={title} onBackPress={onBackPress} />
         {moreVisible && <MoreMenuButton />}
         <ScreenTemplateView>{children}</ScreenTemplateView>
       </Container>
