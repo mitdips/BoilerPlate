@@ -1,5 +1,4 @@
 import React from "react";
-import "@assets/images/index";
 import {
   HeaderWithTextContainer,
   TextInHeader,

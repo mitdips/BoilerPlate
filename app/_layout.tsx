@@ -33,7 +33,7 @@ export default function RootLayout() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <ReduxProvider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <ThemeProvider>
+          <ThemeProvider >
             <Stack screenOptions={{ headerShown: false }}>
               <Stack.Screen name="(public)/welcome/index" />
               <Stack.Screen name="(protected)/(tabs)/index" />
