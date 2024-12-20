@@ -13,7 +13,7 @@ export const DefaultTheme = {
     white: "#FFFFFF",
     main: "#3461FD",
     black: "#000000",
-    gray: "#CCCCCC",
+    gray: "#61677D",
     error: "#F04438",
     skyBlue: "#B5E7FF",
     lightSkyBlue: "#B5E7FF40",
@@ -24,6 +24,7 @@ export const DefaultTheme = {
     welcomeScreenBackground: "#333849",
     activeCarouselPage: "#5D81FD",
     inActiveCarouselPage: "#D6DFFF",
+    textinput: "#F5F9FE",
   },
 };
 
@@ -36,7 +37,7 @@ export const DarkTheme: AppTheme = {
     white: "#000000",
     main: "#3461FD",
     black: "#FFFFFF",
-    gray: "#888888",
+    gray: "#F5F9FE",
     error: "#F04438",
     skyBlue: "#4A90E2",
     lightSkyBlue: "#4A90E280",
@@ -47,6 +48,7 @@ export const DarkTheme: AppTheme = {
     welcomeScreenBackground: "#333849",
     activeCarouselPage: "#5D81FD",
     inActiveCarouselPage: "#D6DFFF",
+    textinput: "#F5F9FE",
   },
 };
 

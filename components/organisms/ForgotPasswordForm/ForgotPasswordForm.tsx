@@ -1,0 +1,54 @@
+import React from "react";
+import { Field, useFormState } from "react-final-form";
+import { useAppTheme } from "@constants/theme";
+import FieldTextInput from "@/components/molecules/FieldTextInput/FieldTextInput";
+import {
+  composeValidators,
+  emailValidator,
+  minLengthValidator,
+  requiredValidator,
+} from "@/lib/utils/formValidators";
+import { ForgotPasswordFormProps } from "./ForgotPasswordForm.props";
+import {
+  ButtonSubmit,
+  LoginFormContainer,
+  LoginFormView,
+} from "../LoginForm/LoginForm.styles";
+import { Spacer } from "@/components/atoms/common/common.styles";
+
+const ForgotPasswordForm: React.FC<ForgotPasswordFormProps> = ({
+  form,
+  loading,
+}) => {
+  const { colors } = useAppTheme();
+  const { valid } = useFormState();
+  return (
+    <LoginFormView>
+      <LoginFormContainer>
+        <Field
+          name="email"
+          placeholder={"Email Address"}
+          component={FieldTextInput}
+          keyboardType="email-address"
+          validate={composeValidators(
+            (value) => requiredValidator("Email address", value),
+            (value) => minLengthValidator("Email address", value),
+            emailValidator
+          )}
+        />
+      </LoginFormContainer>
+      <Spacer size={16} />
+      <ButtonSubmit
+        onPress={!loading && form.submit}
+        loading={loading}
+        textColor={valid ? colors.white : colors.white}
+        variant={valid}
+        disabled={loading}
+      >
+        Continue
+      </ButtonSubmit>
+    </LoginFormView>
+  );
+};
+
+export default ForgotPasswordForm;

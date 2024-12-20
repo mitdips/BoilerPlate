@@ -11,6 +11,7 @@ import authReducer, { AuthState } from "./slices/auth";
 import themeReducer, { ThemeState } from "./slices/theme";
 
 export interface RootState {
+  [x: string]: any;
   auth: AuthState;
   theme: ThemeState;
 }

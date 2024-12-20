@@ -4,9 +4,8 @@ import TextInput from "@atoms/TextInput/TextInput";
 import FormError from "@atoms/FormError/FormError";
 import { useAppTheme } from "@constants/theme";
 import { CustomTextInputProps } from "@atoms/TextInput/TextInput.props";
-import CheckMarkIcon from "@atoms/Illustrations/Check";
-import CrossIcon from "@atoms/Illustrations/Cross";
 import { InputErrorContainer } from "@atoms/TextInput/TextInput.styles";
+import { width } from "@/lib/utils/dimensions";
 
 const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
   (
@@ -37,17 +36,6 @@ const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
         input.onChange(value?.trimStart());
       }
     };
-
-    let rightIcon = null;
-    if (right) {
-      if (password) {
-        rightIcon = password;
-      } else {
-        rightIcon = !!(meta?.error && meta?.touched)
-          ? () => <CrossIcon />
-          : () => <CheckMarkIcon />;
-      }
-    }
     return (
       <>
         <InputErrorContainer invalidValue={!!(meta.touched && meta.error)}>
@@ -59,10 +47,12 @@ const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
             autoCapitalize="none"
             style={
               rest?.style || {
-                backgroundColor: colors?.primary,
+                backgroundColor: "#F5F9FE",
+                color: colors?.black,
+                fontSize: 14,
               }
             }
-            textColor={colors.white}
+            textColor={colors.black}
             enterKeyHint="done"
             autoCorrect={false}
             left={left}
@@ -70,15 +60,15 @@ const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
             theme={{
               roundness: 6,
               colors: {
-                primary: colors.gray,
+                primary: colors.white,
               },
             }}
-            right={rightIcon}
+            right={right}
             secureTextEntry={rest?.secureTextEntry}
             placeholderTextColor={colors.placeholderTextColor}
             outlineStyle={{
-              borderColor: colors.primary,
-              borderWidth: 3,
+              borderColor: colors.main,
+              borderWidth: 0,
               borderRadius: 10,
             }}
             {...rest}

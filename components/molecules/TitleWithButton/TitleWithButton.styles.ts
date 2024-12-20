@@ -1,6 +1,6 @@
-import { styled } from '@utils/styled';
-import Text from '@atoms/Text/Text';
-import { Pressable, View } from 'react-native';
+import { styled } from "@utils/styled";
+import Text from "@atoms/Text/Text";
+import { Pressable, View } from "react-native";
 
 export const HeaderWithTextContainer = styled(View)`
   display: flex;
@@ -10,7 +10,7 @@ export const HeaderWithTextContainer = styled(View)`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  border-bottom-width: 1px;
+  /* border-bottom-width: 1px; */
   margin-top: 16px;
   border-bottom-color: ${({ theme }) => theme.colors.lightBlack};
 `;

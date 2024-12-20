@@ -1,25 +1,25 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export interface ThemeState {
   currentTheme: ThemeTypes;
 }
 
 export enum ThemeTypes {
-  dark = 'dark',
-  light = 'light',
+  dark = "dark",
+  light = "light",
 }
 
 const initialState: ThemeState = {
-  currentTheme: ThemeTypes.light,
+  currentTheme: ThemeTypes.dark,
 };
 
 const themeSlice = createSlice({
-  name: 'theme',
+  name: "theme",
   initialState,
   reducers: {
     changeTheme: (
       state,
-      action: PayloadAction<ThemeTypes.dark | ThemeTypes.light>,
+      action: PayloadAction<ThemeTypes.dark | ThemeTypes.light>
     ) => {
       state.currentTheme = action.payload;
     },
