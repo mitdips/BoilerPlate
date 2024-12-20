@@ -12,15 +12,17 @@ const GoogleButton = () => {
       mode="contained"
       buttonColor={colors.textinput}
       labelStyle={{
-        color: colors.gray,
+        fontSize: 14,
+        fontWeight: 600,
+        color: colors.placeholderTextColor,
       }}
       onPress={() => {
         console.log("btn press");
       }}
-      style={{ width: width / 2.4 }}
+      style={{ width: width / 2.2 }}
       uppercase={false}
     >
-      Facebook
+      Google
     </Button>
   );
 };

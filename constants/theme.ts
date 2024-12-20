@@ -34,7 +34,7 @@ export const DarkTheme: AppTheme = {
     white: "#000000",
     main: "#3461FD",
     black: "#FFFFFF",
-    gray: "#61677D",
+    gray: "#F5F9FE",
     error: "#F04438",
     skyBlue: "#4A90E2",
     lightSkyBlue: "#4A90E280",

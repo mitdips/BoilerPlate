@@ -17,13 +17,13 @@ export const ImageView = styled(Image)`
 
 export const IntroText = styled(Text)`
   color: ${({ theme }: { theme: AppTheme }) => theme.colors.main};
-  font-size: ${height * 0.05};
+  font-size: 30px;
   font-weight: 700;
   text-align: center;
 `;
 export const DescriptionText = styled(Text)`
-  color: ${({ theme }: { theme: AppTheme }) => theme.colors.backdrop};
-  font-size: ${height * 0.016};
+  color: ${({ theme }: { theme: AppTheme }) => theme.colors.gray};
+  font-size: 14px;
   font-weight: 400;
   text-align: center;
 `;
@@ -40,7 +40,7 @@ export const LoginScreenContainer = styled(View)`
 export const LoginFormContainer = styled(View)`
   border-top-right-radius: 24px;
   border-top-left-radius: 24px;
-  margin: 18px 18px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;

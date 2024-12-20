@@ -1,9 +1,8 @@
 import { AppTheme } from "@/constants/theme";
-import { width } from "@/lib/utils/dimensions";
 import Text from "@atoms/Text/Text";
 import { styled } from "@utils/styled";
-import { View } from "react-native";
-
+import { Platform, View } from "react-native";
+import { isWeb } from "@/constants/platform";
 export const OrViews = styled(View)`
   flex-direction: row;
   justify-content: center;
@@ -19,6 +18,6 @@ export const OrText = styled(Text)`
 
 export const ViewLine = styled(View)`
   height: 1px;
-  width: ${width / 2.6};
+  width: ${Platform.select({ default: 44, web: 48.5 })}%;
   background-color: ${({ theme }: { theme: AppTheme }) => theme.colors.gray};
 `;
