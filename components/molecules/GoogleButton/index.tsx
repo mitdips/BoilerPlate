@@ -17,7 +17,7 @@ const GoogleButton = () => {
       onPress={() => {
         console.log("btn press");
       }}
-      style={{ width: width * 0.42 }}
+      style={{ width: width / 2.4 }}
       uppercase={false}
     >
       Facebook

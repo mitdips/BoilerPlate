@@ -8,11 +8,8 @@ import {
   LoginFormContainer,
   LoginScreenContainer,
   LoginScrollView,
-  OrText,
-  OrView,
   RegisterText,
   SocialBtn,
-  ViewLine,
 } from "../login/LoginScreen.styles";
 import images from "../../../assets/index";
 import FormTemplate from "@/components/templates/FormTemplate/FormTemplate";
@@ -21,6 +18,7 @@ import { LinkText } from "@/components/organisms/LoginForm/LoginForm.styles";
 import RegisterForm from "@/components/organisms/RegisterForm/RegisterForm";
 import GoogleButton from "@/components/molecules/GoogleButton";
 import FacebookButton from "@/components/molecules/FacebookButton";
+import OrView from "@/components/molecules/OrView";
 
 const Register = () => {
   const onRegisterPress = async (values: RegisterFormData) => {
@@ -42,11 +40,7 @@ const Register = () => {
               <GoogleButton />
               <FacebookButton />
             </SocialBtn>
-            <OrView>
-              <ViewLine />
-              <OrText>OR</OrText>
-              <ViewLine />
-            </OrView>
+            <OrView />
             <FormTemplate Component={RegisterForm} onSubmit={onRegisterPress} />
             <RegisterText onPress={() => router.navigate("/(public)/login")}>
               Do you have account? <LinkText> Sign In</LinkText>

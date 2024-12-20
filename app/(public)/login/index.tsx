@@ -8,11 +8,8 @@ import {
   LoginFormContainer,
   LoginScreenContainer,
   LoginScrollView,
-  OrText,
-  OrView,
   RegisterText,
   SocialBtn,
-  ViewLine,
 } from "./LoginScreen.styles";
 import images from "../../../assets/index";
 import FormTemplate from "@/components/templates/FormTemplate/FormTemplate";
@@ -21,6 +18,7 @@ import { LoginFormData } from "./LoginScreen.props";
 import { LinkText } from "@/components/organisms/LoginForm/LoginForm.styles";
 import GoogleButton from "@/components/molecules/GoogleButton";
 import FacebookButton from "@/components/molecules/FacebookButton";
+import OrView from "@/components/molecules/OrView";
 
 const Login = () => {
   const onLoginPress = async (values: LoginFormData) => {
@@ -42,11 +40,8 @@ const Login = () => {
               <GoogleButton />
               <FacebookButton />
             </SocialBtn>
-            <OrView>
-              <ViewLine />
-              <OrText>OR</OrText>
-              <ViewLine />
-            </OrView>
+
+            <OrView />
             <FormTemplate Component={LoginForm} onSubmit={onLoginPress} />
             <RegisterText onPress={() => router.navigate("/(public)/register")}>
               Don’t have account?<LinkText> Sign Up</LinkText>

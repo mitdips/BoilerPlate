@@ -29,20 +29,8 @@ export const DescriptionText = styled(Text)`
 `;
 export const SocialBtn = styled(View)`
   flex-direction: row;
-  gap: 10px;
-`;
-
-export const OrView = styled(View)`
-  flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
-`;
-
-export const ViewLine = styled(View)`
-  height: 1px;
-  width: ${width * 0.39};
-  background-color: ${({ theme }: { theme: AppTheme }) => theme.colors.gray};
 `;
 
 export const LoginScreenContainer = styled(View)`
@@ -52,7 +40,7 @@ export const LoginScreenContainer = styled(View)`
 export const LoginFormContainer = styled(View)`
   border-top-right-radius: 24px;
   border-top-left-radius: 24px;
-  padding: 24px;
+  margin: 18px 18px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -81,12 +69,6 @@ export const ForgotText = styled(Text)`
 `;
 
 export const RegisterText = styled(Text)`
-  font-size: 16px;
-  color: ${({ theme }: { theme: AppTheme }) => theme.colors.black};
-  font-weight: 600;
-`;
-
-export const OrText = styled(Text)`
   font-size: 16px;
   color: ${({ theme }: { theme: AppTheme }) => theme.colors.black};
   font-weight: 600;
