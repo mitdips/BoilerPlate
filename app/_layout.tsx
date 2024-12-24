@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
 import { Provider as ReduxProvider } from "react-redux";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
@@ -39,7 +38,6 @@ export default function RootLayout() {
               <Stack.Screen name="(protected)/(tabs)/index" />
               <Stack.Screen name="+not-found" />
             </Stack>
-            <StatusBar style="auto" />
           </ThemeProvider>
         </PersistGate>
       </ReduxProvider>

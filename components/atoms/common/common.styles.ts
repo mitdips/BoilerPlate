@@ -1,8 +1,8 @@
-import { styled } from '@utils/styled';
-import { Dimensions, View } from 'react-native';
+import { styled } from "@utils/styled";
+import { Dimensions, View } from "react-native";
 
-const windowWidth = Dimensions.get('screen').width;
-const windowHeight = Dimensions.get('screen').height;
+const windowWidth = Dimensions.get("screen").width;
+const windowHeight = Dimensions.get("screen").height;
 
 export const Flexed = styled(View)`
   flex: 1;

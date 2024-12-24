@@ -41,7 +41,7 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = memo(
     return (
       <StyledThemeProvider theme={currentThemes}>
         <StatusBar
-          style={currentTheme === ThemeTypes.light ? "dark" : "light"}
+          style={currentTheme === ThemeTypes.dark ? "dark" : "light"}
         />
         <PaperProvider theme={currentThemes} children={children} />
       </StyledThemeProvider>

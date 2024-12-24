@@ -1,12 +1,12 @@
-import React from 'react';
-import { Button as RNPButton } from 'react-native-paper';
-import { ButtonProps } from './Button.props';
-import { styles } from './Button.styles';
-import { useAppTheme } from '@constants/theme';
+import React from "react";
+import { Button as RNPButton } from "react-native-paper";
+import { ButtonProps } from "./Button.props";
+import { styles } from "./Button.styles";
+import { useAppTheme } from "@constants/theme";
 
 const Button: React.FC<ButtonProps> = ({
   children,
-  mode = 'contained',
+  mode = "contained",
   labelStyle,
   contentStyle,
   style,
@@ -18,10 +18,11 @@ const Button: React.FC<ButtonProps> = ({
     <RNPButton
       mode={mode}
       onPress={onPress}
-      labelStyle={[styles.labelStyle, labelStyle, { color: colors.white }]}
+      labelStyle={[styles.labelStyle, labelStyle]}
       contentStyle={[styles.contentStyle, contentStyle]}
       style={[styles.buttonStyle, style]}
-      {...rest}>
+      {...rest}
+    >
       {children}
     </RNPButton>
   );

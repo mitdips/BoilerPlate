@@ -10,8 +10,11 @@ export const composeValidators =
       undefined
     );
 
-export const requiredValidator: Validator = (value) =>
-  !value ? "Field is required" : undefined;
+export const requiredValidator: Validator = (field, value) => {
+  if (!value) {
+    return `${field} is required`;
+  }
+};
 
 export const emailValidator: Validator = (value) => {
   if (value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
@@ -32,14 +35,15 @@ export const confirmPasswordValidator = (
     ? undefined
     : "Password does not match";
 };
-export const maxLengthValidator = (length: number) => (value: string) =>
-  value && value.length > length
-    ? "Field must have atmost 15 letters"
-    : undefined;
+export const maxLengthValidator = (field: string, value: string) => {
+  if (value && value.length > 12) {
+    return `${field} must have atmost 12 letters`;
+  }
+};
 
-export const lowercaseValidator: Validator = (value) => {
+export const lowercaseValidator: Validator = (field, value) => {
   if (value && !/^[a-z0-9]+$/.test(value)) {
-    return "Field must have lower case value";
+    return `${field} must have lower case value`;
   }
 };
 export const websiteLinkValidator: Validator = (value) => {
@@ -52,13 +56,13 @@ export const websiteLinkValidator: Validator = (value) => {
     return "Field must be a website link only";
   }
 };
-export const minLengthValidator: Validator = (value) => {
+export const minLengthValidator: Validator = (field, value) => {
   if (value && value.length < 3) {
-    return "Field must have atleast 3 letters";
+    return `${field} must have atleast 3 letters`;
   }
 };
 
-export const complexPasswordValidator = (value) => {
+export const complexPasswordValidator = (value: string) => {
   if (value) {
     const hasUpperCase = /[A-Z]/.test(value);
     const hasLowerCase = /[a-z]/.test(value);
