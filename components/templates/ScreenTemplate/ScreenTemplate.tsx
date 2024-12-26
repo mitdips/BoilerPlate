@@ -31,7 +31,7 @@ const ScreenTemplate: React.FC<ScreenTemplateProps> = ({
     <SafeAreaContainer edges={title ? ["top", "left", "right"] : null}>
       <StatusBar
         style={"auto"}
-        backgroundColor={statusBarColor || colors.welcomeScreenBackground}
+        backgroundColor={statusBarColor || colors.white}
       />
       <Container backgroundColor={backgroundColor}>
         {!!isHeader && (
@@ -39,12 +39,16 @@ const ScreenTemplate: React.FC<ScreenTemplateProps> = ({
         )}
         {moreVisible && <MoreMenuButton />}
         <ScreenTemplateView>
-          <ImageView source={img} />
-          <Spacer size={10} />
-          <IntroText>{pagetitle}</IntroText>
-          <Spacer size={10} />
-          <DescriptionText>{description}</DescriptionText>
-          <Spacer size={10} />
+          {img && pagetitle && description && (
+            <>
+              <ImageView source={img} />
+              <Spacer size={10} />
+              <IntroText>{pagetitle}</IntroText>
+              <Spacer size={10} />
+              <DescriptionText>{description}</DescriptionText>
+              <Spacer size={10} />
+            </>
+          )}
           {children}
         </ScreenTemplateView>
       </Container>
