@@ -1,43 +1,39 @@
 import React from "react";
-import { router } from "expo-router";
-import {
-  DescriptionText,
-  ImageView,
-  IntroText,
-  LoginFormContainer,
-  LoginScreenContainer,
-  LoginScrollView,
-} from "../login/LoginScreen.styles";
+import { LoginFormContainer } from "./ForgotPassword.styles";
 import images from "../../../assets/index";
-import FormTemplate from "@/components/templates/FormTemplate/FormTemplate";
 import { ForgotPasswordFormData } from "./ForgotPassword.props";
-import ForgotPasswordForm from "@/components/organisms/ForgotPasswordForm/ForgotPasswordForm";
-import ScreenTemplate from "@/components/templates/ScreenTemplate/ScreenTemplate";
+import ScreenTemplate from "@templates/ScreenTemplate/ScreenTemplate";
+import FormTemplate from "@templates/FormTemplate/FormTemplate";
+import ForgotPasswordForm from "@organisms/ForgotPasswordForm/ForgotPasswordForm";
+import { ScrollView } from "react-native";
+import { useAppTheme } from "@constants/theme";
 
 const ForgotPassword = () => {
   const onForgotPress = async (values: ForgotPasswordFormData) => {
     console.log("Forgot Press");
   };
+  const { colors } = useAppTheme();
 
   return (
-    <ScreenTemplate onBackPress={() => router.back()}>
-      <LoginScrollView keyboardShouldPersistTaps="always">
-        <LoginScreenContainer>
-          <LoginFormContainer>
-            <ImageView source={images.forgotImage} />
-            <IntroText>Forgot Password</IntroText>
-            <DescriptionText>
-              It was popularised in the 1960s with the release of Letraset
-              sheetscontaining Lorem Ipsum.
-            </DescriptionText>
-            <FormTemplate
-              Component={ForgotPasswordForm}
-              onSubmit={onForgotPress}
-            />
-          </LoginFormContainer>
-        </LoginScreenContainer>
-      </LoginScrollView>
-    </ScreenTemplate>
+    <ScrollView
+      style={{ backgroundColor: colors.white }}
+      showsVerticalScrollIndicator={false}
+    >
+      <ScreenTemplate
+        isHeader
+        img={images.forgotImage}
+        pagetitle={"Forgot Password"}
+        description="It was popularised in the 1960s with the release of Letraset
+          sheetscontaining Lorem Ipsum."
+      >
+        <LoginFormContainer>
+          <FormTemplate
+            Component={ForgotPasswordForm}
+            onSubmit={onForgotPress}
+          />
+        </LoginFormContainer>
+      </ScreenTemplate>
+    </ScrollView>
   );
 };
 

@@ -2,6 +2,7 @@ import { SafeAreaViewProps } from "react-native-safe-area-context";
 
 export type ScreenTemplateProps = {
   children: React.ReactNode;
+  img?: React.ReactNode;
   safeAreaProps?: SafeAreaViewProps;
   backgroundColor?: string;
   addButtonText?: string;
@@ -11,4 +12,6 @@ export type ScreenTemplateProps = {
   onBackPress?: () => void;
   statusBarColor?: string;
   isHeader?: boolean;
+  pagetitle?: string;
+  description?: string;
 };

@@ -1,11 +1,17 @@
+import { onBoardingData } from "@constants/dummyData";
+import { useAppTheme } from "@constants/theme";
+import SwipeCarousel from "@molecules/SwipeCarousel/SwipeCarousel";
+import ScreenTemplate from "@templates/ScreenTemplate/ScreenTemplate";
 import React from "react";
-import SwipeCarousel from "@/components/molecules/SwipeCarousel/SwipeCarousel";
-import { onBoardingData } from "@/constants/dummyData";
-import ScreenTemplate from "@/components/templates/ScreenTemplate/ScreenTemplate";
 
 const Welcome = () => {
+  const { colors } = useAppTheme();
+
   return (
-    <ScreenTemplate isHeader={false}>
+    <ScreenTemplate
+      // isHeader={false}
+      statusBarColor={colors.welcomeScreenBackground}
+    >
       <SwipeCarousel data={onBoardingData} />
     </ScreenTemplate>
   );

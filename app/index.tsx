@@ -3,7 +3,7 @@ import { Redirect, SplashScreen } from "expo-router";
 import * as Sentry from "@sentry/react-native";
 import { isRunningInExpoGo } from "expo";
 import { useSelector } from "react-redux";
-import { RootState } from "@/lib/redux/store";
+import { RootState } from "@redux/store";
 
 SplashScreen.preventAutoHideAsync();
 
