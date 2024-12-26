@@ -18,8 +18,7 @@ import {
 import EyeOpenIcon from "@atoms/Illustrations/EyeOpen";
 import EyeCloseIcon from "@atoms/Illustrations/EyeClose";
 import { RegisterFormProps } from "./RegisterForm.props";
-import { Text, View } from "react-native";
-import CheckBox from "@react-native-community/checkbox";
+import { Text } from "react-native";
 import Checkbox from "@atoms/Checkbox/Checkbox";
 
 const RegisterForm: React.FC<RegisterFormProps> = ({ form, loading }) => {
