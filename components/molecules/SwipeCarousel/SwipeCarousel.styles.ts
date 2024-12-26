@@ -1,12 +1,12 @@
-import { height, width } from "@/lib/utils/dimensions";
 import { styled } from "@utils/styled";
 import { Image } from "react-native";
 import { Pagination } from "react-native-snap-carousel";
 import { scale } from "react-native-size-matters";
-import View from "@/components/atoms/View/View";
-import Text from "@/components/atoms/Text/Text";
-import { AppTheme } from "@/constants/theme";
-import Button from "@/components/atoms/Button/Button";
+import View from "@atoms/View/View";
+import Text from "@atoms/Text/Text";
+import { AppTheme } from "@constants/theme";
+import Button from "@atoms/Button/Button";
+import { windowHeight, windowWidth } from "@atoms/common/common.styles";
 
 export const MainContainer = styled(View)`
   flex: 1;
@@ -59,8 +59,8 @@ export const NextText = styled(Text)`
 export const HeroImage = styled(Image)`
   height: 300px;
   width: 300px;
-  margin-top: ${height * 0.1}px;
-  margin-bottom: ${height * 0.1}px;
+  margin-top: ${windowHeight * 0.1}px;
+  margin-bottom: ${windowHeight * 0.1}px;
   object-fit: contain;
 `;
 
@@ -68,7 +68,7 @@ export const HeroText = styled(Text)`
   font-size: ${scale(24)}px;
   color: ${({ theme }: { theme: AppTheme }) => theme.colors.white};
   text-align: center;
-  width: ${width * 0.7}px;
+  width: ${windowWidth * 0.7}px;
   line-height: 56px;
   margin-bottom: 46px;
 `;
@@ -77,5 +77,5 @@ export const SubText = styled(Text)`
   font-size: ${scale(16)}px;
   color: ${({ theme }: { theme: AppTheme }) => theme.colors.white};
   text-align: center;
-  width: ${width * 0.9}px;
+  width: ${windowWidth * 0.9}px;
 `;

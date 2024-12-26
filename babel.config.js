@@ -8,6 +8,7 @@ module.exports = function (api) {
         "module-resolver",
         {
           alias: {
+            "@hooks/*": ["./hooks/*"],
             "@redux/*": ["./lib/redux/*"],
             "@utils/*": ["./lib/utils/*"],
             "@type/*": ["./lib/type/*"],

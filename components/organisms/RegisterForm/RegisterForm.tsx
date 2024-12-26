@@ -7,16 +7,16 @@ import {
 } from "../LoginForm/LoginForm.styles";
 import { useAppTheme } from "@constants/theme";
 import { Spacer } from "@atoms/common/common.styles";
-import FieldTextInput from "@/components/molecules/FieldTextInput/FieldTextInput";
+import FieldTextInput from "@molecules/FieldTextInput/FieldTextInput";
 import {
   complexPasswordValidator,
   composeValidators,
   emailValidator,
   minLengthValidator,
   requiredValidator,
-} from "@/lib/utils/formValidators";
-import EyeOpenIcon from "@/components/atoms/Illustrations/EyeOpen";
-import EyeCloseIcon from "@/components/atoms/Illustrations/EyeClose";
+} from "@utils/formValidators";
+import EyeOpenIcon from "@atoms/Illustrations/EyeOpen";
+import EyeCloseIcon from "@atoms/Illustrations/EyeClose";
 import { RegisterFormProps } from "./RegisterForm.props";
 
 const RegisterForm: React.FC<RegisterFormProps> = ({ form, loading }) => {
@@ -33,7 +33,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ form, loading }) => {
           keyboardType="default"
           validate={composeValidators(
             (value) => requiredValidator("Username", value),
-            (value) => minLengthValidator("Username", value)
+            (value) => minLengthValidator("Username", value),
           )}
         />
         <Spacer size={16} />
@@ -45,7 +45,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ form, loading }) => {
           validate={composeValidators(
             (value) => requiredValidator("Email address", value),
             (value) => minLengthValidator("Email address", value),
-            emailValidator
+            emailValidator,
           )}
         />
         <Spacer size={16} />
@@ -58,7 +58,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ form, loading }) => {
           validate={composeValidators(
             (value) => requiredValidator("Password", value),
             (value) => minLengthValidator("Password", value),
-            complexPasswordValidator
+            complexPasswordValidator,
           )}
           right={() =>
             secure ? (

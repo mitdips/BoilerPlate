@@ -8,7 +8,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import React from "react";
 import store, { persistor } from "@redux/store";
 import { PersistGate } from "redux-persist/integration/react";
-import ThemeProvider from "@/containers/ThemeProvider";
+import ThemeProvider from "../containers/ThemeProvider";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();

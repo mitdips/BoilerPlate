@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { router } from "expo-router";
-import { SafeAreaContainer } from "@/components/templates/ScreenTemplate/ScreenTemplate.styles";
 import {
   DescriptionText,
   ImageView,
@@ -12,13 +11,14 @@ import {
   SocialBtn,
 } from "./LoginScreen.styles";
 import images from "../../../assets/index";
-import FormTemplate from "@/components/templates/FormTemplate/FormTemplate";
-import LoginForm from "@/components/organisms/LoginForm/LoginForm";
 import { LoginFormData } from "./LoginScreen.props";
-import { LinkText } from "@/components/organisms/LoginForm/LoginForm.styles";
-import GoogleButton from "@/components/molecules/GoogleButton";
-import FacebookButton from "@/components/molecules/FacebookButton";
-import OrView from "@/components/molecules/OrView";
+import GoogleButton from "@molecules/GoogleButton";
+import FacebookButton from "@molecules/FacebookButton";
+import OrView from "@molecules/OrView";
+import FormTemplate from "@templates/FormTemplate/FormTemplate";
+import LoginForm from "@organisms/LoginForm/LoginForm";
+import { LinkText } from "@organisms/LoginForm/LoginForm.styles";
+import { SafeAreaContainer } from "@templates/ScreenTemplate/ScreenTemplate.styles";
 
 const Login = () => {
   const onLoginPress = async (values: LoginFormData) => {
@@ -40,7 +40,6 @@ const Login = () => {
               <GoogleButton />
               <FacebookButton />
             </SocialBtn>
-
             <OrView />
             <FormTemplate Component={LoginForm} onSubmit={onLoginPress} />
             <RegisterText onPress={() => router.navigate("/(public)/register")}>

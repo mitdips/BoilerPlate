@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React, { forwardRef } from "react";
 import { FieldTextInputProps } from "./FieldTextInput.props";
 import TextInput from "@atoms/TextInput/TextInput";
@@ -5,7 +6,6 @@ import FormError from "@atoms/FormError/FormError";
 import { useAppTheme } from "@constants/theme";
 import { CustomTextInputProps } from "@atoms/TextInput/TextInput.props";
 import { InputErrorContainer } from "@atoms/TextInput/TextInput.styles";
-import { width } from "@/lib/utils/dimensions";
 
 const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
   (
@@ -24,7 +24,6 @@ const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
     ref
   ) => {
     const { colors } = useAppTheme();
-    const resetValue = () => input.onChange("");
     const handleOnChange = (value: string) => {
       if (keyboardType === "numeric") {
         const pattern = isFloatValue ? /^\s*\d*\.?\d*\s*$/ : /^\s*\d*\d*\s*$/;

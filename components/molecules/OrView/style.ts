@@ -1,8 +1,8 @@
-import { AppTheme } from "@/constants/theme";
+import { AppTheme } from "@constants/theme";
 import Text from "@atoms/Text/Text";
 import { styled } from "@utils/styled";
 import { Platform, View } from "react-native";
-import { isWeb } from "@/constants/platform";
+
 export const OrViews = styled(View)`
   flex-direction: row;
   justify-content: center;

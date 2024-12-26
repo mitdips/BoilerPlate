@@ -1,6 +1,5 @@
 import React from "react";
 import { router } from "expo-router";
-import { SafeAreaContainer } from "@/components/templates/ScreenTemplate/ScreenTemplate.styles";
 import {
   DescriptionText,
   ImageView,
@@ -12,13 +11,14 @@ import {
   SocialBtn,
 } from "../login/LoginScreen.styles";
 import images from "../../../assets/index";
-import FormTemplate from "@/components/templates/FormTemplate/FormTemplate";
 import { RegisterFormData } from "./RegisterScreen.props";
-import { LinkText } from "@/components/organisms/LoginForm/LoginForm.styles";
-import RegisterForm from "@/components/organisms/RegisterForm/RegisterForm";
-import GoogleButton from "@/components/molecules/GoogleButton";
-import FacebookButton from "@/components/molecules/FacebookButton";
-import OrView from "@/components/molecules/OrView";
+import { SafeAreaContainer } from "@templates/ScreenTemplate/ScreenTemplate.styles";
+import GoogleButton from "@molecules/GoogleButton";
+import FacebookButton from "@molecules/FacebookButton";
+import OrView from "@molecules/OrView";
+import RegisterForm from "@organisms/RegisterForm/RegisterForm";
+import FormTemplate from "@templates/FormTemplate/FormTemplate";
+import { LinkText } from "@organisms/LoginForm/LoginForm.styles";
 
 const Register = () => {
   const onRegisterPress = async (values: RegisterFormData) => {

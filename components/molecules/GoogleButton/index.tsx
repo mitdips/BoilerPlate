@@ -1,8 +1,8 @@
 import React from "react";
-import Button from "@/components/atoms/Button/Button";
-import { useAppTheme } from "@/constants/theme";
-import { width } from "@/lib/utils/dimensions";
-import Goole from "@/components/atoms/Illustrations/google";
+import Button from "@atoms/Button/Button";
+import { useAppTheme } from "@constants/theme";
+import Goole from "@atoms/Illustrations/google";
+import { windowWidth } from "@atoms/common/common.styles";
 
 const GoogleButton = () => {
   const { colors } = useAppTheme();
@@ -19,7 +19,7 @@ const GoogleButton = () => {
       onPress={() => {
         console.log("btn press");
       }}
-      style={{ width: width / 2.2 }}
+      style={{ width: windowWidth / 2.2 }}
       uppercase={false}
     >
       Google

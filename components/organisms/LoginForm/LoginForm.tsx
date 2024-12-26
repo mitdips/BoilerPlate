@@ -10,16 +10,16 @@ import {
 import { useAppTheme } from "@constants/theme";
 
 import { Spacer } from "@atoms/common/common.styles";
-import FieldTextInput from "@/components/molecules/FieldTextInput/FieldTextInput";
+import FieldTextInput from "@molecules/FieldTextInput/FieldTextInput";
 import {
   complexPasswordValidator,
   composeValidators,
   emailValidator,
   minLengthValidator,
   requiredValidator,
-} from "@/lib/utils/formValidators";
-import EyeOpenIcon from "@/components/atoms/Illustrations/EyeOpen";
-import EyeCloseIcon from "@/components/atoms/Illustrations/EyeClose";
+} from "@utils/formValidators";
+import EyeOpenIcon from "@atoms/Illustrations/EyeOpen";
+import EyeCloseIcon from "@atoms/Illustrations/EyeClose";
 import { router } from "expo-router";
 
 const LoginForm: React.FC<LoginFormProps> = ({ form, loading }) => {

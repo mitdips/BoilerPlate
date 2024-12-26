@@ -1,5 +1,5 @@
-import * as React from 'react';
-import Svg, { SvgProps, Path } from 'react-native-svg';
+import * as React from "react";
+import Svg, { SvgProps, Path } from "react-native-svg";
 const CrossIcon = ({ color, ...props }: SvgProps) => (
   <Svg width={24} height={24} fill="none" {...props}>
     <Path

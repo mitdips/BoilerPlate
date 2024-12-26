@@ -19,7 +19,7 @@ const themeSlice = createSlice({
   reducers: {
     changeTheme: (
       state,
-      action: PayloadAction<ThemeTypes.dark | ThemeTypes.light>
+      action: PayloadAction<ThemeTypes.dark | ThemeTypes.light>,
     ) => {
       state.currentTheme = action.payload;
     },

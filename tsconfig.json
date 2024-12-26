@@ -4,7 +4,7 @@
     "jsx": "react",
     "strict": true,
     "paths": {
-      "@/*": ["./*"],
+      "@hooks/*": ["./hooks/*"],
       "@redux/*": ["./lib/redux/*"],
       "@utils/*": ["./lib/utils/*"],
       "@type/*": ["./lib/type/*"],

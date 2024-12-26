@@ -17,7 +17,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.ips.boilerplate",
-      "googleServicesFile": "./GoogleService-Info.plist",
+      "googleServicesFile": "./firebase/GoogleService-Info.plist",
       "userInterfaceStyle": "automatic",
       "config": {
         "usesNonExemptEncryption": false
@@ -38,7 +38,7 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.ips.boilerplate",
-      "googleServicesFile": "./google-services.json"
+      "googleServicesFile": "./firebase/google-services.json"
     },
     "web": {
       "bundler": "metro",

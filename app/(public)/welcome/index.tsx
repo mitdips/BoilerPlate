@@ -1,7 +1,7 @@
+import { onBoardingData } from "@constants/dummyData";
+import SwipeCarousel from "@molecules/SwipeCarousel/SwipeCarousel";
+import ScreenTemplate from "@templates/ScreenTemplate/ScreenTemplate";
 import React from "react";
-import SwipeCarousel from "@/components/molecules/SwipeCarousel/SwipeCarousel";
-import { onBoardingData } from "@/constants/dummyData";
-import ScreenTemplate from "@/components/templates/ScreenTemplate/ScreenTemplate";
 
 const Welcome = () => {
   return (

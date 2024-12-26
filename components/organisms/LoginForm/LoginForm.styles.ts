@@ -3,8 +3,8 @@ import { styled } from "@utils/styled";
 import { Pressable, View } from "react-native";
 import { Field } from "react-final-form";
 import Text from "@atoms/Text/Text";
-import { AppTheme } from "@/constants/theme";
-import { height } from "@/lib/utils/dimensions";
+import { AppTheme } from "@constants/theme";
+import { windowHeight } from "@atoms/common/common.styles";
 
 export const LoginFormContainer = styled(View)`
   margin-top: 24px;
@@ -17,8 +17,8 @@ export const LoginFormView = styled(View)`
 `;
 
 export const ButtonSubmit = styled(Button)<{ variant: boolean }>`
-  height: ${height * 0.06};
-  margin-top: ${height * 0.005};
+  height: ${windowHeight * 0.06}px;
+  margin-top: ${windowHeight * 0.005}px;
   justify-content: center;
   background-color: ${({
     theme,
@@ -60,7 +60,7 @@ export const EmailSendAgainLink = styled(Pressable)`
   display: flex;
   flex-direction: row;
   flex: 1;
-  gap: 8;
+  gap: 8px;
   margin-top: 16px;
   flex-wrap: nowrap;
 `;
@@ -77,7 +77,7 @@ export const TextContainer = styled(View)<{ isShowResendEmail: boolean }>`
   justify-content: ${({ isShowResendEmail }: { isShowResendEmail: boolean }) =>
     isShowResendEmail ? "space-between" : "flex-end"};
   flex: 1;
-  gap: 8;
+  gap: 8px;
   flex-wrap: nowrap;
 `;
 export const ForgotFormView = styled(View)`
