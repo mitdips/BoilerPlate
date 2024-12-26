@@ -18,9 +18,13 @@ import {
 import EyeOpenIcon from "@atoms/Illustrations/EyeOpen";
 import EyeCloseIcon from "@atoms/Illustrations/EyeClose";
 import { RegisterFormProps } from "./RegisterForm.props";
+import { Text, View } from "react-native";
+import CheckBox from "@react-native-community/checkbox";
+import Checkbox from "@atoms/Checkbox/Checkbox";
 
 const RegisterForm: React.FC<RegisterFormProps> = ({ form, loading }) => {
   const { colors } = useAppTheme();
+  const [checked, setChecked] = useState(false);
   const { valid } = useFormState();
   const [secure, setSecure] = useState(true);
   return (
@@ -33,7 +37,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ form, loading }) => {
           keyboardType="default"
           validate={composeValidators(
             (value) => requiredValidator("Username", value),
-            (value) => minLengthValidator("Username", value),
+            (value) => minLengthValidator("Username", value)
           )}
         />
         <Spacer size={16} />
@@ -45,7 +49,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ form, loading }) => {
           validate={composeValidators(
             (value) => requiredValidator("Email address", value),
             (value) => minLengthValidator("Email address", value),
-            emailValidator,
+            emailValidator
           )}
         />
         <Spacer size={16} />
@@ -58,7 +62,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ form, loading }) => {
           validate={composeValidators(
             (value) => requiredValidator("Password", value),
             (value) => minLengthValidator("Password", value),
-            complexPasswordValidator,
+            complexPasswordValidator
           )}
           right={() =>
             secure ? (
@@ -76,6 +80,24 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ form, loading }) => {
         />
         <Spacer size={16} />
       </LoginFormContainer>
+      <Checkbox
+        label={
+          <Text style={{ color: colors.gray, fontWeight: 400, fontSize: 14 }}>
+            I’m agree to The{" "}
+            <Text style={{ color: colors.main, fontWeight: 400, fontSize: 14 }}>
+              Terms of Service
+            </Text>{" "}
+            and{" "}
+            <Text style={{ color: colors.main, fontWeight: 400, fontSize: 14 }}>
+              Privacy Policy
+            </Text>
+          </Text>
+        }
+        status={checked ? "checked" : "unchecked"}
+        color={colors.main}
+        onPress={() => setChecked(!checked)}
+      />
+      <Spacer size={16} />
 
       <ButtonSubmit
         onPress={!loading && form.submit}

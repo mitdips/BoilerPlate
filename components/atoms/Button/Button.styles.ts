@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   labelStyle: {
     fontFamily: "SpaceMono-Regular",
-    fontSize: 14,
+    fontSize: 16,
     textAlign: "center",
   },
   contentStyle: {

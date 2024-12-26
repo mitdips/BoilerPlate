@@ -1,18 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { User } from "@type/redux/slices/auth";
 export interface AuthState {
-  user: User;
+  token: null;
+  userInfo: object;
   showOnBoarding: boolean;
 }
 
 const initialState: AuthState = {
-  user: {
-    name: "",
-    email: "",
-    token: "",
-    countryCodeAlpha: "",
-    mobile: "",
-  },
+  token: null,
+  userInfo: {},
   showOnBoarding: true,
 };
 
@@ -20,8 +15,15 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
+    userData: (state, action) => {
+      state.userInfo = action.payload;
+    },
+    userToken: (state, action) => {
+      state.token = action.payload;
+    },
     logout: (state) => {
-      state.user = initialState.user;
+      state.userInfo = initialState.userInfo;
+      state.token = initialState.token;
     },
     setShowOnBoarding: (state, action) => {
       state.showOnBoarding = action.payload;
@@ -29,6 +31,7 @@ const authSlice = createSlice({
   },
 });
 
-export const { logout, setShowOnBoarding } = authSlice.actions;
+export const { logout, setShowOnBoarding, userData, userToken } =
+  authSlice.actions;
 
 export default authSlice.reducer;

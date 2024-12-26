@@ -48,7 +48,7 @@ const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
               rest?.style || {
                 backgroundColor: "#F5F9FE",
                 color: colors?.black,
-                fontSize: 14,
+                fontSize: 16,
               }
             }
             textColor={colors.black}
