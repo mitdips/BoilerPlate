@@ -20,6 +20,8 @@ import EyeCloseIcon from "@atoms/Illustrations/EyeClose";
 import { RegisterFormProps } from "./RegisterForm.props";
 import { Text } from "react-native";
 import Checkbox from "@atoms/Checkbox/Checkbox";
+import RNWebview from "@molecules/RNWebview";
+import { router } from "expo-router";
 
 const RegisterForm: React.FC<RegisterFormProps> = ({ form, loading }) => {
   const { colors } = useAppTheme();
@@ -83,11 +85,33 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ form, loading }) => {
         label={
           <Text style={{ color: colors.gray, fontWeight: 400, fontSize: 14 }}>
             I’m agree to The{" "}
-            <Text style={{ color: colors.main, fontWeight: 400, fontSize: 14 }}>
+            <Text
+              style={{ color: colors.main, fontWeight: 400, fontSize: 14 }}
+              onPress={() =>
+                router.push({
+                  pathname: "/(public)/Webview",
+                  params: {
+                    headerTitle: "Terms of Service",
+                    url: "https://www.freeprivacypolicy.com/live/6d7fc3e0-cf5d-46c2-8274-94ec23e48852",
+                  },
+                })
+              }
+            >
               Terms of Service
             </Text>{" "}
             and{" "}
-            <Text style={{ color: colors.main, fontWeight: 400, fontSize: 14 }}>
+            <Text
+              style={{ color: colors.main, fontWeight: 400, fontSize: 14 }}
+              onPress={() =>
+                router.push({
+                  pathname: "/(public)/Webview",
+                  params: {
+                    headerTitle: "Privacy Policy",
+                    url: "https://www.freeprivacypolicy.com/live/6d7fc3e0-cf5d-46c2-8274-94ec23e48852",
+                  },
+                })
+              }
+            >
               Privacy Policy
             </Text>
           </Text>

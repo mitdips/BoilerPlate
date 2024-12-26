@@ -1,13 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 export interface AuthState {
-  token: null;
-  userInfo: object;
+  token: string | null;
+  user: any | null;
   showOnBoarding: boolean;
 }
 
 const initialState: AuthState = {
   token: null,
-  userInfo: {},
+  user: null,
   showOnBoarding: true,
 };
 
@@ -15,15 +15,15 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    userData: (state, action) => {
-      state.userInfo = action.payload;
-    },
-    userToken: (state, action) => {
+    userToken: (state, action: PayloadAction<string>) => {
       state.token = action.payload;
     },
+    userData: (state, action: PayloadAction<any>) => {
+      state.user = action.payload;
+    },
     logout: (state) => {
-      state.userInfo = initialState.userInfo;
-      state.token = initialState.token;
+      state.token = null;
+      state.user = null;
     },
     setShowOnBoarding: (state, action) => {
       state.showOnBoarding = action.payload;

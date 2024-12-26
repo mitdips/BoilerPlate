@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { router } from "expo-router";
 import {
   LoginFormContainer,
@@ -16,12 +16,48 @@ import { LinkText } from "@organisms/LoginForm/LoginForm.styles";
 import ScreenTemplate from "@templates/ScreenTemplate/ScreenTemplate";
 import { ScrollView } from "react-native";
 import { useAppTheme } from "@constants/theme";
-
+import { FireBaseAuth, FireStoreDB } from "../../../firebase";
+import {
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+} from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import { showError, showSuccess } from "@utils/toastMessage";
+import RNModal from "@molecules/RNModal";
 const Register = () => {
+  const [loading, setLoading] = useState(false);
   const { colors } = useAppTheme();
-
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const handleAccountCreated = () => {
+    setIsModalVisible(false);
+    router.navigate("/(public)/login");
+  };
   const onRegisterPress = async (values: RegisterFormData) => {
-    console.log("RegisterFormData: ", values);
+    const { email, password, username } = values;
+    console.log("email, password, username: ", email, password, username);
+    setLoading(true);
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        FireBaseAuth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      await sendEmailVerification(user);
+      const userDocRef = doc(FireStoreDB, "users", user.uid);
+      await setDoc(userDocRef, {
+        username: username,
+        email: email,
+        createdAt: new Date(),
+      });
+      setLoading(false);
+      setIsModalVisible(true);
+      console.log("Called");
+      showSuccess("User Created Successfully!");
+    } catch (error: any) {
+      showError(error.message);
+      setLoading(false);
+    }
   };
 
   return (
@@ -41,12 +77,24 @@ const Register = () => {
             <FacebookButton />
           </SocialBtn>
           <OrView />
-          <FormTemplate Component={RegisterForm} onSubmit={onRegisterPress} />
+          <FormTemplate
+            Component={RegisterForm}
+            loading={loading}
+            onSubmit={onRegisterPress}
+          />
           <RegisterText onPress={() => router.navigate("/(public)/login")}>
             Do you have account? <LinkText> Sign In</LinkText>
           </RegisterText>
         </LoginFormContainer>
       </ScreenTemplate>
+      <RNModal
+        title="Account Created Successfully"
+        description="Your account has been created successfully. Please check your email (Also check spam) and verified"
+        button="Go To Login"
+        image={images.check}
+        visible={isModalVisible}
+        onPress={() => handleAccountCreated()}
+      />
     </ScrollView>
   );
 };
