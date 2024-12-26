@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/display-name */
 import React, { memo, useMemo } from "react";
 import { Text as LabelComp } from "react-native-paper";
 import { LabelProps } from "./Text.props";

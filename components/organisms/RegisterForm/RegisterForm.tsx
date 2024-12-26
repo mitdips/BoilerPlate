@@ -7,20 +7,23 @@ import {
 } from "../LoginForm/LoginForm.styles";
 import { useAppTheme } from "@constants/theme";
 import { Spacer } from "@atoms/common/common.styles";
-import FieldTextInput from "@/components/molecules/FieldTextInput/FieldTextInput";
+import FieldTextInput from "@molecules/FieldTextInput/FieldTextInput";
 import {
   complexPasswordValidator,
   composeValidators,
   emailValidator,
   minLengthValidator,
   requiredValidator,
-} from "@/lib/utils/formValidators";
-import EyeOpenIcon from "@/components/atoms/Illustrations/EyeOpen";
-import EyeCloseIcon from "@/components/atoms/Illustrations/EyeClose";
+} from "@utils/formValidators";
+import EyeOpenIcon from "@atoms/Illustrations/EyeOpen";
+import EyeCloseIcon from "@atoms/Illustrations/EyeClose";
 import { RegisterFormProps } from "./RegisterForm.props";
+import { Text } from "react-native";
+import Checkbox from "@atoms/Checkbox/Checkbox";
 
 const RegisterForm: React.FC<RegisterFormProps> = ({ form, loading }) => {
   const { colors } = useAppTheme();
+  const [checked, setChecked] = useState(false);
   const { valid } = useFormState();
   const [secure, setSecure] = useState(true);
   return (
@@ -76,6 +79,24 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ form, loading }) => {
         />
         <Spacer size={16} />
       </LoginFormContainer>
+      <Checkbox
+        label={
+          <Text style={{ color: colors.gray, fontWeight: 400, fontSize: 14 }}>
+            I’m agree to The{" "}
+            <Text style={{ color: colors.main, fontWeight: 400, fontSize: 14 }}>
+              Terms of Service
+            </Text>{" "}
+            and{" "}
+            <Text style={{ color: colors.main, fontWeight: 400, fontSize: 14 }}>
+              Privacy Policy
+            </Text>
+          </Text>
+        }
+        status={checked ? "checked" : "unchecked"}
+        color={colors.main}
+        onPress={() => setChecked(!checked)}
+      />
+      <Spacer size={16} />
 
       <ButtonSubmit
         onPress={!loading && form.submit}

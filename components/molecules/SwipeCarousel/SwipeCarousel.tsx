@@ -12,11 +12,11 @@ import {
   StyledPagination,
   SubText,
 } from "./SwipeCarousel.styles";
-import { width } from "@/lib/utils/dimensions";
 import { router } from "expo-router";
-import { setShowOnBoarding } from "@/lib/redux/slices/auth";
+import { setShowOnBoarding } from "@redux/slices/auth";
 import { useDispatch } from "react-redux";
 import Carousel from "react-native-snap-carousel";
+import { windowWidth } from "@atoms/common/common.styles";
 
 const SwipeCarousel = ({ data }: CarouselProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -48,8 +48,8 @@ const SwipeCarousel = ({ data }: CarouselProps) => {
         ref={carouselRef}
         data={data}
         renderItem={renderItem}
-        sliderWidth={width}
-        itemWidth={width}
+        sliderWidth={windowWidth}
+        itemWidth={windowWidth}
         onSnapToItem={(index: number) => setActiveIndex(index)}
         loop={true}
       />

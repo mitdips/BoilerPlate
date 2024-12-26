@@ -1,13 +1,14 @@
-import React from 'react';
-import { Form } from 'react-final-form';
+import React from "react";
+import { Form } from "react-final-form";
 
 type FormTemplateProps = {
   Component: any;
+  onSubmit?: (values: any) => void;
   [otherProps: string]: any;
 };
 
 function FormTemplate<FormValues>({
-  onSubmit,
+  onSubmit = () => {},
   Component,
   ...rest
 }: FormTemplateProps) {
@@ -17,7 +18,5 @@ function FormTemplate<FormValues>({
     </Form>
   );
 }
-
-FormTemplate.defaultProps = {};
 
 export default FormTemplate;

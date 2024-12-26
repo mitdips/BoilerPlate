@@ -16,7 +16,7 @@ import merge from "deepmerge";
 import { RootState, useSelector } from "@redux/store";
 import { ThemeProvider as StyledThemeProvider } from "styled-components/native";
 import { StatusBar } from "expo-status-bar";
-import { ThemeTypes } from "@/lib/redux/slices/theme";
+import { ThemeTypes } from "@redux/slices/theme";
 
 const { LightTheme, DarkTheme } = adaptNavigationTheme({
   reactNavigationLight: NavigationDefaultTheme,

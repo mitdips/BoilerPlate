@@ -19,7 +19,9 @@ const TitleWithButton: React.FC<TitleWithButtonProps> = ({
   const onBackPressed = () => {
     if (onBackPress) {
       onBackPress();
-    } else router.back();
+    } else {
+      router.back();
+    }
   };
   return (
     <HeaderWithTextContainer>
