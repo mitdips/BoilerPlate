@@ -52,7 +52,6 @@ const Register = () => {
       });
       setLoading(false);
       setIsModalVisible(true);
-      console.log("Called");
       showSuccess("User Created Successfully!");
     } catch (error: any) {
       showError(error.message);
