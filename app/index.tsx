@@ -27,7 +27,7 @@ Sentry.init({
 });
 
 const App = () => {
-  const token = false;
+  const { token } = useSelector((state: RootState) => state.auth);
   const { showOnBoarding } = useSelector((state: RootState) => state.auth);
   return (
     <>
