@@ -1,4 +1,5 @@
 import { FieldValidator } from "final-form";
+import { isValidPhoneNumber } from "libphonenumber-js";
 
 type Validator = FieldValidator<any>;
 
@@ -97,6 +98,18 @@ export const mobileValidator = (value: string, phoneInput: any) => {
     return "Mobile number is required";
   } else {
     if (phoneInput.current?.isValidNumber(value)) {
+      return null;
+    } else {
+      return "Please enter a valid mobile number";
+    }
+  }
+};
+
+export const mobileValidatorWeb = (value: string, phoneInput: any) => {
+  if (value.length === 0) {
+    return "Mobile number is required";
+  } else {
+    if (isValidPhoneNumber(value)) {
       return null;
     } else {
       return "Please enter a valid mobile number";

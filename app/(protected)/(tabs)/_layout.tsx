@@ -10,6 +10,12 @@ import { Platform, Text } from "react-native";
 
 export default function TabLayout() {
   const { colors } = useAppTheme();
+
+  const iconColors = colors.backdrop;
+  const isFocused = (focus) => {
+    return focus ? colors.main : iconColors;
+  };
+
   return (
     <Tabs
       initialRouteName="Home/index"
@@ -38,9 +44,7 @@ export default function TabLayout() {
         name="Home/index"
         options={{
           title: "Home",
-          tabBarIcon: ({ focused }) => (
-            <Dashboard color={focused ? colors.main : colors.gray} />
-          ),
+          tabBarIcon: ({ focused }) => <Dashboard color={isFocused(focused)} />,
         }}
       />
 
@@ -48,9 +52,7 @@ export default function TabLayout() {
         name="Search/index"
         options={{
           title: "Search",
-          tabBarIcon: ({ focused }) => (
-            <Search color={focused ? colors.main : colors.gray} />
-          ),
+          tabBarIcon: ({ focused }) => <Search color={isFocused(focused)} />,
         }}
       />
 
@@ -59,7 +61,7 @@ export default function TabLayout() {
         options={{
           title: "Profile",
           tabBarIcon: ({ focused }) => (
-            <ProfileIcon color={focused ? colors.main : colors.gray} />
+            <ProfileIcon color={isFocused(focused)} />
           ),
         }}
       />
@@ -68,9 +70,7 @@ export default function TabLayout() {
         name="Settings/index"
         options={{
           title: "Settings",
-          tabBarIcon: ({ focused }) => (
-            <Settings color={focused ? colors.main : colors.gray} />
-          ),
+          tabBarIcon: ({ focused }) => <Settings color={isFocused(focused)} />,
         }}
       />
     </Tabs>

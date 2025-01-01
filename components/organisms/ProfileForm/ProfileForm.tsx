@@ -16,10 +16,18 @@ import {
   emailValidator,
   minLengthValidator,
   mobileValidator,
+  mobileValidatorWeb,
   requiredValidator,
 } from "@utils/formValidators";
-import { StyleSheet, Text, TouchableOpacity, Image } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  Image,
+  Platform,
+} from "react-native";
 import PhoneInput from "react-native-phone-number-input";
+
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { FireStoreDB } from "../../../firebase";
 import { getAuth } from "firebase/auth";
@@ -28,12 +36,15 @@ import RNPhoneNumber from "@molecules/RNPhoneNumber";
 import RNRadioButton from "@molecules/RNRadioButton";
 import RNDropdown from "@molecules/RNDropdown";
 import images from "../../../assets/index";
+import FieldPhoneNumberWeb from "@molecules/RNPhoneNumber/index.web";
+import PhoneInputWithCountrySelect from "react-phone-number-input";
 
 const ProfileForm: React.FC<ProfileFormProps> = ({ form, loading }) => {
   const { colors } = useAppTheme();
   const { valid } = useFormState();
   const [profileImage, setProfileImage] = useState<string | null>(null);
   const phoneInput = React.useRef<PhoneInput>(null);
+  const phoneInputWeb = React.useRef(null);
   const [initialValues, setInitialValues] = useState<any>({});
   const [countrycode, setCountrycode] = useState("");
   const storage = getStorage();
@@ -144,22 +155,38 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ form, loading }) => {
           )}
         />
         <Spacer size={16} />
-
-        <Field
-          name="phone"
-          initialValue={initialValues?.phone}
-          placeholder={"phone "}
-          label={"Phone Number"}
-          ref={phoneInput}
-          setCountryCode={initialValues?.countryCode}
-          countryCode={handleDataFromChild}
-          component={RNPhoneNumber}
-          keyboardType="numeric"
-          validate={composeValidators(
-            (value) => requiredValidator("Phone Number", value),
-            (value) => mobileValidator(value, phoneInput)
-          )}
-        />
+        {Platform.OS === "web" ? (
+          <Field
+            name="phone"
+            initialValue={initialValues?.phone}
+            placeholder={"Phone Number"}
+            label={"Phone Number"}
+            countryCode={countrycode}
+            setCountryCode={setCountrycode}
+            component={FieldPhoneNumberWeb}
+            ref={phoneInputWeb}
+            validate={composeValidators(
+              (value) => requiredValidator("Phone Number", value),
+              (value) => mobileValidatorWeb(value, phoneInputWeb)
+            )}
+          />
+        ) : (
+          <Field
+            name="phone"
+            initialValue={initialValues?.phone}
+            placeholder={"phone "}
+            label={"Phone Number"}
+            ref={phoneInput}
+            setCountryCode={initialValues?.countryCode}
+            countryCode={handleDataFromChild}
+            component={RNPhoneNumber}
+            keyboardType="numeric"
+            validate={composeValidators(
+              (value) => requiredValidator("Phone Number", value),
+              (value) => mobileValidator(value, phoneInput)
+            )}
+          />
+        )}
         <Spacer size={16} />
         <Field
           name="gender"

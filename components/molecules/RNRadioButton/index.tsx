@@ -4,6 +4,7 @@ import { RadioButton } from "react-native-paper";
 import { useAppTheme } from "@constants/theme";
 import { RNRadioButtonProps } from "./RNRadioButton.props";
 import {
+  ErrorText,
   ItemView,
   LabelText,
   ViewBox,
