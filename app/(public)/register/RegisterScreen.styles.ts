@@ -24,4 +24,5 @@ export const RegisterText = styled(Text)`
   font-size: 16px;
   color: ${({ theme }: { theme: AppTheme }) => theme.colors.black};
   font-weight: 600;
+  align-self: flex-start;
 `;

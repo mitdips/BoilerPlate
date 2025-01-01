@@ -16,7 +16,7 @@ const Loader: React.FC<LoaderProps> = ({ ...rest }) => {
       {...rest}
       animating={true}
       size={rest?.size || "large"}
-      color={colors.black}
+      color={colors.error}
       style={styeles}
     />
   );

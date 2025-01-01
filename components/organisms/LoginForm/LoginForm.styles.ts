@@ -28,6 +28,7 @@ export const ButtonSubmit = styled(Button)<{ variant: boolean }>`
     variant: boolean;
   }) => (variant ? theme.colors.main : theme.colors.main)};
   border-radius: 12px;
+  color: ${({ theme }: { theme: AppTheme }) => theme.colors.error};
 `;
 
 export const PrivateKeyTextInput = styled(Field)`
@@ -38,6 +39,7 @@ export const ForgotText = styled(Text)`
   font-size: 16px;
   color: ${({ theme }: { theme: AppTheme }) => theme.colors.gray};
   text-align: right;
+  align-self: flex-end;
 `;
 
 export const RegisterText = styled(Text)`
@@ -111,4 +113,25 @@ export const NumberInput = styled(View)`
   border-radius: 10px;
   border-width: 1;
   border-color: red;
+`;
+
+export const CheckboxView = styled(View)`
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const CheckboxText = styled(Text)`
+  color: ${({ theme }: { theme: AppTheme }) => theme.colors.black};
+  font-weight: 400;
+  font-size: 15px;
+  flex-wrap: wrap;
+  width: 90%;
+`;
+
+export const CheckboxTextLink = styled(Text)`
+  color: ${({ theme }: { theme: AppTheme }) => theme.colors.main};
+  font-weight: 400;
+  font-size: 15px;
+  flex-wrap: wrap;
+  width: 80%;
 `;
