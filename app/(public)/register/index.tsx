@@ -78,8 +78,11 @@ const Register = () => {
             loading={loading}
             onSubmit={onRegisterPress}
           />
-          <RegisterText onPress={() => router.navigate("/(public)/login")}>
-            Do you have account? <LinkText> Sign In</LinkText>
+          <RegisterText>
+            Do you have account?
+            <LinkText onPress={() => router.replace("/(public)/login")}>
+              Sign In
+            </LinkText>
           </RegisterText>
         </LoginFormContainer>
       </ScreenTemplate>

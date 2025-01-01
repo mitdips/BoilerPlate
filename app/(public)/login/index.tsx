@@ -100,8 +100,11 @@ const Login = () => {
             loading={loading}
             onSubmit={onLoginPress}
           />
-          <RegisterText onPress={() => router.navigate("/(public)/register")}>
-            Don’t have account?<LinkText> Sign Up</LinkText>
+          <RegisterText>
+            Don’t have account?
+            <LinkText onPress={() => router.navigate("/(public)/register")}>
+              Sign Up
+            </LinkText>
           </RegisterText>
         </LoginFormContainer>
       </ScreenTemplate>

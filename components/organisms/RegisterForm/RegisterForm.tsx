@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { Field, useFormState } from "react-final-form";
 import {
   ButtonSubmit,
+  CheckboxText,
+  CheckboxTextLink,
+  CheckboxView,
   LoginFormContainer,
   LoginFormView,
 } from "../LoginForm/LoginForm.styles";
 import { useAppTheme } from "@constants/theme";
-import { Spacer } from "@atoms/common/common.styles";
+import { Spacer, windowWidth } from "@atoms/common/common.styles";
 import FieldTextInput from "@molecules/FieldTextInput/FieldTextInput";
 import {
   complexPasswordValidator,
@@ -18,9 +21,10 @@ import {
 import EyeOpenIcon from "@atoms/Illustrations/EyeOpen";
 import EyeCloseIcon from "@atoms/Illustrations/EyeClose";
 import { RegisterFormProps } from "./RegisterForm.props";
-import { Text } from "react-native";
-import Checkbox from "@atoms/Checkbox/Checkbox";
+import { Text, View } from "react-native";
+// import Checkbox from "@atoms/Checkbox/Checkbox";
 import RNWebview from "@molecules/RNWebview";
+import Checkbox from "expo-checkbox";
 import { router } from "expo-router";
 
 const RegisterForm: React.FC<RegisterFormProps> = ({ form, loading }) => {
@@ -81,45 +85,45 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ form, loading }) => {
         />
         <Spacer size={16} />
       </LoginFormContainer>
-      <Checkbox
-        label={
-          <Text style={{ color: colors.gray, fontWeight: 400, fontSize: 14 }}>
-            I’m agree to The{" "}
-            <Text
-              style={{ color: colors.main, fontWeight: 400, fontSize: 14 }}
-              onPress={() =>
-                router.push({
-                  pathname: "/(public)/Webview",
-                  params: {
-                    headerTitle: "Terms of Service",
-                    url: "https://www.freeprivacypolicy.com/live/6d7fc3e0-cf5d-46c2-8274-94ec23e48852",
-                  },
-                })
-              }
-            >
-              Terms of Service
-            </Text>{" "}
-            and{" "}
-            <Text
-              style={{ color: colors.main, fontWeight: 400, fontSize: 14 }}
-              onPress={() =>
-                router.push({
-                  pathname: "/(public)/Webview",
-                  params: {
-                    headerTitle: "Privacy Policy",
-                    url: "https://www.freeprivacypolicy.com/live/6d7fc3e0-cf5d-46c2-8274-94ec23e48852",
-                  },
-                })
-              }
-            >
-              Privacy Policy
-            </Text>
-          </Text>
-        }
-        status={checked ? "checked" : "unchecked"}
-        color={colors.main}
-        onPress={() => setChecked(!checked)}
-      />
+
+      <CheckboxView>
+        <Checkbox
+          style={{ margin: 8 }}
+          value={checked}
+          onValueChange={setChecked}
+          color={checked ? colors.main : undefined}
+        />
+        <CheckboxText>
+          I’m agree to The{" "}
+          <CheckboxTextLink
+            onPress={() =>
+              router.push({
+                pathname: "/(public)/Webview",
+                params: {
+                  headerTitle: "Terms of Service",
+                  url: "https://www.freeprivacypolicy.com/live/6d7fc3e0-cf5d-46c2-8274-94ec23e48852",
+                },
+              })
+            }
+          >
+            Terms of Service
+          </CheckboxTextLink>{" "}
+          and{" "}
+          <CheckboxTextLink
+            onPress={() =>
+              router.push({
+                pathname: "/(public)/Webview",
+                params: {
+                  headerTitle: "Privacy Policy",
+                  url: "https://www.freeprivacypolicy.com/live/6d7fc3e0-cf5d-46c2-8274-94ec23e48852",
+                },
+              })
+            }
+          >
+            Privacy Policy
+          </CheckboxTextLink>
+        </CheckboxText>
+      </CheckboxView>
       <Spacer size={16} />
 
       <ButtonSubmit
