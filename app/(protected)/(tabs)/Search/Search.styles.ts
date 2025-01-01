@@ -37,7 +37,7 @@ export const CardView = styled(TouchableOpacity)`
 `;
 export const CardText = styled(Text)`
   font-size: 16px;
-  color: ${({ theme }: { theme: AppTheme }) => theme.colors.black};
+  color: ${({ theme }: { theme: AppTheme }) => theme.colors.white};
   font-weight: 600;
 `;
 

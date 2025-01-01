@@ -90,14 +90,14 @@ const Search = () => {
           value={search}
           onChangeText={handleSearchChange}
           placeholder="Search Here..."
-          textColor={colors.black}
+          textColor={colors.white}
           outlineColor="transparent"
           outlineStyle={{ borderWidth: 0 }}
-          left={() => <SearchIcon color={colors.gray} />}
+          left={() => <SearchIcon color={colors.placeholderTextColor} />}
           right={() =>
             search ? (
               <TouchableOpacity onPress={clearSearch}>
-                <CrossIcon color={colors.gray} />
+                <CrossIcon color={colors.placeholderTextColor} />
               </TouchableOpacity>
             ) : null
           }
