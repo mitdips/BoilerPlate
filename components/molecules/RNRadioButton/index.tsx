@@ -32,11 +32,19 @@ const RNRadioButton = forwardRef<any, RNRadioButtonProps>(
           >
             <ViewBox>
               <ItemView>
-                <RadioButton value="male" color={colors.main} />
+                <RadioButton
+                  value="male"
+                  color={colors.main}
+                  uncheckedColor={colors.backdrop}
+                />
                 <LabelText>Male</LabelText>
               </ItemView>
               <ItemView>
-                <RadioButton value="female" color={colors.main} />
+                <RadioButton
+                  value="female"
+                  color={colors.main}
+                  uncheckedColor={colors.backdrop}
+                />
                 <LabelText>Female</LabelText>
               </ItemView>
             </ViewBox>
