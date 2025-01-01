@@ -1,4 +1,3 @@
-/* eslint-disable react/display-name */
 import React, { forwardRef } from "react";
 import { FieldTextInputProps } from "./FieldTextInput.props";
 import TextInput from "@atoms/TextInput/TextInput";
@@ -6,6 +5,7 @@ import FormError from "@atoms/FormError/FormError";
 import { useAppTheme } from "@constants/theme";
 import { CustomTextInputProps } from "@atoms/TextInput/TextInput.props";
 import { InputErrorContainer } from "@atoms/TextInput/TextInput.styles";
+import { TextStyle, ViewStyle } from "react-native";
 
 const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
   (
@@ -19,6 +19,8 @@ const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
       left,
       right,
       password,
+      isWidth,
+      label,
       ...rest
     },
     ref
@@ -35,22 +37,38 @@ const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
         input.onChange(value?.trimStart());
       }
     };
+
+    const inputStyle: TextStyle = {
+      backgroundColor: "#F5F9FE",
+      borderWidth: 1,
+      borderColor: meta.touched && meta.error ? "red" : colors.textinput,
+      borderRadius: 10,
+    };
+
+    const outlineStyle = {
+      borderColor: colors.main,
+      borderWidth: 0,
+      borderRadius: 10,
+    };
+
+    const containerStyle = {
+      isWidth,
+      invalidValue: !!(meta.touched && meta.error),
+    };
     return (
       <>
-        <InputErrorContainer invalidValue={!!(meta.touched && meta.error)}>
+        <InputErrorContainer
+          isWidth={isWidth}
+          // invalidValue={!!(meta.touched && meta.error)}
+        >
           <TextInput
+            label={label}
             ref={ref}
             value={input.value}
             onChangeText={handleOnChange}
             error={meta.touched && meta.error}
             autoCapitalize="none"
-            style={
-              rest?.style || {
-                backgroundColor: "#F5F9FE",
-                color: colors?.black,
-                fontSize: 16,
-              }
-            }
+            style={rest?.style || inputStyle}
             textColor={colors.black}
             enterKeyHint="done"
             autoCorrect={false}
@@ -65,11 +83,7 @@ const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
             right={right}
             secureTextEntry={rest?.secureTextEntry}
             placeholderTextColor={colors.placeholderTextColor}
-            outlineStyle={{
-              borderColor: colors.main,
-              borderWidth: 0,
-              borderRadius: 10,
-            }}
+            outlineStyle={outlineStyle}
             {...rest}
           />
         </InputErrorContainer>

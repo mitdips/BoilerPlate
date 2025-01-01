@@ -17,7 +17,6 @@ const FacebookButton = () => {
         color: colors.placeholderTextColor,
       }}
       onPress={() => {
-        console.log("btn press");
       }}
       style={{ width: windowWidth * 0.42 }}
       uppercase={false}

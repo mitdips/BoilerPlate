@@ -3,6 +3,7 @@ import { router } from "expo-router";
 import {
   LoginFormContainer,
   RegisterText,
+  ScrollViewContainer,
   SocialBtn,
 } from "./RegisterScreen.styles";
 import images from "../../../assets/index";
@@ -34,7 +35,6 @@ const Register = () => {
   };
   const onRegisterPress = async (values: RegisterFormData) => {
     const { email, password, username } = values;
-    console.log("email, password, username: ", email, password, username);
     setLoading(true);
     try {
       const userCredential = await createUserWithEmailAndPassword(
@@ -60,10 +60,7 @@ const Register = () => {
   };
 
   return (
-    <ScrollView
-      style={{ backgroundColor: colors.white }}
-      showsVerticalScrollIndicator={false}
-    >
+    <ScrollViewContainer showsVerticalScrollIndicator={false}>
       <ScreenTemplate
         img={images.registerImage}
         pagetitle={"Sign Up"}
@@ -94,7 +91,7 @@ const Register = () => {
         visible={isModalVisible}
         onPress={() => handleAccountCreated()}
       />
-    </ScrollView>
+    </ScrollViewContainer>
   );
 };
 

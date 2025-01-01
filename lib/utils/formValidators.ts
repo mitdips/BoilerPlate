@@ -15,6 +15,11 @@ export const requiredValidator = (field: string, value: any) => {
     return `${field} is required`;
   }
 };
+export const numberValidator: Validator = (value) => {
+  if (value && !/^\d*$/i.test(value)) {
+    return "Invalid mobile number";
+  }
+};
 
 export const emailValidator = (value: string) => {
   if (value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
@@ -84,5 +89,17 @@ export const complexPasswordValidator = (value: string) => {
     }
   } else {
     return null;
+  }
+};
+
+export const mobileValidator = (value: string, phoneInput: any) => {
+  if (value.length === 0) {
+    return "Mobile number is required";
+  } else {
+    if (phoneInput.current?.isValidNumber(value)) {
+      return null;
+    } else {
+      return "Please enter a valid mobile number";
+    }
   }
 };

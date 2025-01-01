@@ -3,4 +3,5 @@ export default {
   registerImage: require("../assets/images/register.png"),
   forgotImage: require("../assets/images/forgot.png"),
   check: require("../assets/images/check.png"),
+  nodata: require("../assets/images/nodata.png"),
 };

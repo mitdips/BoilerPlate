@@ -2,12 +2,15 @@ import { windowHeight } from "@atoms/common/common.styles";
 import Text from "@atoms/Text/Text";
 import { AppTheme } from "@constants/theme";
 import { styled } from "@utils/styled";
-import { Image, KeyboardAvoidingView, View } from "react-native";
+import { Image, KeyboardAvoidingView, ScrollView, View } from "react-native";
 
 export const Container = styled(View)`
   flex: 1;
 `;
 
+export const ScrollViewContainer = styled(ScrollView)`
+  background-color: ${({ theme }: { theme: AppTheme }) => theme.colors.white};
+`;
 export const ImageView = styled(Image)`
   display: flex;
   align-self: center;
