@@ -90,7 +90,7 @@ const Search = () => {
           value={search}
           onChangeText={handleSearchChange}
           placeholder="Search Here..."
-          textColor={colors.white}
+          textColor={colors.placeholderTextColor}
           outlineColor="transparent"
           outlineStyle={{ borderWidth: 0 }}
           left={() => <SearchIcon color={colors.placeholderTextColor} />}

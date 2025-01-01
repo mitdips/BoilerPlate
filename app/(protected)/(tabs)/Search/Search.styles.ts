@@ -19,6 +19,8 @@ export const SearchTextInput = styled(TextInput)<{ searchRadius?: number }>`
   padding-left: -20px;
   padding-right: 40px;
   font-size: 16px;
+  color: ${({ theme }: { theme: AppTheme }) =>
+    theme.colors.placeholderTextColor};
 `;
 
 export const ListComponent = styled(FlatList).attrs(
