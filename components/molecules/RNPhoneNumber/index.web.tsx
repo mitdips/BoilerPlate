@@ -74,7 +74,8 @@ const FieldPhoneNumber = forwardRef<
               font-size: 16px;
               outline: none;
               width: 100%;
-              margin-left:15px
+              margin-left:15px;
+              color:${colors.placeholderTextColor} 
             }
             .custom-phone-view .PhoneInputCountry {
               margin-left:15px

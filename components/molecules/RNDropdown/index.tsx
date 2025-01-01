@@ -39,6 +39,7 @@ const RNDropdown = forwardRef<any, RNDropdownProps>(
       borderRadius: 15,
       paddingVertical: 5,
       borderWidth: 1,
+
       borderColor: meta.touched && meta.error ? "red" : colors.textinput,
     };
 
@@ -65,6 +66,7 @@ const RNDropdown = forwardRef<any, RNDropdownProps>(
             items={hobbies}
             setOpen={setOpen}
             setValue={setHobby}
+            textStyle={{ color: colors.placeholderTextColor }}
             onChangeValue={handleValueChange}
             placeholder="Select Hobby"
             containerStyle={{ borderWidth: 0 }}

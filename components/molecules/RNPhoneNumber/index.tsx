@@ -48,14 +48,14 @@ const FieldPhoneNumber = forwardRef<PhoneInput, RNPhoneNumberProps>(
 
     const codeTextStyle: TextStyle = {
       fontSize: 16,
-      color: colors.gray,
+      color: colors.placeholderTextColor,
     };
 
     const textInputStyle: TextStyle = {
       fontSize: 16,
       paddingLeft: 8,
       height: 50,
-      color: "#333",
+      color: colors.placeholderTextColor,
     };
 
     const errorText = meta.touched && meta.error && (
