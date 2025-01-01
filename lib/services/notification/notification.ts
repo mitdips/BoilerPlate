@@ -1,7 +1,7 @@
 import messaging, {
   FirebaseMessagingTypes,
-} from '@react-native-firebase/messaging';
-import { Platform } from 'react-native';
+} from "@react-native-firebase/messaging";
+import { Platform } from "react-native";
 
 export interface requestPermissionProps {
   sound: boolean;
@@ -20,7 +20,7 @@ export const initializeFirebase = async () => {
     const enabled =
       authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
       authStatus === messaging.AuthorizationStatus.PROVISIONAL;
-    console.log('initializeFirebase', Platform.OS, enabled);
+    console.log("initializeFirebase", Platform.OS, enabled);
     if (enabled) {
       initializeToken();
     }
@@ -31,9 +31,14 @@ export const initializeFirebase = async () => {
 };
 
 export const initializeToken = async () => {
-  const token = await messaging().getToken();
-  console.log('Device-token', Platform.OS, token);
-  return token;
+  try {
+    await messaging().registerDeviceForRemoteMessages();
+    const token = await messaging().getToken();
+    console.log("FCM Token:", token);
+    return token;
+  } catch (error) {
+    console.error("Error registering for remote messages:", error);
+  }
 };
 
 /**
@@ -41,7 +46,7 @@ export const initializeToken = async () => {
  * @param {} remoteMessage
  */
 export const displayNotificationFromCustomData = async (
-  remoteMessage: FirebaseMessagingTypes.RemoteMessage,
+  remoteMessage: FirebaseMessagingTypes.RemoteMessage
 ) => {
-  console.log('displayNotificationFromCustomData', remoteMessage);
+  console.log("displayNotificationFromCustomData", remoteMessage);
 };

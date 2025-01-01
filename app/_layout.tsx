@@ -9,8 +9,6 @@ import React from "react";
 import store, { persistor } from "@redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import ThemeProvider from "../containers/ThemeProvider";
-import { isWeb } from "@constants/platform";
-import NotificationListener from "@molecules/NotificationListener/NotificationListener";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -35,7 +33,6 @@ export default function RootLayout() {
       <ReduxProvider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <ThemeProvider>
-            {!isWeb && <NotificationListener />}
             <Stack screenOptions={{ headerShown: false }}>
               <Stack.Screen name="(public)/welcome/index" />
               <Stack.Screen name="(protected)/(tabs)/index" />
