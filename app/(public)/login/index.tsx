@@ -64,7 +64,7 @@ const Login = () => {
       }
       setLoading(false);
       showSuccess("Login Successful!");
-      router.replace("/(protected)/(tabs)");
+      router.replace("/(protected)/(tabs)/Home");
     } catch (error: any) {
       if (error.code === "auth/user-not-found") {
         showError("No user found with this email.");

@@ -32,7 +32,7 @@ const App = () => {
   return (
     <>
       {token ? (
-        <Redirect href="/(protected)/(tabs)" />
+        <Redirect href="/(protected)/(tabs)/Home" />
       ) : showOnBoarding ? (
         <Redirect href="/(public)/welcome" />
       ) : (

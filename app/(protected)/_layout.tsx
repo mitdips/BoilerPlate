@@ -9,7 +9,7 @@ const ProtectedLayout = () => {
       }}
       initialRouteName="(tabs)"
     >
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="ProductList" options={{ headerShown: false }} />
     </Stack>
   );
 };
