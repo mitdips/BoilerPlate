@@ -61,7 +61,6 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ form, loading }) => {
             countryCode: userData?.countryCode || "",
           });
         } else {
-          console.log("No such user!");
         }
       }
     };

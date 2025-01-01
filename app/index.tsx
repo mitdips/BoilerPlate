@@ -29,7 +29,6 @@ SplashScreen.preventAutoHideAsync();
 
 const App = () => {
   const { token } = useSelector((state: RootState) => state.auth);
-  console.log("token: ", token);
   const { showOnBoarding } = useSelector((state: RootState) => state.auth);
   return (
     <>

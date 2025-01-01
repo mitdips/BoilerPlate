@@ -47,7 +47,6 @@ const Profile = () => {
 
       setLoading(false);
     } catch (error: any) {
-      console.log("Error updating profile: ", error);
 
       if (error.code === "permission-denied") {
         showError("You don't have permission to update this profile.");
