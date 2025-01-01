@@ -1,37 +1,76 @@
+import Dashboard from "@atoms/Illustrations/Dashboard";
+import ProfileIcon from "@atoms/Illustrations/Profile";
+import Search from "@atoms/Illustrations/Search";
+import Settings from "@atoms/Illustrations/settings";
+import Users from "@atoms/Illustrations/Users";
+import { useAppTheme } from "@constants/theme";
 import { Tabs } from "expo-router";
 import React from "react";
-import { Platform } from "react-native";
-import { useColorScheme } from "@hooks/useColorScheme";
-import { Colors } from "@constants/Colors";
+import { Platform, Text } from "react-native";
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
+  const { colors } = useAppTheme();
+
+  const iconColors = colors.backdrop;
+  const isFocused = (focus) => {
+    return focus ? colors.main : iconColors;
+  };
 
   return (
     <Tabs
+      initialRouteName="Home/index"
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
         headerShown: false,
-
+        tabBarShowLabel: true,
+        tabBarLabelStyle: {
+          fontSize: 12,
+          fontWeight: 600,
+        },
         tabBarStyle: Platform.select({
           ios: {
-            // Use a transparent background on iOS to show the blur effect
             position: "absolute",
+            height: 70,
+            paddingBottom: 10,
           },
-          default: {},
+          android: {
+            height: 60,
+            paddingBottom: 5,
+            borderWidth: 1,
+          },
         }),
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="Home/index"
         options={{
           title: "Home",
+          tabBarIcon: ({ focused }) => <Dashboard color={isFocused(focused)} />,
         }}
       />
+
       <Tabs.Screen
-        name="explore"
+        name="Search/index"
         options={{
-          title: "Explore",
+          title: "Search",
+          tabBarIcon: ({ focused }) => <Search color={isFocused(focused)} />,
+        }}
+      />
+
+      <Tabs.Screen
+        name="Profile/index"
+        options={{
+          title: "Profile",
+          tabBarIcon: ({ focused }) => (
+            <ProfileIcon color={isFocused(focused)} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="Settings/index"
+        options={{
+          title: "Settings",
+          tabBarIcon: ({ focused }) => <Settings color={isFocused(focused)} />,
         }}
       />
     </Tabs>

@@ -17,7 +17,10 @@ export const RNPTextInput = styled(TextInput)`
     theme.colors.transparent};
 `;
 
-export const InputErrorContainer = styled(View)<{ invalidValue?: boolean }>`
+export const InputErrorContainer = styled(View)<{
+  invalidValue?: boolean;
+  isWidth?: boolean;
+}>`
   border-width: ${({ invalidValue }: { invalidValue: boolean }) =>
     invalidValue ? 1 : 0}px;
   border-color: ${({
@@ -28,4 +31,5 @@ export const InputErrorContainer = styled(View)<{ invalidValue?: boolean }>`
     theme: AppTheme;
   }) => (invalidValue ? theme.colors.error : theme.colors.main)};
   border-radius: 10px;
+  width: ${({ isWidth }) => (isWidth ? "67%" : "100%")};
 `;

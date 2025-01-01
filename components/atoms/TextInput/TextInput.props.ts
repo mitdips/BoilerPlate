@@ -6,4 +6,5 @@ export type CustomTextInputProps = React.ComponentProps<typeof RNTextInput> &
     left?: React.ReactNode;
     right?: React.ReactNode;
     isRounded?: boolean;
+    isWidth: boolean;
   };
