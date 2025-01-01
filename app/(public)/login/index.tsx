@@ -105,7 +105,6 @@ const Login = () => {
           <RegisterText>
             Don’t have account?
             <LinkText onPress={() => router.navigate("/(public)/register")}>
-              {" "}
               Sign Up
             </LinkText>
           </RegisterText>
