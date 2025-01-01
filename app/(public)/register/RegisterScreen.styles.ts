@@ -4,6 +4,9 @@ import { AppTheme } from "@constants/theme";
 import { styled } from "@utils/styled";
 import { ScrollView, View } from "react-native";
 
+export const ScrollViewContainer = styled(ScrollView)`
+  background-color: ${({ theme }: { theme: AppTheme }) => theme.colors.white};
+`;
 export const SocialBtn = styled(View)`
   flex-direction: row;
   justify-content: space-between;

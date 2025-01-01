@@ -17,7 +17,6 @@ const GoogleButton = () => {
         color: colors.placeholderTextColor,
       }}
       onPress={() => {
-        console.log("btn press");
       }}
       style={{ width: windowWidth / 2.2 }}
       uppercase={false}

@@ -6,5 +6,5 @@ export const isNative = isIOS || isAndroid;
 export const isWeb = !isNative;
 export const isMobileWeb =
   isWeb &&
-  global.window.matchMedia("only screen and (max-width: 1000px)")?.matches;
+  global?.window?.matchMedia("only screen and (max-width: 1000px)")?.matches;
 export const isDesktopWeb = isWeb && !isMobileWeb;

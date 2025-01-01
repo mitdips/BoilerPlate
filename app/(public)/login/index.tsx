@@ -3,6 +3,7 @@ import { router } from "expo-router";
 import {
   LoginFormContainer,
   RegisterText,
+  ScrollViewContainer,
   SocialBtn,
 } from "./LoginScreen.styles";
 import images from "../../../assets/index";
@@ -64,7 +65,7 @@ const Login = () => {
       }
       setLoading(false);
       showSuccess("Login Successful!");
-      router.replace("/(protected)/(tabs)");
+      router.replace("/(protected)/(tabs)/Home");
     } catch (error: any) {
       if (error.code === "auth/user-not-found") {
         showError("No user found with this email.");
@@ -81,10 +82,7 @@ const Login = () => {
     }
   };
   return (
-    <ScrollView
-      style={{ backgroundColor: colors.white }}
-      showsVerticalScrollIndicator={false}
-    >
+    <ScrollViewContainer showsVerticalScrollIndicator={false}>
       <ScreenTemplate
         img={images.loginImage}
         pagetitle={"Sign In"}
@@ -107,7 +105,7 @@ const Login = () => {
           </RegisterText>
         </LoginFormContainer>
       </ScreenTemplate>
-    </ScrollView>
+    </ScrollViewContainer>
   );
 };
 
