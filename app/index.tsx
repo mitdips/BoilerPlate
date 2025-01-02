@@ -4,6 +4,7 @@ import { Redirect, SplashScreen } from "expo-router";
 import { isRunningInExpoGo } from "expo";
 import { useSelector } from "react-redux";
 import { RootState } from "@redux/store";
+import { View } from "react-native";
 // import { View } from "react-native";
 
 SplashScreen.preventAutoHideAsync();

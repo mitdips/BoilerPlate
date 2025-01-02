@@ -21,6 +21,7 @@ const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
       password,
       isWidth,
       label,
+      multiline,
       ...rest
     },
     ref
@@ -43,6 +44,7 @@ const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
       borderWidth: 1,
       borderColor: meta.touched && meta.error ? "red" : colors.textinput,
       borderRadius: 10,
+      height: multiline && 100,
     };
 
     const outlineStyle = {

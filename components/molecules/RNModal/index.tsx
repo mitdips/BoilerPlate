@@ -27,6 +27,8 @@ const RNModal: React.FC<ModalProps> = ({
   onPress1,
   button2,
   onPress2,
+  loading1,
+  loading2,
 }) => {
   const { colors } = useAppTheme();
   return (
@@ -39,15 +41,27 @@ const RNModal: React.FC<ModalProps> = ({
             <Description>{description}</Description>
             {button1 && button2 ? (
               <BtnConainer>
-                <GoToLoginBtn2 onPress={onPress1} textColor={colors.main}>
+                <GoToLoginBtn2
+                  onPress={onPress1}
+                  textColor={colors.main}
+                  loading={loading1}
+                >
                   {button1}
                 </GoToLoginBtn2>
-                <GoToLoginBtn1 onPress={onPress2} textColor={colors.white}>
+                <GoToLoginBtn1
+                  onPress={onPress2}
+                  textColor={colors.white}
+                  loading={loading2}
+                >
                   {button2}
                 </GoToLoginBtn1>
               </BtnConainer>
             ) : (
-              <GoToLoginBtn onPress={onPress1} textColor={colors.white}>
+              <GoToLoginBtn
+                onPress={onPress1}
+                textColor={colors.white}
+                loading={loading2}
+              >
                 {button1}
               </GoToLoginBtn>
             )}

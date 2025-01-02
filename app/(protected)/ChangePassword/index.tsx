@@ -48,7 +48,6 @@ const ChangePassword = () => {
 
       showSuccess("Password updated successfully!");
     } catch (error: any) {
-      console.log("error: ", error);
       if (error.code === "auth/wrong-password") {
         showError("Incorrect old password.");
       } else if (error.code === "auth/weak-password") {
