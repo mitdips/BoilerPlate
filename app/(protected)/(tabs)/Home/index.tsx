@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Animated,
   FlatList,
@@ -32,6 +32,9 @@ import { logout } from "@redux/slices/auth";
 import RNModal from "@molecules/RNModal";
 import * as Application from "expo-application";
 import { useAppTheme } from "@constants/theme";
+import { getAuth } from "@firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
+import { FireBaseAuth, FireStoreDB } from "../../../../firebase";
 const Home = () => {
   const dispatch = useDispatch();
   const { colors } = useAppTheme();
@@ -42,7 +45,25 @@ const Home = () => {
   const drawerOffset = React.useRef(new Animated.Value(-300)).current;
   const [loading, setLoading] = useState(false);
   const [isLogoutModal, setIsLogoutModal] = useState(false);
+  const [userDatas, setUserDatas] = useState<any | null>(null);
 
+  useEffect(() => {
+    const fetchLoggedInUser = async () => {
+      const user = FireBaseAuth.currentUser;
+
+      if (user) {
+        const userDocRef = doc(FireStoreDB, "users", user.uid);
+        const docSnap = await getDoc(userDocRef);
+
+        if (docSnap.exists()) {
+          const userData = docSnap.data();
+          setUserDatas(userData);
+        }
+      }
+    };
+
+    fetchLoggedInUser();
+  }, []);
   const toggleDrawer = () => {
     setDrawerOpen(!drawerOpen);
     Animated.timing(drawerOffset, {
@@ -118,7 +139,7 @@ const Home = () => {
             <ProfileImageView>
               <ProfileImage source={images.avatar} />
             </ProfileImageView>
-            <GreetingText>Hello, Farid</GreetingText>
+            <GreetingText>Hello, {userDatas?.username}</GreetingText>
           </UserView>
           <SettingsButton>
             <TouchableOpacity onPress={toggleDrawer}>
@@ -145,7 +166,7 @@ const Home = () => {
       <Animated.View style={AnimatedView}>
         <ProfilView>
           <ProfileImageDrawer source={images.avatar} />
-          <UserText>Farid</UserText>
+          <UserText>{userDatas?.username}</UserText>
         </ProfilView>
 
         <FlatList

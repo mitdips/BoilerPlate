@@ -11,7 +11,7 @@ import { ScrollViewContainer } from "../../../(public)/login/LoginScreen.styles"
 
 const Profile = () => {
   const [loading, setLoading] = useState(false);
-  const onLoginPress = async (values: ProfileFormData) => {
+  const onProfilePress = async (values: ProfileFormData) => {
     const { username, phone, hobby, gender, countryCode } = values;
     setLoading(true);
     try {
@@ -52,7 +52,7 @@ const Profile = () => {
           <FormTemplate
             Component={ProfileForm}
             loading={loading}
-            onSubmit={onLoginPress}
+            onSubmit={onProfilePress}
           />
         </ProfileFormContainer>
       </ScreenTemplate>
