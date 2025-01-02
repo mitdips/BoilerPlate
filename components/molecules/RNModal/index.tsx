@@ -4,9 +4,12 @@ import { ModalProps } from "./RNModal.props";
 import { BlurView } from "@react-native-community/blur";
 import {
   AbsoluteView,
+  BtnConainer,
   CenteredView,
   Description,
   GoToLoginBtn,
+  GoToLoginBtn1,
+  GoToLoginBtn2,
   ModalContent,
   ModalView,
   SuccessIcon,
@@ -20,8 +23,10 @@ const RNModal: React.FC<ModalProps> = ({
   image,
   title,
   description,
-  button,
-  onPress,
+  button1,
+  onPress1,
+  button2,
+  onPress2,
 }) => {
   const { colors } = useAppTheme();
   return (
@@ -32,10 +37,20 @@ const RNModal: React.FC<ModalProps> = ({
             <SuccessIcon source={image} />
             <Title>{title}</Title>
             <Description>{description}</Description>
-
-            <GoToLoginBtn onPress={onPress} textColor={colors.white}>
-              {button}
-            </GoToLoginBtn>
+            {button1 && button2 ? (
+              <BtnConainer>
+                <GoToLoginBtn2 onPress={onPress1} textColor={colors.main}>
+                  {button1}
+                </GoToLoginBtn2>
+                <GoToLoginBtn1 onPress={onPress2} textColor={colors.white}>
+                  {button2}
+                </GoToLoginBtn1>
+              </BtnConainer>
+            ) : (
+              <GoToLoginBtn onPress={onPress1} textColor={colors.white}>
+                {button1}
+              </GoToLoginBtn>
+            )}
           </ModalContent>
         </ModalView>
       </CenteredView>

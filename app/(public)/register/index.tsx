@@ -89,10 +89,10 @@ const Register = () => {
       <RNModal
         title="Account Created Successfully"
         description="Your account has been created successfully. Please check your email (Also check spam) and verified"
-        button="Go To Login"
+        button1="Go To Login"
         image={images.check}
         visible={isModalVisible}
-        onPress={() => handleAccountCreated()}
+        onPress1={() => handleAccountCreated()}
       />
     </ScrollViewContainer>
   );

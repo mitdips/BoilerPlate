@@ -35,8 +35,9 @@ export const ModalView = styled(View)`
 `;
 
 export const ModalContent = styled(View)`
+  gap: 10px;
   align-items: center;
-  gap: 20px;
+  width: 100%;
 `;
 
 export const SuccessIcon = styled(Image)`
@@ -53,16 +54,40 @@ export const Title = styled(Text)`
 `;
 
 export const Description = styled(Text)`
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
   color: ${({ theme }: { theme: AppTheme }) => theme.colors.black};
   text-align: center;
 `;
 
+export const BtnConainer = styled(View)`
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+`;
 export const GoToLoginBtn = styled(Button)`
   font-size: ${scale(16)}px;
   color: ${({ theme }: { theme: AppTheme }) => theme.colors.white};
   text-align: center;
   width: ${windowWidth * 0.4}px;
   background-color: ${({ theme }: { theme: AppTheme }) => theme.colors.main};
+`;
+
+export const GoToLoginBtn1 = styled(Button)`
+  font-size: ${scale(16)}px;
+  color: ${({ theme }: { theme: AppTheme }) => theme.colors.white};
+  text-align: center;
+  width: ${windowWidth * 0.3}px;
+  background-color: ${({ theme }: { theme: AppTheme }) => theme.colors.main};
+`;
+
+export const GoToLoginBtn2 = styled(Button)`
+  font-size: ${scale(16)}px;
+  color: ${({ theme }: { theme: AppTheme }) => theme.colors.error};
+  text-align: center;
+  width: ${windowWidth * 0.3}px;
+  border-color: ${({ theme }: { theme: AppTheme }) => theme.colors.main};
+  border-width: 1px;
+  background-color: transparent;
 `;
