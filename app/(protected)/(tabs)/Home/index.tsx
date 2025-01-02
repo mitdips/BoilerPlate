@@ -49,11 +49,9 @@ const Home = () => {
   useEffect(() => {
     const fetchLoggedInUser = async () => {
       const user = FireBaseAuth.currentUser;
-
       if (user) {
         const userDocRef = doc(FireStoreDB, "users", user.uid);
         const docSnap = await getDoc(userDocRef);
-
         if (docSnap.exists()) {
           const userData = docSnap.data();
           setUserDatas(userData);
