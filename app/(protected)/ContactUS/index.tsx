@@ -3,13 +3,10 @@ import ScreenTemplate from "@templates/ScreenTemplate/ScreenTemplate";
 import images from "../../../assets/index";
 import { LoginFormContainer } from "../../(public)/login/LoginScreen.styles";
 import FormTemplate from "@templates/FormTemplate/FormTemplate";
-import { useAppTheme } from "@constants/theme";
 import { ContactUsFormValues } from "@organisms/ContactUsForm/ContactUsForm.props";
 import ContactUsForm from "@organisms/ContactUsForm/ContactUsForm";
 import {
-  addDoc,
   arrayUnion,
-  collection,
   doc,
   getDoc,
   getFirestore,
@@ -18,21 +15,19 @@ import {
 } from "firebase/firestore";
 import { getAuth } from "@firebase/auth";
 import { showError, showSuccess } from "@utils/toastMessage";
-import { Form } from "react-final-form";
 import { router } from "expo-router";
+import { FireBaseAuth, FireStoreDB } from "../../../firebase";
 const ContactUS = () => {
   const [loading, setLoading] = useState(false);
-  const { colors } = useAppTheme();
-  const db = getFirestore();
-  const auth = getAuth();
+
   const onContactUsBtnPress = async (values: ContactUsFormValues) => {
     const { username, email, Message } = values;
     setLoading(true);
-    const userUid = auth.currentUser?.uid;
+    const user = FireBaseAuth.currentUser;
 
-    if (userUid) {
+    if (user) {
       try {
-        const userDocRef = doc(db, "contactUs", userUid);
+        const userDocRef = doc(FireStoreDB, "contactUs", user.uid);
         const userDocSnapshot = await getDoc(userDocRef);
 
         if (!userDocSnapshot.exists()) {

@@ -72,7 +72,6 @@ const ContactUsForm: React.FC<ContactUsFormProps> = ({ form, loading }) => {
       <ButtonSubmit
         onPress={!loading && form.submit}
         loading={loading}
-        textColor={valid ? colors.white : colors.white}
         variant={valid}
         disabled={loading}
       >

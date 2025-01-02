@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import ScreenTemplate from "@templates/ScreenTemplate/ScreenTemplate";
-import { ScrollView } from "react-native";
-import { useAppTheme } from "@constants/theme";
-import { useDispatch } from "react-redux";
 import { ProfileFormData } from "./Profile.props";
-import images from "../../../../assets/index";
 import { ProfileFormContainer } from "./Profile.styles";
 import FormTemplate from "@templates/FormTemplate/FormTemplate";
 import ProfileForm from "@organisms/ProfileForm/ProfileForm";
@@ -15,9 +11,8 @@ import { ScrollViewContainer } from "../../../(public)/login/LoginScreen.styles"
 
 const Profile = () => {
   const [loading, setLoading] = useState(false);
-  const { colors } = useAppTheme();
   const onLoginPress = async (values: ProfileFormData) => {
-    const { email, username, phone, hobby, gender, countryCode } = values;
+    const { username, phone, hobby, gender, countryCode } = values;
     setLoading(true);
     try {
       const user = FireBaseAuth.currentUser;
@@ -26,9 +21,7 @@ const Profile = () => {
         setLoading(false);
         return;
       }
-
       const userDocRef = doc(FireStoreDB, "users", user.uid);
-
       const updatedData = {
         username,
         phone,
@@ -37,17 +30,13 @@ const Profile = () => {
         countryCode,
         updatedAt: new Date(),
       };
-
       await setDoc(userDocRef, updatedData, { merge: true });
-
       const updatedUserSnap = await getDoc(userDocRef);
       if (updatedUserSnap.exists()) {
         showSuccess("Profile updated successfully!");
       }
-
       setLoading(false);
     } catch (error: any) {
-
       if (error.code === "permission-denied") {
         showError("You don't have permission to update this profile.");
       } else {

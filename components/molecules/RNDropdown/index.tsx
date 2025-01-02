@@ -39,8 +39,9 @@ const RNDropdown = forwardRef<any, RNDropdownProps>(
       borderRadius: 15,
       paddingVertical: 5,
       borderWidth: 1,
-
       borderColor: meta.touched && meta.error ? "red" : colors.textinput,
+      position: "absolute",
+      zIndex: 3000,
     };
 
     const dropdownStyle: ViewStyle = {
@@ -49,6 +50,7 @@ const RNDropdown = forwardRef<any, RNDropdownProps>(
       backgroundColor: colors.textinput,
       borderWidth: 0,
       marginTop: 10,
+      zIndex: 3000,
     };
 
     const errorText = meta.touched && meta.error && (
@@ -73,6 +75,7 @@ const RNDropdown = forwardRef<any, RNDropdownProps>(
             dropDownContainerStyle={dropdownContainerStyle}
             style={dropdownStyle}
             zIndex={3000}
+            // stickyHeader={true}
             zIndexInverse={1000}
             {...rest}
           />

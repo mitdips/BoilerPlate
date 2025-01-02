@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  ScrollView,
-  FlatList,
-  View,
-  Text,
-  TouchableOpacity,
-} from "react-native";
+import { TouchableOpacity } from "react-native";
 import { useAppTheme } from "@constants/theme";
 import ScreenTemplate from "@templates/ScreenTemplate/ScreenTemplate";
 import {
@@ -22,7 +16,6 @@ import { collection, getDocs } from "firebase/firestore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { FireStoreDB } from "../../../../firebase";
 import NoDataFound from "@molecules/NoDataFound";
-import { windowHeight, windowWidth } from "@atoms/common/common.styles";
 import UserList from "@molecules/UserList";
 
 const Search = () => {
