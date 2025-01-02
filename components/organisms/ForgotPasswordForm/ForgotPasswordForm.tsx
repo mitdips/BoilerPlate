@@ -1,6 +1,5 @@
 import React from "react";
 import { Field, useFormState } from "react-final-form";
-import { useAppTheme } from "@constants/theme";
 import FieldTextInput from "@molecules/FieldTextInput/FieldTextInput";
 import {
   composeValidators,
@@ -15,12 +14,10 @@ import {
   LoginFormView,
 } from "../LoginForm/LoginForm.styles";
 import { Spacer } from "@atoms/common/common.styles";
-
 const ForgotPasswordForm: React.FC<ForgotPasswordFormProps> = ({
   form,
   loading,
 }) => {
-  const { colors } = useAppTheme();
   const { valid } = useFormState();
   return (
     <LoginFormView>
@@ -33,7 +30,7 @@ const ForgotPasswordForm: React.FC<ForgotPasswordFormProps> = ({
           validate={composeValidators(
             (value) => requiredValidator("Email address", value),
             (value) => minLengthValidator("Email address", value),
-            emailValidator,
+            emailValidator
           )}
         />
       </LoginFormContainer>

@@ -1,6 +1,6 @@
 import React, { forwardRef, useEffect, useState } from "react";
 import { Text, ViewStyle } from "react-native";
-import { windowHeight, windowWidth } from "@atoms/common/common.styles";
+import { windowHeight } from "@atoms/common/common.styles";
 import { useAppTheme } from "@constants/theme";
 import DropDownPicker from "react-native-dropdown-picker";
 import { RNDropdownProps } from "./RNDropdown.props";
@@ -33,7 +33,7 @@ const RNDropdown = forwardRef<any, RNDropdownProps>(
     }, [input.value]);
 
     const dropdownContainerStyle: ViewStyle = {
-      width: windowWidth * 0.92,
+      width: "100%",
       backgroundColor: colors.textinput,
       marginBottom: 10,
       borderRadius: 15,
@@ -45,7 +45,7 @@ const RNDropdown = forwardRef<any, RNDropdownProps>(
     };
 
     const dropdownStyle: ViewStyle = {
-      width: windowWidth * 0.92,
+      width: "100%",
       height: windowHeight * 0.065,
       backgroundColor: colors.textinput,
       borderWidth: 0,
@@ -75,7 +75,6 @@ const RNDropdown = forwardRef<any, RNDropdownProps>(
             dropDownContainerStyle={dropdownContainerStyle}
             style={dropdownStyle}
             zIndex={3000}
-            // stickyHeader={true}
             zIndexInverse={1000}
             {...rest}
           />

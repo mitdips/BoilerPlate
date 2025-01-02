@@ -15,8 +15,6 @@ import RegisterForm from "@organisms/RegisterForm/RegisterForm";
 import FormTemplate from "@templates/FormTemplate/FormTemplate";
 import { LinkText } from "@organisms/LoginForm/LoginForm.styles";
 import ScreenTemplate from "@templates/ScreenTemplate/ScreenTemplate";
-import { ScrollView } from "react-native";
-import { useAppTheme } from "@constants/theme";
 import { FireBaseAuth, FireStoreDB } from "../../../firebase";
 import {
   createUserWithEmailAndPassword,
@@ -27,7 +25,6 @@ import { showError, showSuccess } from "@utils/toastMessage";
 import RNModal from "@molecules/RNModal";
 const Register = () => {
   const [loading, setLoading] = useState(false);
-  const { colors } = useAppTheme();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const handleAccountCreated = () => {
     setIsModalVisible(false);
@@ -92,9 +89,9 @@ const Register = () => {
         button1="Go To Login"
         image={images.check}
         visible={isModalVisible}
-        onPress1={() => handleAccountCreated()} 
-        loading2={false}      
-        />
+        onPress1={() => handleAccountCreated()}
+        loading2={false}
+      />
     </ScrollViewContainer>
   );
 };

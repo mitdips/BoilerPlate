@@ -9,7 +9,7 @@ import {
   LoginFormView,
 } from "../LoginForm/LoginForm.styles";
 import { useAppTheme } from "@constants/theme";
-import { Spacer, windowWidth } from "@atoms/common/common.styles";
+import { Spacer } from "@atoms/common/common.styles";
 import FieldTextInput from "@molecules/FieldTextInput/FieldTextInput";
 import {
   complexPasswordValidator,
@@ -21,9 +21,6 @@ import {
 import EyeOpenIcon from "@atoms/Illustrations/EyeOpen";
 import EyeCloseIcon from "@atoms/Illustrations/EyeClose";
 import { RegisterFormProps } from "./RegisterForm.props";
-import { Text, View } from "react-native";
-// import Checkbox from "@atoms/Checkbox/Checkbox";
-import RNWebview from "@molecules/RNWebview";
 import Checkbox from "expo-checkbox";
 import { router } from "expo-router";
 

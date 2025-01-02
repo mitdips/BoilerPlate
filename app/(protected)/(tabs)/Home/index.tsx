@@ -32,7 +32,6 @@ import { logout } from "@redux/slices/auth";
 import RNModal from "@molecules/RNModal";
 import * as Application from "expo-application";
 import { useAppTheme } from "@constants/theme";
-import { getAuth } from "@firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { FireBaseAuth, FireStoreDB } from "../../../../firebase";
 const Home = () => {

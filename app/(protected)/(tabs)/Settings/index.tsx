@@ -12,8 +12,8 @@ import {
 } from "./Settings.styles";
 import RNModal from "@molecules/RNModal";
 import images from "../../../../assets/index";
-import { deleteDoc, doc, getFirestore } from "firebase/firestore";
-import { deleteUser, getAuth } from "@firebase/auth";
+import { deleteDoc, doc } from "firebase/firestore";
+import { deleteUser } from "@firebase/auth";
 import { showError, showSuccess } from "@utils/toastMessage";
 import { FireBaseAuth, FireStoreDB } from "../../../../firebase";
 

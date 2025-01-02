@@ -5,15 +5,7 @@ import { LoginFormContainer } from "../../(public)/login/LoginScreen.styles";
 import FormTemplate from "@templates/FormTemplate/FormTemplate";
 import { ContactUsFormValues } from "@organisms/ContactUsForm/ContactUsForm.props";
 import ContactUsForm from "@organisms/ContactUsForm/ContactUsForm";
-import {
-  arrayUnion,
-  doc,
-  getDoc,
-  getFirestore,
-  setDoc,
-  updateDoc,
-} from "firebase/firestore";
-import { getAuth } from "@firebase/auth";
+import { arrayUnion, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { showError, showSuccess } from "@utils/toastMessage";
 import { router } from "expo-router";
 import { FireBaseAuth, FireStoreDB } from "../../../firebase";
@@ -24,12 +16,10 @@ const ContactUS = () => {
     const { username, email, Message } = values;
     setLoading(true);
     const user = FireBaseAuth.currentUser;
-
     if (user) {
       try {
         const userDocRef = doc(FireStoreDB, "contactUs", user.uid);
         const userDocSnapshot = await getDoc(userDocRef);
-
         if (!userDocSnapshot.exists()) {
           await setDoc(userDocRef, {
             contactMessages: [],
@@ -47,7 +37,6 @@ const ContactUS = () => {
         showSuccess("Contact details saved successfully!");
         router.navigate("/(protected)/(tabs)/Home");
       } catch (error) {
-        console.log("Error saving contact details: ", error);
         showError("Error saving contact details.");
       }
     } else {
