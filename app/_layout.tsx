@@ -12,7 +12,7 @@ import ThemeProvider from "../containers/ThemeProvider";
 import { isWeb } from "@constants/platform";
 import NotificationListener from "@molecules/NotificationListener/NotificationListener";
 import Toast, { BaseToast, ErrorToast } from "react-native-toast-message";
-
+import { MenuProvider } from "react-native-popup-menu";
 import { useAppTheme } from "@constants/theme";
 import { Text, View } from "react-native";
 SplashScreen.preventAutoHideAsync();
@@ -72,14 +72,16 @@ export default function RootLayout() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <ReduxProvider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <ThemeProvider>
-            {/* {!isWeb && <NotificationListener />} */}
-            <Stack screenOptions={{ headerShown: false }}>
-              <Stack.Screen name="(public)/welcome/index" />
-              <Stack.Screen name="(protected)/(tabs)/index" />
-              <Stack.Screen name="+not-found" />
-            </Stack>
-          </ThemeProvider>
+          <MenuProvider>
+            <ThemeProvider>
+              {/* {!isWeb && <NotificationListener />} */}
+              <Stack screenOptions={{ headerShown: false }}>
+                <Stack.Screen name="(public)/welcome/index" />
+                <Stack.Screen name="(protected)/(tabs)/index" />
+                <Stack.Screen name="+not-found" />
+              </Stack>
+            </ThemeProvider>
+          </MenuProvider>
           <Toast config={toastConfig} />
         </PersistGate>
       </ReduxProvider>
