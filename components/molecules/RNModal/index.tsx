@@ -1,7 +1,5 @@
-import { View, Text, Modal, Image } from "react-native";
 import React from "react";
 import { ModalProps } from "./RNModal.props";
-import { BlurView } from "@react-native-community/blur";
 import {
   AbsoluteView,
   BtnConainer,
@@ -15,8 +13,6 @@ import {
   SuccessIcon,
   Title,
 } from "./RNModal.styles";
-import images from "../../../assets/index";
-import { ButtonSubmit } from "@organisms/LoginForm/LoginForm.styles";
 import { useAppTheme } from "@constants/theme";
 const RNModal: React.FC<ModalProps> = ({
   visible,

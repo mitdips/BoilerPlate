@@ -1,5 +1,4 @@
 import React, { forwardRef, useState } from "react";
-import { View, Text } from "react-native";
 import { RadioButton } from "react-native-paper";
 import { useAppTheme } from "@constants/theme";
 import { RNRadioButtonProps } from "./RNRadioButton.props";

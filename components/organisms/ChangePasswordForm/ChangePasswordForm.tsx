@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import { Field, useFormState } from "react-final-form";
 import {
   ButtonSubmit,
-  ForgotText,
   LoginFormContainer,
   LoginFormView,
 } from "./ChangePasswordForm.styles";
 import { useAppTheme } from "@constants/theme";
-
 import { Spacer } from "@atoms/common/common.styles";
 import FieldTextInput from "@molecules/FieldTextInput/FieldTextInput";
 import {
@@ -118,7 +116,6 @@ const ChangePasswordForm: React.FC<ChangePasswordFormProps> = ({
       <ButtonSubmit
         onPress={!loading && form.submit}
         loading={loading}
-        textColor={valid ? colors.white : colors.white}
         variant={valid}
         disabled={loading}
       >

@@ -1,32 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import { Field, useFormState } from "react-final-form";
 import {
   ButtonSubmit,
   LoginFormContainer,
   LoginFormView,
 } from "./ContactUsForm.styles";
-import { useAppTheme } from "@constants/theme";
-
 import { Spacer } from "@atoms/common/common.styles";
 import FieldTextInput from "@molecules/FieldTextInput/FieldTextInput";
 import {
-  complexPasswordValidator,
   composeValidators,
-  confirmPasswordValidator,
   emailValidator,
   minLengthValidator,
   requiredValidator,
 } from "@utils/formValidators";
-import EyeOpenIcon from "@atoms/Illustrations/EyeOpen";
-import EyeCloseIcon from "@atoms/Illustrations/EyeClose";
 import { ContactUsFormProps } from "./ContactUsForm.props";
 
 const ContactUsForm: React.FC<ContactUsFormProps> = ({ form, loading }) => {
-  const { colors } = useAppTheme();
   const { valid } = useFormState();
-  const [secure, setSecure] = useState(true);
-  const [secure1, setSecure1] = useState(true);
-  const [secure2, setSecure2] = useState(true);
   return (
     <LoginFormView>
       <LoginFormContainer>
@@ -72,7 +62,6 @@ const ContactUsForm: React.FC<ContactUsFormProps> = ({ form, loading }) => {
       <ButtonSubmit
         onPress={!loading && form.submit}
         loading={loading}
-        textColor={valid ? colors.white : colors.white}
         variant={valid}
         disabled={loading}
       >

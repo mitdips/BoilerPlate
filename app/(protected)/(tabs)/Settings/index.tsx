@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, FlatList, TouchableOpacity } from "react-native";
+import { FlatList } from "react-native";
 import ScreenTemplate from "@templates/ScreenTemplate/ScreenTemplate";
 import { useDispatch } from "react-redux";
 import { logout, setShowOnBoarding } from "@redux/slices/auth";
@@ -12,9 +12,11 @@ import {
 } from "./Settings.styles";
 import RNModal from "@molecules/RNModal";
 import images from "../../../../assets/index";
-import { deleteDoc, doc, getFirestore } from "firebase/firestore";
-import { deleteUser, getAuth } from "@firebase/auth";
+import { deleteDoc, doc } from "firebase/firestore";
+import { deleteUser } from "@firebase/auth";
 import { showError, showSuccess } from "@utils/toastMessage";
+import { FireBaseAuth, FireStoreDB } from "../../../../firebase";
+
 const menuItems = [
   { id: "1", title: "Dark / Light Mode", action: "toggleTheme" },
   { id: "2", title: "Notification Screen", action: "toggleNotification" },
@@ -26,6 +28,7 @@ const menuItems = [
   { id: "8", title: "Delete Account", action: "deleteAccount" },
   { id: "9", title: "Logout", action: "logout" },
 ];
+
 const Settings = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
@@ -72,16 +75,14 @@ const Settings = () => {
 
   const handleDeleteAccountModal = async () => {
     setLoading(true);
-    const auth = getAuth();
-    const db = getFirestore();
-    const user = auth.currentUser;
 
+    const user = FireBaseAuth.currentUser;
     if (!user) {
       alert("No user is authenticated.");
       return;
     }
     try {
-      const userDocRef = doc(db, "users", user.uid);
+      const userDocRef = doc(FireStoreDB, "users", user.uid);
       await deleteDoc(userDocRef);
       await deleteUser(user);
       dispatch(logout());

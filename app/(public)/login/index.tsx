@@ -15,8 +15,6 @@ import FormTemplate from "@templates/FormTemplate/FormTemplate";
 import LoginForm from "@organisms/LoginForm/LoginForm";
 import { LinkText } from "@organisms/LoginForm/LoginForm.styles";
 import ScreenTemplate from "@templates/ScreenTemplate/ScreenTemplate";
-import { ScrollView } from "react-native";
-import { useAppTheme } from "@constants/theme";
 import { showError, showSuccess } from "@utils/toastMessage";
 import { useDispatch } from "react-redux";
 import { FireBaseAuth, FireStoreDB } from "../../../firebase";
@@ -27,7 +25,6 @@ import { userData, userToken } from "@redux/slices/auth";
 const Login = () => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  const { colors } = useAppTheme();
   const onLoginPress = async (values: LoginFormData) => {
     const { email, password } = values;
     setLoading(true);

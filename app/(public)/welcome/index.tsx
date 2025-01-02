@@ -8,10 +8,7 @@ const Welcome = () => {
   const { colors } = useAppTheme();
 
   return (
-    <ScreenTemplate
-      // isHeader={false}
-      statusBarColor={colors.welcomeScreenBackground}
-    >
+    <ScreenTemplate statusBarColor={colors.welcomeScreenBackground}>
       <SwipeCarousel data={onBoardingData} />
     </ScreenTemplate>
   );

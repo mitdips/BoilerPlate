@@ -16,9 +16,8 @@ import {
 import { showError, showSuccess } from "@utils/toastMessage";
 const ChangePassword = () => {
   const [loading, setLoading] = useState(false);
-  const { colors } = useAppTheme();
   const onChangePasswordBtnPress = async (values: ChangePasswordFormValues) => {
-    const { confirmpassword, oldpassword, password } = values;
+    const { oldpassword, password } = values;
     setLoading(true);
 
     try {

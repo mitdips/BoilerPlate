@@ -5,8 +5,6 @@ import { ForgotPasswordFormData } from "./ForgotPassword.props";
 import ScreenTemplate from "@templates/ScreenTemplate/ScreenTemplate";
 import FormTemplate from "@templates/FormTemplate/FormTemplate";
 import ForgotPasswordForm from "@organisms/ForgotPasswordForm/ForgotPasswordForm";
-import { ScrollView } from "react-native";
-import { useAppTheme } from "@constants/theme";
 import { FireBaseAuth } from "../../../firebase";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { showError, showSuccess } from "@utils/toastMessage";
@@ -14,7 +12,6 @@ import { router } from "expo-router";
 import { ScrollViewContainer } from "../login/LoginScreen.styles";
 const ForgotPassword = () => {
   const [loading, setLoading] = useState(false);
-  const { colors } = useAppTheme();
   const onForgotPress = async (values: ForgotPasswordFormData) => {
     const { email } = values;
     setLoading(true);

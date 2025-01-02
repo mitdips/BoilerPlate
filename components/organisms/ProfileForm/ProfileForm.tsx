@@ -3,13 +3,12 @@ import { Field, useFormState } from "react-final-form";
 import { ProfileFormProps } from "./ProfileForm.props";
 import {
   ButtonSubmit,
-  ForgotText,
   LoginFormContainer,
   LoginFormView,
 } from "./ProfileForm.styles";
 import { useAppTheme } from "@constants/theme";
 import * as ImagePicker from "expo-image-picker";
-import { Spacer, windowHeight, windowWidth } from "@atoms/common/common.styles";
+import { Spacer, windowHeight } from "@atoms/common/common.styles";
 import FieldTextInput from "@molecules/FieldTextInput/FieldTextInput";
 import {
   composeValidators,
@@ -19,13 +18,7 @@ import {
   mobileValidatorWeb,
   requiredValidator,
 } from "@utils/formValidators";
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  Image,
-  Platform,
-} from "react-native";
+import { StyleSheet, TouchableOpacity, Image, Platform } from "react-native";
 import PhoneInput from "react-native-phone-number-input";
 
 import { doc, getDoc, updateDoc } from "firebase/firestore";
@@ -37,7 +30,6 @@ import RNRadioButton from "@molecules/RNRadioButton";
 import RNDropdown from "@molecules/RNDropdown";
 import images from "../../../assets/index";
 import FieldPhoneNumberWeb from "@molecules/RNPhoneNumber/index.web";
-import PhoneInputWithCountrySelect from "react-phone-number-input";
 
 const ProfileForm: React.FC<ProfileFormProps> = ({ form, loading }) => {
   const { colors } = useAppTheme();

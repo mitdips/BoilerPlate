@@ -21,7 +21,6 @@ import {
 import EyeOpenIcon from "@atoms/Illustrations/EyeOpen";
 import EyeCloseIcon from "@atoms/Illustrations/EyeClose";
 import { router } from "expo-router";
-import SearchIcon from "@atoms/Illustrations/Search";
 
 const LoginForm: React.FC<LoginFormProps> = ({ form, loading }) => {
   const { colors } = useAppTheme();
@@ -78,7 +77,6 @@ const LoginForm: React.FC<LoginFormProps> = ({ form, loading }) => {
       <ButtonSubmit
         onPress={!loading && form.submit}
         loading={loading}
-        // textColor={valid ? colors.white : colors.white}
         variant={valid}
         disabled={loading}
       >
