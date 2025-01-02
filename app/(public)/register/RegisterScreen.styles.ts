@@ -4,6 +4,9 @@ import { AppTheme } from "@constants/theme";
 import { styled } from "@utils/styled";
 import { ScrollView, View } from "react-native";
 
+export const ScrollViewContainer = styled(ScrollView)`
+  background-color: ${({ theme }: { theme: AppTheme }) => theme.colors.white};
+`;
 export const SocialBtn = styled(View)`
   flex-direction: row;
   justify-content: space-between;
@@ -23,5 +26,6 @@ export const LoginFormContainer = styled(View)`
 export const RegisterText = styled(Text)`
   font-size: 16px;
   color: ${({ theme }: { theme: AppTheme }) => theme.colors.black};
-  font-weight: 600;
+  font-weight: 400;
+  align-self: flex-start;
 `;

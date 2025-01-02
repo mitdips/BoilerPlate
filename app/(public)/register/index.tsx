@@ -3,6 +3,7 @@ import { router } from "expo-router";
 import {
   LoginFormContainer,
   RegisterText,
+  ScrollViewContainer,
   SocialBtn,
 } from "./RegisterScreen.styles";
 import images from "../../../assets/index";
@@ -34,7 +35,6 @@ const Register = () => {
   };
   const onRegisterPress = async (values: RegisterFormData) => {
     const { email, password, username } = values;
-    console.log("email, password, username: ", email, password, username);
     setLoading(true);
     try {
       const userCredential = await createUserWithEmailAndPassword(
@@ -60,10 +60,7 @@ const Register = () => {
   };
 
   return (
-    <ScrollView
-      style={{ backgroundColor: colors.white }}
-      showsVerticalScrollIndicator={false}
-    >
+    <ScrollViewContainer showsVerticalScrollIndicator={false}>
       <ScreenTemplate
         img={images.registerImage}
         pagetitle={"Sign Up"}
@@ -81,20 +78,23 @@ const Register = () => {
             loading={loading}
             onSubmit={onRegisterPress}
           />
-          <RegisterText onPress={() => router.navigate("/(public)/login")}>
-            Do you have account? <LinkText> Sign In</LinkText>
+          <RegisterText>
+            Do you have account?
+            <LinkText onPress={() => router.replace("/(public)/login")}>
+              Sign In
+            </LinkText>
           </RegisterText>
         </LoginFormContainer>
       </ScreenTemplate>
       <RNModal
         title="Account Created Successfully"
         description="Your account has been created successfully. Please check your email (Also check spam) and verified"
-        button="Go To Login"
+        button1="Go To Login"
         image={images.check}
         visible={isModalVisible}
-        onPress={() => handleAccountCreated()}
+        onPress1={() => handleAccountCreated()}
       />
-    </ScrollView>
+    </ScrollViewContainer>
   );
 };
 

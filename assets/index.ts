@@ -14,4 +14,8 @@ export default {
   avatar: require("./../assets/images/avatar.png"),
   settings: require("./../assets/images/settings.png"),
   menu: require("./../assets/images/menu.png"),
+  nodata: require("../assets/images/nodata.png"),
+  logout: require("../assets/images/logout.png"),
+  deleteaccount: require("../assets/images/deleteaccount.png"),
+  changepass: require("../assets/images/changepass.png"),
 };

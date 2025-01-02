@@ -11,6 +11,7 @@ import { FireBaseAuth } from "../../../firebase";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { showError, showSuccess } from "@utils/toastMessage";
 import { router } from "expo-router";
+import { ScrollViewContainer } from "../login/LoginScreen.styles";
 const ForgotPassword = () => {
   const [loading, setLoading] = useState(false);
   const { colors } = useAppTheme();
@@ -34,10 +35,7 @@ const ForgotPassword = () => {
   };
 
   return (
-    <ScrollView
-      style={{ backgroundColor: colors.white }}
-      showsVerticalScrollIndicator={false}
-    >
+    <ScrollViewContainer showsVerticalScrollIndicator={false}>
       <ScreenTemplate
         isHeader
         img={images.forgotImage}
@@ -53,7 +51,7 @@ const ForgotPassword = () => {
           />
         </LoginFormContainer>
       </ScreenTemplate>
-    </ScrollView>
+    </ScrollViewContainer>
   );
 };
 

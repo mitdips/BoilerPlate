@@ -10,7 +10,7 @@ import {
   SettingsIcon,
   UserView,
 } from "./Home.styles";
-import images from "./../../../../assets/index";
+import images from "@assets/index";
 import BannerCarousel from "@molecules/BannerCarousel/BannerCarousel";
 import { DashboardBannerData, DummyProducts } from "@constants/dummyData";
 import List from "@organisms/List/List";
