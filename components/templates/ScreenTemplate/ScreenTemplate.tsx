@@ -39,16 +39,26 @@ const ScreenTemplate: React.FC<ScreenTemplateProps> = ({
         )}
         {moreVisible && <MoreMenuButton />}
         <ScreenTemplateView>
-          {img && pagetitle && description && (
+          {img && (
             <>
+              <Spacer size={10} />
               <ImageView source={img} />
               <Spacer size={10} />
+            </>
+          )}
+          {pagetitle && (
+            <>
               <IntroText>{pagetitle}</IntroText>
               <Spacer size={10} />
+            </>
+          )}
+          {description && (
+            <>
               <DescriptionText>{description}</DescriptionText>
               <Spacer size={10} />
             </>
           )}
+
           {children}
         </ScreenTemplateView>
       </Container>

@@ -31,8 +31,8 @@ export const SafeAreaContainer = styled(SafeAreaView)`
 export const ImageView = styled(Image)`
   display: flex;
   align-self: center;
-  height: ${windowHeight * 0.1}px;
-  width: ${windowHeight * 0.1}px;
+  height: ${windowHeight * 0.15}px;
+  width: ${windowHeight * 0.15}px;
 `;
 
 export const IntroText = styled(Text)`
