@@ -92,8 +92,9 @@ const Register = () => {
         button1="Go To Login"
         image={images.check}
         visible={isModalVisible}
-        onPress1={() => handleAccountCreated()}
-      />
+        onPress1={() => handleAccountCreated()} 
+        loading2={false}      
+        />
     </ScrollViewContainer>
   );
 };
