@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FlatList } from "react-native";
+import { FlatList, Linking, Platform } from "react-native";
 import ScreenTemplate from "@templates/ScreenTemplate/ScreenTemplate";
 import { useDispatch } from "react-redux";
 import { logout, setShowOnBoarding } from "@redux/slices/auth";
@@ -38,21 +38,33 @@ const Settings = () => {
     if (item.route) {
       router.push(item.route);
     } else if (item.action === "terms") {
-      router.push({
-        pathname: "/(public)/Webview",
-        params: {
-          headerTitle: "Terms of Service",
-          url: "https://www.termsfeed.com/live/2cc0f9b0-8f95-4c1b-9370-a86065ba80d5",
-        },
-      });
+      if (Platform.OS === "web") {
+        Linking.openURL(
+          "https://www.termsfeed.com/live/2cc0f9b0-8f95-4c1b-9370-a86065ba80d5"
+        );
+      } else {
+        router.push({
+          pathname: "/(public)/Webview",
+          params: {
+            headerTitle: "Terms of Service",
+            url: "https://www.termsfeed.com/live/2cc0f9b0-8f95-4c1b-9370-a86065ba80d5",
+          },
+        });
+      }
     } else if (item.action === "privacy") {
-      router.push({
-        pathname: "/(public)/Webview",
-        params: {
-          headerTitle: "Privacy Policy",
-          url: "https://www.freeprivacypolicy.com/live/6d7fc3e0-cf5d-46c2-8274-94ec23e48852",
-        },
-      });
+      if (Platform.OS === "web") {
+        Linking.openURL(
+          "https://www.freeprivacypolicy.com/live/6d7fc3e0-cf5d-46c2-8274-94ec23e48852"
+        );
+      } else {
+        router.push({
+          pathname: "/(public)/Webview",
+          params: {
+            headerTitle: "Privacy Policy",
+            url: "https://www.freeprivacypolicy.com/live/6d7fc3e0-cf5d-46c2-8274-94ec23e48852",
+          },
+        });
+      }
     } else if (item.action === "toggleTheme") {
     } else if (item.action === "toggleNotification") {
     } else if (item.action === "logout") {
