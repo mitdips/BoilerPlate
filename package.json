@@ -69,6 +69,7 @@
     "react-native-screens": "~4.1.0",
     "react-native-size-matters": "^0.4.2",
     "react-native-snap-carousel": "^3.9.1",
+    "react-native-star-rating-widget": "^1.9.2",
     "react-native-svg": "15.8.0",
     "react-native-toast-message": "^2.2.1",
     "react-native-toast-notifications": "^3.4.0",
