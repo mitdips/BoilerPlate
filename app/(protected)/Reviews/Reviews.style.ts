@@ -32,8 +32,7 @@ export const ReviewDetails = styled(View)`
   align-items: center;
   border-bottom-width: 1px;
   border-bottom-color: ${({ theme }: { theme: AppTheme }) =>
-    theme.colors.backdrop
-    };
+    theme.colors.backdrop};
   margin-bottom: 20px;
   margin-bottom: 20px;
 `;
@@ -46,6 +45,13 @@ export const ReviewMessage = styled(Text)`
   font-size: 16px;
 `;
 
+export const ReviewDate = styled(Text)`
+  font-size: 16px;
+  text-align: right;
+  margin: 10px;
+  color: ${({ theme }: { theme: AppTheme }) => theme.colors.backdrop};
+`;
+
 export const ActionButton = styled(TouchableOpacity)`
   position: absolute;
   height: 60px;
@@ -56,4 +62,24 @@ export const ActionButton = styled(TouchableOpacity)`
   bottom: 32px;
   justify-content: center;
   align-items: center;
+`;
+export const FilterView = styled(View)`
+  background-color: ${({ theme }: { theme: AppTheme }) => theme.colors.white};
+  padding: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  position: absolute;
+  bottom: 0;
+  width: "100%";
+`;
+
+export const FilterBtn = styled(TouchableOpacity)``;
+export const FilterName = styled(Text)`
+  font-size: 18px;
+  padding: 10px;
+`;
+
+export const NavView = styled(Text)`
+  position: absolute;
+  right: 16px;
 `;
