@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from "react";
-import {
-  Animated,
-  FlatList,
-  ScrollView,
-  TouchableOpacity,
-  ViewStyle,
-} from "react-native";
+import React, { useCallback, useEffect, useState } from "react";
+import { Animated, ScrollView, ViewStyle } from "react-native";
 import ScreenTemplate from "@templates/ScreenTemplate/ScreenTemplate";
 import {
   AppText,
+  AppVersionView,
   GreetingText,
   Head,
+  MenuFlatlist,
   MenuText,
   ProfileImage,
   ProfileImageDrawer,
@@ -26,7 +22,6 @@ import images from "@assets/index";
 import BannerCarousel from "@molecules/BannerCarousel/BannerCarousel";
 import { DashboardBannerData, DummyProducts } from "@constants/dummyData";
 import List from "@organisms/List/List";
-import { router } from "expo-router";
 import { useDispatch } from "react-redux";
 import { logout } from "@redux/slices/auth";
 import RNModal from "@molecules/RNModal";
@@ -34,7 +29,10 @@ import * as Application from "expo-application";
 import { useAppTheme } from "@constants/theme";
 import { doc, getDoc } from "firebase/firestore";
 import { FireBaseAuth, FireStoreDB } from "../../../../firebase";
-const Home = () => {
+import { router } from "expo-router";
+import DrawerList from "@molecules/DrawerList";
+
+const Home: React.FC = () => {
   const dispatch = useDispatch();
   const { colors } = useAppTheme();
   const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -46,21 +44,22 @@ const Home = () => {
   const [isLogoutModal, setIsLogoutModal] = useState(false);
   const [userDatas, setUserDatas] = useState<any | null>(null);
 
-  useEffect(() => {
-    const fetchLoggedInUser = async () => {
-      const user = FireBaseAuth.currentUser;
-      if (user) {
-        const userDocRef = doc(FireStoreDB, "users", user.uid);
-        const docSnap = await getDoc(userDocRef);
-        if (docSnap.exists()) {
-          const userData = docSnap.data();
-          setUserDatas(userData);
-        }
+  const fetchLoggedInUser = async () => {
+    const user = FireBaseAuth.currentUser;
+    if (user) {
+      const userDocRef = doc(FireStoreDB, "users", user.uid);
+      const docSnap = await getDoc(userDocRef);
+      if (docSnap.exists()) {
+        const userData = docSnap.data();
+        setUserDatas(userData);
       }
-    };
+    }
+  };
 
+  useEffect(() => {
     fetchLoggedInUser();
   }, []);
+
   const toggleDrawer = () => {
     setDrawerOpen(!drawerOpen);
     Animated.timing(drawerOffset, {
@@ -98,17 +97,14 @@ const Home = () => {
     </TouchableOpacityView>
   );
 
-  const handleLogoutModal = () => {
+  const handleLogoutModal = useCallback(() => {
     setLoading(true);
     dispatch(logout());
     router.replace("/(public)/login");
     setIsLogoutModal(false);
     setLoading(false);
-  };
+  }, [dispatch, router]);
 
-  const hanldeCancelLogoutModal = () => {
-    setIsLogoutModal(false);
-  };
   const AnimatedView: ViewStyle = {
     position: "absolute",
     top: 0,
@@ -118,30 +114,31 @@ const Home = () => {
     elevation: 5,
     zIndex: 999,
     height: "100%",
-    padding: 20,
+    padding: 30,
     shadowColor: colors.black,
     shadowOpacity: 0.5,
     shadowRadius: 5,
     transform: [{ translateX: drawerOffset }],
   };
 
-  const containerFlatListStyle = {
-    marginVertical: 20,
-  };
   return (
     <ScreenTemplate>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{
+          flex: 1,
+        }}
+      >
         <Head>
           <UserView>
             <ProfileImageView>
-              <ProfileImage source={images.avatar} />
+              <ProfileImage source={images.avatar} resizeMode="cover" />
             </ProfileImageView>
             <GreetingText>Hello, {userDatas?.username}</GreetingText>
           </UserView>
-          <SettingsButton>
-            <TouchableOpacity onPress={toggleDrawer}>
-              <SettingsIcon source={images.settings} />
-            </TouchableOpacity>
+          <SettingsButton onPress={toggleDrawer}>
+            <SettingsIcon source={images.settings} />
           </SettingsButton>
         </Head>
         <BannerCarousel data={DashboardBannerData} />
@@ -155,7 +152,7 @@ const Home = () => {
           button2="Logout"
           image={images.logout}
           visible={isLogoutModal}
-          onPress1={hanldeCancelLogoutModal}
+          onPress1={() => setIsLogoutModal(false)}
           onPress2={handleLogoutModal}
           loading2={loading}
         />
@@ -165,15 +162,26 @@ const Home = () => {
           <ProfileImageDrawer source={images.avatar} />
           <UserText>{userDatas?.username}</UserText>
         </ProfilView>
-
-        <FlatList
+        <MenuFlatlist
           data={menuItems}
           renderItem={renderMenuItem}
-          keyExtractor={(item) => item.title}
-          contentContainerStyle={containerFlatListStyle}
+          keyExtractor={(item: { title: string }) => item.title}
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
         />
+        {appVersion && (
+          <AppVersionView>
+            <AppText>V {appVersion}</AppText>
+          </AppVersionView>
+        )}
 
-        {appVersion && <AppText>App Version: {appVersion}</AppText>}
+        {/* <DrawerList
+          name={userDatas?.username}
+          avtar={images.avatar}
+          list={menuItems}
+          closeDrawer={() => toggleDrawer()}
+          closeMenu={() => setIsLogoutModal(true)}
+        /> */}
       </Animated.View>
     </ScreenTemplate>
   );

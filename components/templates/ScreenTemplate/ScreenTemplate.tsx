@@ -58,7 +58,6 @@ const ScreenTemplate: React.FC<ScreenTemplateProps> = ({
               <Spacer size={10} />
             </>
           )}
-
           {children}
         </ScreenTemplateView>
       </Container>

@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React, { forwardRef } from "react";
 import { FieldTextInputProps } from "./FieldTextInput.props";
 import TextInput from "@atoms/TextInput/TextInput";
@@ -5,7 +6,7 @@ import FormError from "@atoms/FormError/FormError";
 import { useAppTheme } from "@constants/theme";
 import { CustomTextInputProps } from "@atoms/TextInput/TextInput.props";
 import { InputErrorContainer } from "@atoms/TextInput/TextInput.styles";
-import { TextStyle, ViewStyle } from "react-native";
+import { TextStyle } from "react-native";
 
 const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
   (
@@ -26,7 +27,6 @@ const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
     },
     ref
   ) => {
-    console.log("multiline: ", multiline);
     const { colors } = useAppTheme();
     const handleOnChange = (value: string) => {
       if (keyboardType === "numeric") {
@@ -55,10 +55,6 @@ const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
       borderRadius: 10,
     };
 
-    const containerStyle = {
-      isWidth,
-      invalidValue: !!(meta.touched && meta.error),
-    };
     return (
       <>
         <InputErrorContainer

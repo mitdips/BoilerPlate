@@ -1,6 +1,6 @@
 import { AppTheme } from "@constants/theme";
 import { styled } from "@utils/styled";
-import { Image, Platform, Text, View } from "react-native";
+import { Image, Text, View } from "react-native";
 
 export const Container = styled(View)`
   height: 200px;
@@ -15,17 +15,6 @@ export const ProductImage = styled(Image)`
   width: 150px;
   object-fit: cover;
   border-radius: 10px;
-  ${Platform.select({
-    ios: `
-      shadow-color: ${({ theme }: { theme: AppTheme }) => theme.colors.black};
-      shadow-offset: {width: 10px, height: 10px};
-      shadow-opacity: 0.25;
-      shadow-radius: 20px;
-    `,
-    android: `
-      elevation: 10;
-    `,
-  })};
 `;
 
 export const ProductDetails = styled(View)`

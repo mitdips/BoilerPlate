@@ -10,8 +10,10 @@ import { sendPasswordResetEmail } from "firebase/auth";
 import { showError, showSuccess } from "@utils/toastMessage";
 import { router } from "expo-router";
 import { ScrollViewContainer } from "../login/LoginScreen.styles";
-const ForgotPassword = () => {
+
+const ForgotPassword: React.FC = () => {
   const [loading, setLoading] = useState(false);
+
   const onForgotPress = async (values: ForgotPasswordFormData) => {
     const { email } = values;
     setLoading(true);

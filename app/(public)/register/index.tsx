@@ -23,7 +23,8 @@ import {
 import { doc, setDoc } from "firebase/firestore";
 import { showError, showSuccess } from "@utils/toastMessage";
 import RNModal from "@molecules/RNModal";
-const Register = () => {
+
+const Register: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const handleAccountCreated = () => {

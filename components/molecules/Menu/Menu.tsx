@@ -6,8 +6,15 @@ import {
   MenuOption,
 } from "react-native-popup-menu";
 import { MenuIcon, MenuOptionText } from "./Menu.style";
+import { MenuProps, optionsData } from "./Menu.props";
+import { ViewStyle } from "react-native";
 
-const Menu = (props: any) => {
+const MenyOpetionStyles: ViewStyle = {
+  justifyContent: "flex-start",
+  alignItems: "flex-start",
+};
+
+const Menu: React.FC<MenuProps> = (props: MenuProps) => {
   return (
     <RNMenu>
       <MenuTrigger>
@@ -15,12 +22,16 @@ const Menu = (props: any) => {
       </MenuTrigger>
       <MenuOptions
         customStyles={{
-          optionsContainer: { width: 100 },
+          optionsContainer: { width: "20%" },
         }}
       >
-        {props.options.map((item: any) => {
+        {props.options.map((item: optionsData) => {
           return (
-            <MenuOption onSelect={item.callback} key={item.id}>
+            <MenuOption
+              onSelect={item.callback}
+              key={item.id}
+              style={MenyOpetionStyles}
+            >
               <MenuOptionText>{item.title}</MenuOptionText>
             </MenuOption>
           );

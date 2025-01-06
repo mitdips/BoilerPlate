@@ -12,7 +12,7 @@ export default function TabLayout() {
   const { colors } = useAppTheme();
 
   const iconColors = colors.backdrop;
-  const isFocused = (focus) => {
+  const isFocused = (focus: boolean) => {
     return focus ? colors.main : iconColors;
   };
 
