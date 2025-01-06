@@ -4,6 +4,11 @@ import TitleWithButton from "@molecules/TitleWithButton/TitleWithButton";
 import { router } from "expo-router";
 import {
   ActionButton,
+  ApplyButton,
+  ApplyText,
+  ButtonView,
+  ClearButton,
+  ClearText,
   FilterBtn,
   FilterName,
   FilterView,
@@ -22,28 +27,30 @@ import {
   FlatList,
   Modal,
   Pressable,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import PlusIcon from "@atoms/Illustrations/PlusIcon";
 import { useAppTheme } from "@constants/theme";
 import moment from "moment";
+import { FilterModal } from "@molecules/FilterModal/FilterModal";
+
 const Reviews = () => {
   const { colors } = useAppTheme();
   const [loading, setLoading] = useState(false);
-  const [reviews, setReviews] = useState<ArrayLike<any>>();
-  console.log("reviews: ", reviews);
+  const [reviews, setReviews] = useState<any>();
   const [filterModalVisible, setFilterModalVisible] = useState(false);
+  const [selectedFilter, setSelectedFilter] = useState("date_desc");
   const [sortOption, setSortOption] = useState("date_desc");
 
-  console.log("reviews: ", reviews);
   const fetchReviews = async () => {
     setLoading(true);
     const reviewsCollectionRef = collection(FireStoreDB, "reviews");
     const querySnapshot = await getDocs(reviewsCollectionRef);
-    setReviews(
-      querySnapshot.docs.flatMap(
-        (doc) => doc.data().reviewMessages?.map((item: any) => item) || []
-      )
+    const fetchedReviews = querySnapshot.docs.flatMap(
+      (doc) => doc.data().reviewMessages?.map((item: any) => item) || []
     );
+    setReviews(fetchedReviews);
     setLoading(false);
   };
 
@@ -53,9 +60,9 @@ const Reviews = () => {
 
   const handleAddReview = () => router.navigate("/(protected)/AddReview");
 
-  const handleSort = (option: React.SetStateAction<string>) => {
+  const applyFilters = (res: any) => {
     let sortedReviews = [...reviews];
-    switch (option) {
+    switch (res) {
       case "rating_asc":
         sortedReviews.sort((a, b) => a.rating - b.rating);
         break;
@@ -76,9 +83,17 @@ const Reviews = () => {
         break;
     }
     setReviews(sortedReviews);
-    setSortOption(option);
+    setSortOption(res);
     setFilterModalVisible(false);
   };
+
+  const clearFilters = () => {
+    setSelectedFilter("date_desc");
+    setSortOption("date_desc");
+    setFilterModalVisible(false);
+    applyFilters("date_desc");
+  };
+
   const toDate = (timestamp: { seconds: number; nanoseconds: number }) => {
     return new Date(timestamp.seconds * 1000);
   };
@@ -92,9 +107,9 @@ const Reviews = () => {
         <FlatList
           data={reviews}
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ marginVertical: 15 }}
+          scrollEnabled={true}
+          contentContainerStyle={{ paddingBottom: 20 }}
           renderItem={({ item, index }) => {
-            console.log("item: ", item?.timestamp);
             return (
               <Review key={index}>
                 <ReviewDetails>
@@ -114,32 +129,19 @@ const Reviews = () => {
         <PlusIcon onPress={handleAddReview} color={colors.black} />
       </ActionButton>
 
-      <Modal
-        transparent={true}
-        animationType="slide"
+      <FilterModal
         visible={filterModalVisible}
-        onRequestClose={() => setFilterModalVisible(false)}
-      >
-        <Pressable
-          style={{ flex: 1, backgroundColor: "rgba(0, 0, 0, 0.5)" }}
-          onPress={() => setFilterModalVisible(false)}
-        />
-        <FilterView>
-          <ReviewerName>Sort By</ReviewerName>
-          <FilterBtn onPress={() => handleSort("rating_asc")}>
-            <FilterName>Rating (Low to High)</FilterName>
-          </FilterBtn>
-          <FilterBtn onPress={() => handleSort("rating_desc")}>
-            <FilterName>Rating (High to Low)</FilterName>
-          </FilterBtn>
-          <FilterBtn onPress={() => handleSort("date_asc")}>
-            <FilterName>Date (Oldest First)</FilterName>
-          </FilterBtn>
-          <FilterBtn onPress={() => handleSort("date_desc")}>
-            <FilterName>Date (Newest First)</FilterName>
-          </FilterBtn>
-        </FilterView>
-      </Modal>
+        onClose={() => setFilterModalVisible(false)}
+        onApply={(res) => applyFilters(res)}
+        onClear={clearFilters}
+        selectedFilter={selectedFilter}
+        filters={[
+          { label: "Rating (Low to High)", value: "rating_asc" },
+          { label: "Rating (High to Low)", value: "rating_desc" },
+          { label: "Date (Oldest First)", value: "date_asc" },
+          { label: "Date (Newest First)", value: "date_desc" },
+        ]}
+      />
     </ScreenTemplate>
   );
 };

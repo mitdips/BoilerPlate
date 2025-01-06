@@ -1,3 +1,4 @@
+import { windowHeight, windowWidth } from "@atoms/common/common.styles";
 import Button from "@atoms/Button/Button";
 import { AppTheme } from "@constants/theme";
 import { styled } from "@utils/styled";
