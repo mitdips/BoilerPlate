@@ -24,5 +24,5 @@ export const ButtonSubmit = styled(Button)<{ variant: boolean }>`
 `;
 
 export const RatingView = styled(View)`
-  align-items: center;
+  align-items: flex-start;
 `;

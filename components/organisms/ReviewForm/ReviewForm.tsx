@@ -52,8 +52,8 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ loading, form }) => {
           requiredValidator("Review", value)
         )}
         multiline
-        numberOfLines={8}
-        contentStyle={{ marginTop: -10 }}
+        numberOfLines={5}
+        // contentStyle={{ marginTop: -10 }}
       />
       <Spacer size={16} />
       <RatingView>
