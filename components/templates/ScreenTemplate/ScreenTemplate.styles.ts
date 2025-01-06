@@ -41,10 +41,3 @@ export const IntroText = styled(Text)`
   font-weight: 700;
   text-align: center;
 `;
-
-export const DescriptionText = styled(Text)`
-  color: ${({ theme }: { theme: AppTheme }) => theme.colors.gray};
-  font-size: 14px;
-  font-weight: 400;
-  text-align: center;
-`;

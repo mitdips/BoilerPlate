@@ -1,7 +1,6 @@
 import React from "react";
 import {
   Container,
-  DescriptionText,
   ImageView,
   IntroText,
   SafeAreaContainer,
@@ -9,7 +8,6 @@ import {
 } from "./ScreenTemplate.styles";
 import { ScreenTemplateProps } from "./ScreenTemplate.props";
 import TitleWithButton from "@molecules/TitleWithButton/TitleWithButton";
-import MoreMenuButton from "@molecules/MoreMenuButton/MoreMenuButton";
 import { useAppTheme } from "@constants/theme";
 import StatusBar from "@atoms/StatusBar";
 import { Spacer } from "@atoms/common/common.styles";
@@ -17,14 +15,12 @@ import { Spacer } from "@atoms/common/common.styles";
 const ScreenTemplate: React.FC<ScreenTemplateProps> = ({
   children,
   backgroundColor,
-  moreVisible,
   title,
   onBackPress,
   statusBarColor,
   isHeader,
   img,
   pagetitle,
-  description,
 }) => {
   const { colors } = useAppTheme();
   return (
@@ -37,7 +33,6 @@ const ScreenTemplate: React.FC<ScreenTemplateProps> = ({
         {!!isHeader && (
           <TitleWithButton text={title} onBackPress={onBackPress} />
         )}
-        {moreVisible && <MoreMenuButton />}
         <ScreenTemplateView>
           {img && (
             <>
@@ -52,13 +47,6 @@ const ScreenTemplate: React.FC<ScreenTemplateProps> = ({
               <Spacer size={10} />
             </>
           )}
-          {description && (
-            <>
-              <DescriptionText>{description}</DescriptionText>
-              <Spacer size={10} />
-            </>
-          )}
-
           {children}
         </ScreenTemplateView>
       </Container>

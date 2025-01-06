@@ -1,31 +1,44 @@
-import { windowHeight } from "@atoms/common/common.styles";
 import Text from "@atoms/Text/Text";
 import { AppTheme } from "@constants/theme";
 import { styled } from "@utils/styled";
 import { ScrollView, View } from "react-native";
 
-export const ScrollViewContainer = styled(ScrollView)`
+export const ScrollViewContainer = styled(ScrollView).attrs(() => ({
+  contentContainerStyle: {
+    flex: 1,
+  },
+}))`
   background-color: ${({ theme }: { theme: AppTheme }) => theme.colors.white};
+  flex: 1;
 `;
+
 export const SocialBtn = styled(View)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 `;
 
-export const LoginFormContainer = styled(View)`
-  border-top-right-radius: 24px;
-  border-top-left-radius: 24px;
+export const RegisterFormContainer = styled(View)`
   padding: 16px;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: ${windowHeight * 0.025}px;
+  flex: 1;
+`;
+
+export const RegisterBottomView = styled(View)`
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  flex: 1;
 `;
 
 export const RegisterText = styled(Text)`
   font-size: 16px;
   color: ${({ theme }: { theme: AppTheme }) => theme.colors.black};
-  font-weight: 400;
-  align-self: flex-start;
+`;
+
+export const LinkText = styled(Text)`
+  font-size: 16px;
+  color: ${({ theme }: { theme: AppTheme }) => theme.colors.main};
 `;

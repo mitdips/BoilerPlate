@@ -6,7 +6,6 @@ export type ScreenTemplateProps = {
   safeAreaProps?: SafeAreaViewProps;
   backgroundColor?: string;
   addButtonText?: string;
-  moreVisible?: boolean;
   onAddButtonPress?: () => void;
   title?: string;
   onBackPress?: () => void;
