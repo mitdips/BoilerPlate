@@ -18,8 +18,10 @@ import { StarRatingDisplay } from "react-native-star-rating-widget";
 import { FlatList } from "react-native";
 import images from "../../../assets";
 import PlusIcon from "@atoms/Illustrations/PlusIcon";
+import { useAppTheme } from "@constants/theme";
 
 const Reviews = () => {
+  const { colors } = useAppTheme();
   const [loading, setLoading] = useState(false);
   const [reviews, setReviews] = useState<ArrayLike<any>>();
   console.log("reviews: ", reviews);
@@ -71,7 +73,7 @@ const Reviews = () => {
         />
       </ReviewsContainer>
       <ActionButton>
-        <PlusIcon onPress={handleAddReview} />
+        <PlusIcon onPress={handleAddReview} color={colors.black} />
       </ActionButton>
     </ScreenTemplate>
   );
