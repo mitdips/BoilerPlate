@@ -1,4 +1,4 @@
-import { View, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity, TouchableHighlight } from "react-native";
 import Text from "@atoms/Text/Text";
 import { AppTheme } from "@constants/theme";
 import { styled } from "@utils/styled";
@@ -18,6 +18,8 @@ export const CardView = styled(TouchableOpacity)`
   border-bottom-color: ${({ theme }: { theme: AppTheme }) =>
     theme.colors.backdrop};
   border-bottom-width: 1.2px;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 export const CardText = styled(Text)`
@@ -32,4 +34,8 @@ export const UserListText = styled(Text)`
   color: ${({ theme }: { theme: AppTheme }) => theme.colors.black};
   margin-bottom: 20px;
   text-align: center;
+`;
+
+export const AngleRightView = styled(TouchableHighlight)`
+  border-radius: 16px;
 `;

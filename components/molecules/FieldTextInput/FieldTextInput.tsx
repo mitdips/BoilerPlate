@@ -26,6 +26,7 @@ const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
     },
     ref
   ) => {
+    console.log("multiline: ", multiline);
     const { colors } = useAppTheme();
     const handleOnChange = (value: string) => {
       if (keyboardType === "numeric") {
@@ -44,6 +45,7 @@ const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
       borderWidth: 1,
       borderColor: meta.touched && meta.error ? "red" : colors.textinput,
       borderRadius: 10,
+      textAlignVertical: multiline && "top",
       height: multiline && 100,
     };
 
@@ -70,7 +72,7 @@ const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
             onChangeText={handleOnChange}
             error={meta.touched && meta.error}
             autoCapitalize="none"
-            style={rest?.style || inputStyle}
+            style={inputStyle}
             textColor={colors.placeholderTextColor}
             enterKeyHint="done"
             autoCorrect={false}
@@ -83,6 +85,7 @@ const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
               },
             }}
             right={right}
+            multiline={multiline}
             secureTextEntry={rest?.secureTextEntry}
             placeholderTextColor={colors.placeholderTextColor}
             outlineStyle={outlineStyle}
