@@ -23,7 +23,8 @@ import {
 import { doc, setDoc } from "firebase/firestore";
 import { showError, showSuccess } from "@utils/toastMessage";
 import RNModal from "@molecules/RNModal";
-const Register = () => {
+
+const Register: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const handleAccountCreated = () => {
@@ -83,15 +84,17 @@ const Register = () => {
           </RegisterText>
         </LoginFormContainer>
       </ScreenTemplate>
-      <RNModal
-        title="Account Created Successfully"
-        description="Your account has been created successfully. Please check your email (Also check spam) and verified"
-        button1="Go To Login"
-        image={images.check}
-        visible={isModalVisible}
-        onPress1={() => handleAccountCreated()}
-        loading2={false}
-      />
+      {isModalVisible && (
+        <RNModal
+          title="Account Created Successfully"
+          description="Your account has been created successfully. Please check your email (Also check spam) and verified"
+          button1="Go To Login"
+          image={images.check}
+          visible={isModalVisible}
+          onPress1={() => handleAccountCreated()}
+          loading2={false}
+        />
+      )}
     </ScrollViewContainer>
   );
 };

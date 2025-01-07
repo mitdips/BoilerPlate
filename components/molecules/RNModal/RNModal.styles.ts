@@ -1,6 +1,5 @@
 import { styled } from "@utils/styled";
 import { Image, Modal } from "react-native";
-import { Pagination } from "react-native-snap-carousel";
 import { scale } from "react-native-size-matters";
 import View from "@atoms/View/View";
 import Text from "@atoms/Text/Text";
@@ -8,17 +7,19 @@ import { AppTheme } from "@constants/theme";
 import Button from "@atoms/Button/Button";
 import { windowHeight, windowWidth } from "@atoms/common/common.styles";
 
-export const AbsoluteView = styled(Modal)`
+export const AbsoluteView = styled(View)`
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: ${({ theme }: { theme: AppTheme }) => theme.colors.gray};
+  background-color: ${({ theme }: { theme: AppTheme }) =>
+    theme.colors.backdrop};
 `;
 
 export const CenteredView = styled(View)`
   flex: 1;
   justify-content: center;
   align-items: center;
+  background-color: "rgba(0, 0, 0, 0.5)";
 `;
 
 export const ModalView = styled(View)`
@@ -44,6 +45,7 @@ export const SuccessIcon = styled(Image)`
   width: ${windowHeight * 0.15}px;
   height: ${windowHeight * 0.15}px;
   margin-bottom: 10px;
+  object-fit: contain;
 `;
 
 export const Title = styled(Text)`
