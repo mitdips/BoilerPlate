@@ -99,7 +99,7 @@ const Settings = () => {
     {
       id: "6",
       title: "Terms and Conditions",
-      route: "/settings/terms",
+      action: "terms",
       rightComponent: () => (
         <AngleRightView
           onPress={() => console.log("Next screen")}
@@ -112,7 +112,7 @@ const Settings = () => {
     {
       id: "7",
       title: "Privacy Policy",
-      route: "/settings/privacy",
+      action: "privacy",
       rightComponent: () => (
         <AngleRightView
           onPress={() => console.log("Next screen")}
