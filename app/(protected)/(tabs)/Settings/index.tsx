@@ -62,10 +62,7 @@ const Settings = () => {
       title: "Change Password",
       route: "(protected)/ChangePassword",
       rightComponent: () => (
-        <AngleRightView
-          onPress={() => console.log("Next screen")}
-          underlayColor={colors.skyBlue}
-        >
+        <AngleRightView underlayColor={colors.skyBlue}>
           <AngleRight />
         </AngleRightView>
       ),
@@ -75,10 +72,7 @@ const Settings = () => {
       title: "Reviews & Feedback",
       route: "/(protected)/Reviews",
       rightComponent: () => (
-        <AngleRightView
-          onPress={() => console.log("Next screen")}
-          underlayColor={colors.skyBlue}
-        >
+        <AngleRightView underlayColor={colors.skyBlue}>
           <AngleRight />
         </AngleRightView>
       ),
@@ -88,10 +82,7 @@ const Settings = () => {
       title: "Contact Us",
       route: "(protected)/ContactUS",
       rightComponent: () => (
-        <AngleRightView
-          onPress={() => console.log("Next screen")}
-          underlayColor={colors.skyBlue}
-        >
+        <AngleRightView underlayColor={colors.skyBlue}>
           <AngleRight />
         </AngleRightView>
       ),
@@ -101,10 +92,7 @@ const Settings = () => {
       title: "Terms and Conditions",
       action: "terms",
       rightComponent: () => (
-        <AngleRightView
-          onPress={() => console.log("Next screen")}
-          underlayColor={colors.skyBlue}
-        >
+        <AngleRightView underlayColor={colors.skyBlue}>
           <AngleRight />
         </AngleRightView>
       ),
@@ -114,10 +102,7 @@ const Settings = () => {
       title: "Privacy Policy",
       action: "privacy",
       rightComponent: () => (
-        <AngleRightView
-          onPress={() => console.log("Next screen")}
-          underlayColor={colors.skyBlue}
-        >
+        <AngleRightView underlayColor={colors.skyBlue}>
           <AngleRight />
         </AngleRightView>
       ),

@@ -36,6 +36,6 @@ export const UserListText = styled(Text)`
   text-align: center;
 `;
 
-export const AngleRightView = styled(TouchableHighlight)`
+export const AngleRightView = styled(View)`
   border-radius: 16px;
 `;

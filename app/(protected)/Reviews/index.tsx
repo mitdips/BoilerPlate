@@ -13,6 +13,7 @@ import {
   FilterName,
   FilterView,
   NavView,
+  NavViewContainer,
   Review,
   ReviewDate,
   ReviewDetails,
@@ -99,16 +100,18 @@ const Reviews = () => {
   };
   return (
     <ScreenTemplate>
-      <TitleWithButton text="Reviews" onBackPress={router.back} />
-      <NavView onPress={() => setFilterModalVisible(true)}>
-        <ReviewerName>...</ReviewerName>
-      </NavView>
+      <NavViewContainer>
+        <TitleWithButton text="Reviews" onBackPress={router.back} />
+        <NavView onPress={() => setFilterModalVisible(true)}>
+          <ReviewerName>⋮</ReviewerName>
+        </NavView>
+      </NavViewContainer>
       <ReviewsContainer>
         <FlatList
           data={reviews}
           showsVerticalScrollIndicator={false}
           scrollEnabled={true}
-          contentContainerStyle={{ paddingBottom: 20 }}
+          contentContainerStyle={{ paddingBottom: 10 }}
           renderItem={({ item, index }) => {
             return (
               <Review key={index}>
@@ -126,7 +129,7 @@ const Reviews = () => {
         />
       </ReviewsContainer>
       <ActionButton>
-        <PlusIcon onPress={handleAddReview} color={colors.black} />
+        <PlusIcon onPress={handleAddReview} color={colors.main} />
       </ActionButton>
 
       <FilterModal
