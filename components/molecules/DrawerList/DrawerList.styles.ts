@@ -2,6 +2,11 @@ import { AppTheme } from "@constants/theme";
 import { FlatList, Image, Pressable, Text, View } from "react-native";
 import { styled } from "@utils/styled";
 
+export const ViewContainer = styled(View)`
+  flex: 1;
+  height: 100%;
+`;
+
 export const ProfilView = styled(View)`
   align-items: center;
   margin-bottom: 20px;

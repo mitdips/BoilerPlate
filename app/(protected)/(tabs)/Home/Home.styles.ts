@@ -1,5 +1,12 @@
 import { AppTheme } from "@constants/theme";
-import { FlatList, Image, Pressable, Text, View } from "react-native";
+import {
+  FlatList,
+  Image,
+  Pressable,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { styled } from "@utils/styled";
 
 export const Head = styled(View)`
@@ -9,6 +16,54 @@ export const Head = styled(View)`
   align-items: center;
   padding: 16px;
   width: "100%";
+`;
+
+export const DropdownContainer = styled(View)`
+  z-index: 1000;
+  margin: 16px;
+`;
+
+export const SelectedView = styled(View)`
+  margin: 16px;
+  padding: 16px;
+  background-color: ${({ theme }: { theme: AppTheme }) => theme.colors.white};
+  border-radius: 8px;
+  border-color: ${({ theme }: { theme: AppTheme }) => theme.colors.backdrop};
+  border-width: 1px;
+`;
+
+export const SelectedText = styled(Text)`
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: ${({ theme }: { theme: AppTheme }) => theme.colors.black};
+`;
+
+export const TouchableOpacityItem = styled(TouchableOpacity)`
+  background-color: ${({ theme }: { theme: AppTheme }) => theme.colors.error};
+  border-radius: 4px;
+  padding: 4px 8px;
+`;
+
+export const RemoveText = styled(Text)`
+  font-size: 12px;
+  color: ${({ theme }: { theme: AppTheme }) => theme.colors.white};
+`;
+
+export const ItemView = styled(View)`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom-width: 1px;
+  border-top-width: 2px;
+  border-bottom-color: ${({ theme }: { theme: AppTheme }) =>
+    theme.colors.backdrop};
+`;
+export const ItemText = styled(Text)`
+  font-size: 14px;
+  color: ${({ theme }: { theme: AppTheme }) => theme.colors.black};
+  font-weight: 700;
 `;
 
 export const UserView = styled(View)`
@@ -48,6 +103,12 @@ export const SettingsButton = styled(Pressable)`
   align-items: center;
 `;
 
+export const HeaderText = styled(Text)`
+  font-size: 18px;
+  padding: 8px 0px;
+  font-weight: 600;
+  color: ${({ theme }: { theme: AppTheme }) => theme.colors.black};
+`;
 export const SettingsIcon = styled(Image)`
   height: 20px;
   width: 20px;
