@@ -30,6 +30,7 @@ import RNRadioButton from "@molecules/RNRadioButton";
 import RNDropdown from "@molecules/RNDropdown";
 import images from "../../../assets/index";
 import FieldPhoneNumberWeb from "@molecules/RNPhoneNumber/index.web";
+import DropDownPicker from "react-native-dropdown-picker";
 
 const ProfileForm: React.FC<ProfileFormProps> = ({ form, loading }) => {
   const { colors } = useAppTheme();
@@ -199,6 +200,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ form, loading }) => {
             requiredValidator("hobby", value)
           )}
         />
+
         <Spacer size={16} />
       </LoginFormContainer>
 

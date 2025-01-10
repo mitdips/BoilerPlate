@@ -10,6 +10,7 @@ import {
   ProfilView,
   TouchableOpacityView,
   UserText,
+  ViewContainer,
 } from "./DrawerList.styles";
 import { router } from "expo-router";
 
@@ -36,24 +37,27 @@ const DrawerList: React.FC<DrawerListProps> = ({
   }: {
     item: { title: string; route: string };
     index: number;
-  }) => (
-    <TouchableOpacityView
-      key={index}
-      onPress={() => {
-        if (item.title === "Logout") {
-          closeMenu();
-        } else {
-          router.navigate(item.route);
-        }
-        closeDrawer();
-      }}
-    >
-      <MenuText>{item.title}</MenuText>
-    </TouchableOpacityView>
-  );
+  }) => {
+    return (
+      <TouchableOpacityView
+        key={index}
+        onPress={() => {
+          console.log("item.route---->>>>", item?.route);
+          if (item.title === "Logout") {
+            closeMenu();
+          } else {
+            router.navigate(item.route);
+          }
+          closeDrawer();
+        }}
+      >
+        <MenuText>{item.title}</MenuText>
+      </TouchableOpacityView>
+    );
+  };
 
   return (
-    <View>
+    <ViewContainer>
       <ProfilView>
         <ProfileImageDrawer source={avtar} />
         <UserText>{name}</UserText>
@@ -70,7 +74,7 @@ const DrawerList: React.FC<DrawerListProps> = ({
           <AppText>V {version}</AppText>
         </AppVersionView>
       )}
-    </View>
+    </ViewContainer>
   );
 };
 

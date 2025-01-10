@@ -15,12 +15,16 @@ export const AddReviewButton = styled(Button)`
 `;
 
 export const ReviewsContainer = styled(View)`
-  margin: 16px;
+  margin: 2px 16px;
   flex: 1;
 `;
 
+export const NavViewContainer = styled(View)`
+  justify-content: center;
+  align-items: center;
+`;
 export const Review = styled(View)`
-  margin: 16px 0px;
+  margin: 8px 0px;
   background-color: ${({ theme }: { theme: AppTheme }) =>
     theme.colors.textinput};
   padding: 16px;
@@ -53,13 +57,13 @@ export const ReviewDate = styled(Text)`
   color: ${({ theme }: { theme: AppTheme }) => theme.colors.backdrop};
 `;
 
-export const ActionButton = styled(TouchableOpacity)`
+export const ActionButton = styled(View)`
   position: absolute;
   height: 60px;
   width: 60px;
-  border-radius: 30px;
-  bottom: 0;
-  right: 0;
+  border-radius: 100px;
+  bottom: 10px;
+  right: 10px;
   justify-content: center;
   align-items: center;
 `;

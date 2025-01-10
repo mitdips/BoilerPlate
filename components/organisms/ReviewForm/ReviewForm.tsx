@@ -53,7 +53,6 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ loading, form }) => {
         )}
         multiline
         numberOfLines={5}
-        // contentStyle={{ marginTop: -10 }}
       />
       <Spacer size={16} />
       <RatingView>

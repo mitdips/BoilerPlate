@@ -11,14 +11,18 @@ const ProtectedLayout = () => {
     >
       <Stack.Screen name="ProductList" options={{ headerShown: false }} />
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen
+      {/* <Stack.Screen
         name="(protected)/ContactUs"
+        options={{ headerShown: false }}
+      /> */}
+      {/* <Stack.Screen
+        name="(protected)/FeedBack"
         options={{ headerShown: false }}
       />
       <Stack.Screen
         name="(protected)/ChangePassword"
         options={{ headerShown: false }}
-      />
+      /> */}
     </Stack>
   );
 };

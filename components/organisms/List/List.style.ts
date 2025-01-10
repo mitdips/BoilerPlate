@@ -1,3 +1,4 @@
+import { AppTheme } from "@constants/theme";
 import { styled } from "@utils/styled";
 import { Text, View } from "react-native";
 
@@ -12,4 +13,6 @@ export const HeaderText = styled(Text)`
   font-size: 18px;
   padding: 8px 0px;
   font-weight: 600;
+  color: ${({ theme }: { theme: AppTheme }) => theme.colors.black};
+  margin-bottom: 5px;
 `;
