@@ -9,7 +9,7 @@ import {
   LoginFormView,
 } from "../LoginForm/LoginForm.styles";
 import { useAppTheme } from "@constants/theme";
-import { Spacer, windowWidth } from "@atoms/common/common.styles";
+import { Spacer } from "@atoms/common/common.styles";
 import FieldTextInput from "@molecules/FieldTextInput/FieldTextInput";
 import {
   complexPasswordValidator,
@@ -21,9 +21,6 @@ import {
 import EyeOpenIcon from "@atoms/Illustrations/EyeOpen";
 import EyeCloseIcon from "@atoms/Illustrations/EyeClose";
 import { RegisterFormProps } from "./RegisterForm.props";
-import { Text, View } from "react-native";
-// import Checkbox from "@atoms/Checkbox/Checkbox";
-import RNWebview from "@molecules/RNWebview";
 import Checkbox from "expo-checkbox";
 import { router } from "expo-router";
 
@@ -88,7 +85,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ form, loading }) => {
 
       <CheckboxView>
         <Checkbox
-          style={{ margin: 8 }}
+          style={{ margin: 8, marginTop: 0 }}
           value={checked}
           onValueChange={setChecked}
           color={checked ? colors.main : undefined}
@@ -101,7 +98,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ form, loading }) => {
                 pathname: "/(public)/Webview",
                 params: {
                   headerTitle: "Terms of Service",
-                  url: "https://www.freeprivacypolicy.com/live/6d7fc3e0-cf5d-46c2-8274-94ec23e48852",
+                  url: "https://www.termsfeed.com/live/2cc0f9b0-8f95-4c1b-9370-a86065ba80d5",
                 },
               })
             }
@@ -129,7 +126,6 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ form, loading }) => {
       <ButtonSubmit
         onPress={!loading && form.submit}
         loading={loading}
-        textColor={valid ? colors.white : colors.white}
         variant={valid}
         disabled={loading}
       >

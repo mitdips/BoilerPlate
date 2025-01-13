@@ -16,9 +16,8 @@ import {
 import { showError, showSuccess } from "@utils/toastMessage";
 const ChangePassword = () => {
   const [loading, setLoading] = useState(false);
-  const { colors } = useAppTheme();
   const onChangePasswordBtnPress = async (values: ChangePasswordFormValues) => {
-    const { confirmpassword, oldpassword, password } = values;
+    const { oldpassword, password } = values;
     setLoading(true);
 
     try {
@@ -48,7 +47,6 @@ const ChangePassword = () => {
 
       showSuccess("Password updated successfully!");
     } catch (error: any) {
-      console.log("error: ", error);
       if (error.code === "auth/wrong-password") {
         showError("Incorrect old password.");
       } else if (error.code === "auth/weak-password") {

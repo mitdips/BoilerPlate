@@ -15,8 +15,6 @@ import RegisterForm from "@organisms/RegisterForm/RegisterForm";
 import FormTemplate from "@templates/FormTemplate/FormTemplate";
 import { LinkText } from "@organisms/LoginForm/LoginForm.styles";
 import ScreenTemplate from "@templates/ScreenTemplate/ScreenTemplate";
-import { ScrollView } from "react-native";
-import { useAppTheme } from "@constants/theme";
 import { FireBaseAuth, FireStoreDB } from "../../../firebase";
 import {
   createUserWithEmailAndPassword,
@@ -25,9 +23,9 @@ import {
 import { doc, setDoc } from "firebase/firestore";
 import { showError, showSuccess } from "@utils/toastMessage";
 import RNModal from "@molecules/RNModal";
-const Register = () => {
+
+const Register: React.FC = () => {
   const [loading, setLoading] = useState(false);
-  const { colors } = useAppTheme();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const handleAccountCreated = () => {
     setIsModalVisible(false);
@@ -86,14 +84,17 @@ const Register = () => {
           </RegisterText>
         </LoginFormContainer>
       </ScreenTemplate>
-      <RNModal
-        title="Account Created Successfully"
-        description="Your account has been created successfully. Please check your email (Also check spam) and verified"
-        button1="Go To Login"
-        image={images.check}
-        visible={isModalVisible}
-        onPress1={() => handleAccountCreated()}
-      />
+      {isModalVisible && (
+        <RNModal
+          title="Account Created Successfully"
+          description="Your account has been created successfully. Please check your email (Also check spam) and verified"
+          button1="Go To Login"
+          image={images.check}
+          visible={isModalVisible}
+          onPress1={() => handleAccountCreated()}
+          loading2={false}
+        />
+      )}
     </ScrollViewContainer>
   );
 };

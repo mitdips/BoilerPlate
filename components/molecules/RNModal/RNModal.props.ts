@@ -9,4 +9,6 @@ export interface ModalProps {
   onPress1: () => void;
   button2?: string;
   onPress2?: () => void;
+  loading1?: boolean;
+  loading2: boolean;
 }

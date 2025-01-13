@@ -12,7 +12,6 @@ import {
 const FieldPhoneNumber = forwardRef<PhoneInput, RNPhoneNumberProps>(
   ({ input, meta, countryCode, setCountryCode, ...rest }, ref) => {
     const { colors } = useAppTheme();
-    const [mobileError, setMobileError] = useState<string | null>(null);
     const [mobile, setMobile] = useState(input.value || "");
 
     const [defaultCountry, setDefaultCountry] = useState(setCountryCode?.cca2);

@@ -26,6 +26,7 @@ export const DefaultTheme = {
     inActiveCarouselPage: "#D6DFFF",
     textinput: "#F5F9FE",
     transparent: "rgba(255, 255, 255, 0.08)",
+    inActive: "#cccccc",
   },
 };
 
@@ -51,6 +52,7 @@ export const DarkTheme: AppTheme = {
     inActiveCarouselPage: "#D6DFFF",
     textinput: "#F5F9FE",
     transparent: "rgba(255, 255, 255, 0.08)",
+    inActive: "#cccccc",
   },
 };
 

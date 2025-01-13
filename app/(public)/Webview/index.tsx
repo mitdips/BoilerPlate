@@ -1,4 +1,4 @@
-import { Text, ScrollView, View } from "react-native";
+import { Text, ScrollView, View, Platform, Linking } from "react-native";
 import React from "react";
 import { useAppTheme } from "@constants/theme";
 import ScreenTemplate from "@templates/ScreenTemplate/ScreenTemplate";
@@ -22,6 +22,10 @@ const Webview: React.FC<WebViewProps> = () => {
         </ScreenTemplate>
       </ScrollView>
     );
+  }
+
+  if (Platform.OS === "web") {
+    Linking.openURL(url);
   }
   return (
     <ScreenTemplate isHeader title={headerTitle}>

@@ -12,7 +12,7 @@ export default function TabLayout() {
   const { colors } = useAppTheme();
 
   const iconColors = colors.backdrop;
-  const isFocused = (focus) => {
+  const isFocused = (focus: boolean) => {
     return focus ? colors.main : iconColors;
   };
 
@@ -34,7 +34,11 @@ export default function TabLayout() {
           },
           android: {
             height: 60,
-            paddingBottom: 5,
+            paddingBottom: 10,
+            borderWidth: 1,
+          },
+          web: {
+            height: 60,
             borderWidth: 1,
           },
         }),

@@ -7,7 +7,7 @@ export const RNFlatList = styled(FlatList).attrs(() => ({
     justifyContent: "space-around",
   },
 }))`
-  flex-grow: 0;
+  flex-grow: 0px;
 `;
 
 export const SeeAllText = styled(Text)`

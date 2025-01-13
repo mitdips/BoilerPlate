@@ -1,7 +1,5 @@
-import { View, Text, Modal, Image } from "react-native";
 import React from "react";
 import { ModalProps } from "./RNModal.props";
-import { BlurView } from "@react-native-community/blur";
 import {
   AbsoluteView,
   BtnConainer,
@@ -15,8 +13,6 @@ import {
   SuccessIcon,
   Title,
 } from "./RNModal.styles";
-import images from "../../../assets/index";
-import { ButtonSubmit } from "@organisms/LoginForm/LoginForm.styles";
 import { useAppTheme } from "@constants/theme";
 const RNModal: React.FC<ModalProps> = ({
   visible,
@@ -27,6 +23,8 @@ const RNModal: React.FC<ModalProps> = ({
   onPress1,
   button2,
   onPress2,
+  loading1,
+  loading2,
 }) => {
   const { colors } = useAppTheme();
   return (
@@ -39,15 +37,27 @@ const RNModal: React.FC<ModalProps> = ({
             <Description>{description}</Description>
             {button1 && button2 ? (
               <BtnConainer>
-                <GoToLoginBtn2 onPress={onPress1} textColor={colors.main}>
+                <GoToLoginBtn2
+                  onPress={onPress1}
+                  textColor={colors.main}
+                  loading={loading1}
+                >
                   {button1}
                 </GoToLoginBtn2>
-                <GoToLoginBtn1 onPress={onPress2} textColor={colors.white}>
+                <GoToLoginBtn1
+                  onPress={onPress2}
+                  textColor={colors.white}
+                  loading={loading2}
+                >
                   {button2}
                 </GoToLoginBtn1>
               </BtnConainer>
             ) : (
-              <GoToLoginBtn onPress={onPress1} textColor={colors.white}>
+              <GoToLoginBtn
+                onPress={onPress1}
+                textColor={colors.white}
+                loading={loading2}
+              >
                 {button1}
               </GoToLoginBtn>
             )}

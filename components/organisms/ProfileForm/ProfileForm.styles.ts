@@ -28,6 +28,7 @@ export const ButtonSubmit = styled(Button)<{ variant: boolean }>`
     variant: boolean;
   }) => (variant ? theme.colors.main : theme.colors.main)};
   border-radius: 12px;
+  position: relative;
 `;
 
 export const PrivateKeyTextInput = styled(Field)`

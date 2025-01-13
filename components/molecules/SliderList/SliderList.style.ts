@@ -3,7 +3,7 @@ import { styled } from "@utils/styled";
 import { FlatList, Text } from "react-native";
 
 export const RNFlatList = styled(FlatList)`
-  flex-grow: 0;
+  flex-grow: 0px;
 `;
 
 export const SeeAllText = styled(Text)`

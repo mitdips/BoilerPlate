@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React, { forwardRef } from "react";
 import { FieldTextInputProps } from "./FieldTextInput.props";
 import TextInput from "@atoms/TextInput/TextInput";
@@ -5,7 +6,7 @@ import FormError from "@atoms/FormError/FormError";
 import { useAppTheme } from "@constants/theme";
 import { CustomTextInputProps } from "@atoms/TextInput/TextInput.props";
 import { InputErrorContainer } from "@atoms/TextInput/TextInput.styles";
-import { TextStyle, ViewStyle } from "react-native";
+import { TextStyle } from "react-native";
 
 const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
   (
@@ -21,6 +22,7 @@ const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
       password,
       isWidth,
       label,
+      multiline,
       ...rest
     },
     ref
@@ -43,6 +45,8 @@ const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
       borderWidth: 1,
       borderColor: meta.touched && meta.error ? "red" : colors.textinput,
       borderRadius: 10,
+      textAlignVertical: multiline && "top",
+      height: multiline && 100,
     };
 
     const outlineStyle = {
@@ -51,10 +55,6 @@ const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
       borderRadius: 10,
     };
 
-    const containerStyle = {
-      isWidth,
-      invalidValue: !!(meta.touched && meta.error),
-    };
     return (
       <>
         <InputErrorContainer
@@ -68,7 +68,7 @@ const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
             onChangeText={handleOnChange}
             error={meta.touched && meta.error}
             autoCapitalize="none"
-            style={rest?.style || inputStyle}
+            style={inputStyle}
             textColor={colors.placeholderTextColor}
             enterKeyHint="done"
             autoCorrect={false}
@@ -81,6 +81,7 @@ const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
               },
             }}
             right={right}
+            multiline={multiline}
             secureTextEntry={rest?.secureTextEntry}
             placeholderTextColor={colors.placeholderTextColor}
             outlineStyle={outlineStyle}
