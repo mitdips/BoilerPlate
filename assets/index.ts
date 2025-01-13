@@ -19,3 +19,5 @@ export default {
   deleteaccount: require("../assets/images/deleteaccount.png"),
   changepass: require("../assets/images/changepass.png"),
 };
+
+//images added success

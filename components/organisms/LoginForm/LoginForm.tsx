@@ -29,7 +29,6 @@ const LoginForm: React.FC<LoginFormProps> = ({ form, loading }) => {
   return (
     <LoginFormView>
       <LoginFormContainer>
-
         <Field
           name="email"
           placeholder={"Email Address"}
