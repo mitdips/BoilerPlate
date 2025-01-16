@@ -4,7 +4,7 @@ import { useAppTheme } from "@constants/theme";
 import Goole from "@atoms/Illustrations/google";
 import { windowWidth } from "@atoms/common/common.styles";
 
-const GoogleButton = () => {
+const GoogleButton = ({ onPress }) => {
   const { colors } = useAppTheme();
   return (
     <Button
@@ -16,8 +16,7 @@ const GoogleButton = () => {
         fontWeight: 600,
         color: colors.placeholderTextColor,
       }}
-      onPress={() => {
-      }}
+      onPress={onPress}
       style={{ width: windowWidth / 2.2 }}
       uppercase={false}
     >

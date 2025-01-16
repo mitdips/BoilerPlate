@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { router } from "expo-router";
 import {
   LoginFormContainer,
@@ -21,6 +21,11 @@ import { FireBaseAuth, FireStoreDB } from "../../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { userData, userToken } from "@redux/slices/auth";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as Google from "expo-auth-session/providers/google";
+import * as WebBrowser from "expo-web-browser";
+
+WebBrowser.maybeCompleteAuthSession();
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -78,6 +83,59 @@ const Login = () => {
       setLoading(false);
     }
   };
+
+  const [token, setToken] = useState("");
+  const [userInfo, setUserInfo] = useState(null);
+
+  const [request, response, promptAsync] = Google.useAuthRequest({
+    androidClientId:
+      "106330118056-v3d4verqsfsjglpo11ffum0nihq7grg7.apps.googleusercontent.com",
+    iosClientId:
+      "106330118056-1d9tuj6j2regpkumlftaca0iepprrigi.apps.googleusercontent.com",
+    webClientId:
+      "106330118056-fvtfuc36tnnvpaekul43e2f9ptm0ghuh.apps.googleusercontent.com",
+  });
+
+  useEffect(() => {
+    handleEffect();
+  }, [response, token]);
+
+  async function handleEffect() {
+    const user = await getLocalUser();
+    console.log("user", user);
+    if (!user) {
+      if (response?.type === "success") {
+        // setToken(response.authentication.accessToken);
+        getUserInfo(response.authentication.accessToken);
+      }
+    } else {
+      setUserInfo(user);
+      console.log("loaded locally");
+    }
+  }
+
+  const getLocalUser = async () => {
+    const data = await AsyncStorage.getItem("@user");
+    if (!data) return null;
+    return JSON.parse(data);
+  };
+
+  const getUserInfo = async (token: any) => {
+    if (!token) return;
+    try {
+      const response = await fetch(
+        "https://www.googleapis.com/userinfo/v2/me",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      const user = await response.json();
+      await AsyncStorage.setItem("@user", JSON.stringify(user));
+      setUserInfo(user);
+    } catch (error) {}
+  };
+
   return (
     <ScrollViewContainer showsVerticalScrollIndicator={false}>
       <ScreenTemplate
@@ -88,7 +146,7 @@ const Login = () => {
       >
         <LoginFormContainer>
           <SocialBtn>
-            <GoogleButton />
+            <GoogleButton onPress={() => promptAsync()} />
             <FacebookButton />
           </SocialBtn>
           <OrView />
