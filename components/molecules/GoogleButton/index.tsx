@@ -4,7 +4,12 @@ import { useAppTheme } from "@constants/theme";
 import Goole from "@atoms/Illustrations/google";
 import { windowWidth } from "@atoms/common/common.styles";
 
-const GoogleButton = ({ onPress }) => {
+interface GoogleProps {
+  onPress: () => void;
+  title: string
+}
+
+const GoogleButton: React.FC<GoogleProps> = ({ onPress, title }) => {
   const { colors } = useAppTheme();
   return (
     <Button
@@ -14,13 +19,13 @@ const GoogleButton = ({ onPress }) => {
       labelStyle={{
         fontSize: 16,
         fontWeight: 600,
-        color: colors.placeholderTextColor,
+        color: colors.black,
       }}
       onPress={onPress}
       style={{ width: windowWidth / 2.2 }}
       uppercase={false}
     >
-      Google
+      {title}
     </Button>
   );
 };

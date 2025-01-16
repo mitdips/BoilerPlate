@@ -21,13 +21,12 @@ import { FireBaseAuth, FireStoreDB } from "../../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { userData, userToken } from "@redux/slices/auth";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as Google from "expo-auth-session/providers/google";
 import * as WebBrowser from "expo-web-browser";
 
 WebBrowser.maybeCompleteAuthSession();
 
-const Login = () => {
+const Login: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const onLoginPress = async (values: LoginFormData) => {
@@ -69,6 +68,7 @@ const Login = () => {
       showSuccess("Login Successful!");
       router.replace("/(protected)/(tabs)/Home");
     } catch (error: any) {
+      console.log('error login ', error)
       if (error.code === "auth/user-not-found") {
         showError("No user found with this email.");
       } else if (error.code === "auth/wrong-password") {
@@ -84,41 +84,21 @@ const Login = () => {
     }
   };
 
-  const [token, setToken] = useState("");
-  const [userInfo, setUserInfo] = useState(null);
 
   const [request, response, promptAsync] = Google.useAuthRequest({
     androidClientId:
-      "106330118056-v3d4verqsfsjglpo11ffum0nihq7grg7.apps.googleusercontent.com",
+      "106330118056-fcu52l7cmsk98jsuuiuljqn1rgv51mm8.apps.googleusercontent.com",
     iosClientId:
-      "106330118056-1d9tuj6j2regpkumlftaca0iepprrigi.apps.googleusercontent.com",
+      "106330118056-4r6k6jr5ts0ujsb5ie7v2ssrn5dc9acs.apps.googleusercontent.com",
     webClientId:
       "106330118056-fvtfuc36tnnvpaekul43e2f9ptm0ghuh.apps.googleusercontent.com",
   });
 
   useEffect(() => {
-    handleEffect();
-  }, [response, token]);
-
-  async function handleEffect() {
-    const user = await getLocalUser();
-    console.log("user", user);
-    if (!user) {
-      if (response?.type === "success") {
-        // setToken(response.authentication.accessToken);
-        getUserInfo(response.authentication.accessToken);
-      }
-    } else {
-      setUserInfo(user);
-      console.log("loaded locally");
+    if (response?.type === "success") {
+      getUserInfo(response?.authentication?.accessToken);
     }
-  }
-
-  const getLocalUser = async () => {
-    const data = await AsyncStorage.getItem("@user");
-    if (!data) return null;
-    return JSON.parse(data);
-  };
+  }, [response]);
 
   const getUserInfo = async (token: any) => {
     if (!token) return;
@@ -131,9 +111,12 @@ const Login = () => {
       );
 
       const user = await response.json();
-      await AsyncStorage.setItem("@user", JSON.stringify(user));
-      setUserInfo(user);
-    } catch (error) {}
+      console.log('userInfo: ', user);
+      const loginPress = { email: user?.email, password: 'ips@123' }
+      onLoginPress(loginPress)
+    } catch (error) {
+      console.log('error', error)
+    }
   };
 
   return (
@@ -146,7 +129,7 @@ const Login = () => {
       >
         <LoginFormContainer>
           <SocialBtn>
-            <GoogleButton onPress={() => promptAsync()} />
+            <GoogleButton onPress={() => promptAsync()} title={'Google SignIn'} />
             <FacebookButton />
           </SocialBtn>
           <OrView />
