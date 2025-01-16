@@ -50,8 +50,12 @@ import { router } from "expo-router";
 import DrawerList from "@molecules/DrawerList";
 import DropDownPicker from "react-native-dropdown-picker";
 import { windowHeight } from "@atoms/common/common.styles";
-
+import { usePushNotifications } from "@hooks/usePushNotification";
+import messaging from "@react-native-firebase/messaging";
 const Home: React.FC = () => {
+  const { expoPushToken, notification } = usePushNotifications();
+  const data = JSON.stringify(notification, undefined, 2);
+
   const dispatch = useDispatch();
   const { colors } = useAppTheme();
   const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -71,8 +75,13 @@ const Home: React.FC = () => {
       }
     }
   };
-
+  const getDeviceToken = async () => {
+    await messaging().registerDeviceForRemoteMessages();
+    const token = await messaging().getToken();
+    console.log("token: ", token);
+  };
   useEffect(() => {
+    getDeviceToken();
     fetchLoggedInUser();
   }, []);
 
@@ -175,7 +184,8 @@ const Home: React.FC = () => {
           </SettingsButton>
         </Head>
         <BannerCarousel data={DashboardBannerData} />
-
+        <Text>Token: {expoPushToken?.data ?? ""}</Text>
+        <Text>Notification: {data}</Text>
         <DropdownContainer>
           <HeaderText>Select Your Interest</HeaderText>
           <DropDownPicker

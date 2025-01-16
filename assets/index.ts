@@ -18,6 +18,7 @@ export default {
   logout: require("../assets/images/logout.png"),
   deleteaccount: require("../assets/images/deleteaccount.png"),
   changepass: require("../assets/images/changepass.png"),
+  headerImg: require("../assets/images/headerImg.png"),
 };
 
 //images added success

@@ -58,7 +58,10 @@
       }
     },
     "extra": {
-      "ENABLE_USER_SCRIPT_SANDBOXING": false
+      "ENABLE_USER_SCRIPT_SANDBOXING": false,
+      "eas": {
+        "projectId": "boilerplate-55148"
+      }
     },
     "plugins": [
       "expo-router",

@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import React, { forwardRef } from "react";
+import React, { forwardRef, useState } from "react";
 import { FieldTextInputProps } from "./FieldTextInput.props";
 import TextInput from "@atoms/TextInput/TextInput";
 import FormError from "@atoms/FormError/FormError";
@@ -28,6 +28,9 @@ const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
     ref
   ) => {
     const { colors } = useAppTheme();
+    console.log("meta: ", meta);
+    const [blur, setBlur] = useState<boolean>(false);
+    const [focus, setFocus] = useState<boolean>(false);
     const handleOnChange = (value: string) => {
       if (keyboardType === "numeric") {
         const pattern = isFloatValue ? /^\s*\d*\.?\d*\s*$/ : /^\s*\d*\d*\s*$/;
@@ -43,7 +46,12 @@ const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
     const inputStyle: TextStyle = {
       backgroundColor: "#F5F9FE",
       borderWidth: 1,
-      borderColor: meta.touched && meta.error ? "red" : colors.textinput,
+      borderColor:
+        meta.touched && meta.error
+          ? "red"
+          : focus
+          ? colors.main
+          : colors.textinput,
       borderRadius: 10,
       textAlignVertical: multiline && "top",
       height: multiline && 100,
@@ -85,6 +93,11 @@ const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
             secureTextEntry={rest?.secureTextEntry}
             placeholderTextColor={colors.placeholderTextColor}
             outlineStyle={outlineStyle}
+            onBlur={() => {
+              setBlur(true);
+              setFocus(false);
+            }}
+            onFocus={() => setFocus(true)}
             {...rest}
           />
         </InputErrorContainer>
