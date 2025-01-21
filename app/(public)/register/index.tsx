@@ -77,7 +77,7 @@ const Register: React.FC = () => {
             onSubmit={onRegisterPress}
           />
           <RegisterText>
-            Do you have account?
+            {`Do you have account? `}
             <LinkText onPress={() => router.replace("/(public)/login")}>
               Sign In
             </LinkText>
