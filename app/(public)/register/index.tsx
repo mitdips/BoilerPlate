@@ -16,10 +16,10 @@ import RegisterForm from "@organisms/RegisterForm/RegisterForm";
 import FormTemplate from "@templates/FormTemplate/FormTemplate";
 import { LinkText } from "@organisms/LoginForm/LoginForm.styles";
 import ScreenTemplate from "@templates/ScreenTemplate/ScreenTemplate";
-import { FireBaseAuth, FireStoreDB } from "../../../firebase";
 import { showError, showSuccess } from "@utils/toastMessage";
 import RNModal from "@molecules/RNModal";
 import { registerUser } from "@api/auth";
+import { Spacer } from "@atoms/common/common.styles";
 
 const Register: React.FC = () => {
   const [loading, setLoading] = useState(false);
