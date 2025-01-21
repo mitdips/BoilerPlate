@@ -13,9 +13,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <TouchableWithoutFeedback onPress={() => {}}>
       <Container>
-        <ProductImage source={product.image} />
+        <ProductImage source={{ uri: product.image }} />
         <ProductDetails>
-          <ProductName numberOfLines={2}>{product.productName}</ProductName>
+          <ProductName numberOfLines={2}>{product.title}</ProductName>
           <ProductPrice numberOfLines={2}>${product.price}</ProductPrice>
         </ProductDetails>
       </Container>

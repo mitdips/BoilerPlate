@@ -1,48 +1,29 @@
 import React, { useCallback, useEffect, useState } from "react";
-import {
-  Animated,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextStyle,
-  TouchableOpacity,
-  View,
-  ViewStyle,
-} from "react-native";
+import { Animated, ScrollView, TextStyle, ViewStyle } from "react-native";
 import ScreenTemplate from "@templates/ScreenTemplate/ScreenTemplate";
 import {
-  AppText,
-  AppVersionView,
   DropdownContainer,
   GreetingText,
   Head,
   HeaderText,
   ItemText,
   ItemView,
-  MenuFlatlist,
-  MenuText,
   ProfileImage,
-  ProfileImageDrawer,
   ProfileImageView,
-  ProfilView,
   RemoveText,
   SelectedText,
   SelectedView,
   SettingsButton,
   SettingsIcon,
   TouchableOpacityItem,
-  TouchableOpacityView,
-  UserText,
   UserView,
 } from "./Home.styles";
 import images from "@assets/index";
 import BannerCarousel from "@molecules/BannerCarousel/BannerCarousel";
-import { DashboardBannerData, DummyProducts } from "@constants/dummyData";
+import { DashboardBannerData } from "@constants/dummyData";
 import List from "@organisms/List/List";
-import { useDispatch } from "react-redux";
 import { logout } from "@redux/slices/auth";
 import RNModal from "@molecules/RNModal";
-import * as Application from "expo-application";
 import { useAppTheme } from "@constants/theme";
 import { doc, getDoc } from "firebase/firestore";
 import { FireBaseAuth, FireStoreDB } from "../../../../firebase";
@@ -50,9 +31,14 @@ import { router } from "expo-router";
 import DrawerList from "@molecules/DrawerList";
 import DropDownPicker from "react-native-dropdown-picker";
 import { windowHeight } from "@atoms/common/common.styles";
+import { getProductsAction } from "@redux/actions/product";
+import { RootState, useAppDispatch, useSelector } from "@redux/store";
 
 const Home: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+  const { data: productData } = useSelector(
+    (state: RootState) => state.product
+  );
   const { colors } = useAppTheme();
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const drawerOffset = React.useRef(new Animated.Value(-300)).current;
@@ -120,7 +106,6 @@ const Home: React.FC = () => {
   };
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState<string[]>([]);
-  console.log("value: ", value);
   const [items, setItems] = useState([
     { label: "Reading", value: "reading" },
     { label: "Traveling", value: "traveling" },
@@ -157,6 +142,11 @@ const Home: React.FC = () => {
     fontWeight: "600",
     color: colors.placeholderTextColor,
   };
+
+  useEffect(() => {
+    dispatch(getProductsAction({}));
+  }, []);
+
   return (
     <ScreenTemplate>
       <ScrollView
@@ -215,7 +205,7 @@ const Home: React.FC = () => {
             ))}
           </SelectedView>
         )}
-        <List data={DummyProducts} hasMenu={true} headerTitle="Top Products" />
+        <List data={productData} hasMenu={true} headerTitle="Top Products" />
       </ScrollView>
       {isLogoutModal && (
         <RNModal

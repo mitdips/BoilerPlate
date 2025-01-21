@@ -1,13 +1,14 @@
 import React from "react";
 import ProductCard from "@atoms/ProductCard/ProductCard";
-import { DataItem, GridListProps } from "./GridList.props";
+import { GridListProps } from "./GridList.props";
 import { RNFlatList } from "./GridList.style";
+import { ProductType } from "@type/redux/slices/product";
 
 const GridList: React.FC<GridListProps> = ({ data, scrollEnabled }) => {
   return (
     <RNFlatList
       data={data}
-      renderItem={({ item }: { item: DataItem }) => {
+      renderItem={({ item }: { item: ProductType }) => {
         return <ProductCard product={item} />;
       }}
       showsVerticalScrollIndicator={false}
