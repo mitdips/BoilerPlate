@@ -46,7 +46,7 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = memo(
         <PaperProvider theme={currentThemes} children={children} />
       </StyledThemeProvider>
     );
-  }
+  },
 );
 
 export default ThemeProvider;

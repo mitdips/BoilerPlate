@@ -5,6 +5,7 @@ import { isRunningInExpoGo } from "expo";
 import { useSelector } from "react-redux";
 import { RootState } from "@redux/store";
 import { View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
 // import { View } from "react-native";
 
 SplashScreen.preventAutoHideAsync();

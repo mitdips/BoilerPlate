@@ -9,10 +9,12 @@ import * as rp from "redux-persist";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import authReducer, { AuthState } from "./slices/auth";
 import themeReducer, { ThemeState } from "./slices/theme";
+import ProductReducer, { ProductState } from "./slices/product";
 
 export interface RootState {
   auth: AuthState;
   theme: ThemeState;
+  product: ProductState;
 }
 
 const persistConfig = {
@@ -25,6 +27,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   auth: authReducer,
   theme: themeReducer,
+  product: ProductReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

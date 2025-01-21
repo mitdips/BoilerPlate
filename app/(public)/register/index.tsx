@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { router } from "expo-router";
 import {
-  LoginFormContainer,
+  RegisterBottomView,
+  RegisterFormContainer,
   RegisterText,
   ScrollViewContainer,
   SocialBtn,
@@ -44,30 +45,30 @@ const Register: React.FC = () => {
 
   return (
     <ScrollViewContainer showsVerticalScrollIndicator={false}>
-      <ScreenTemplate
-        img={images.registerImage}
-        pagetitle={"Sign Up"}
-        description="It was popularised in the 1960s with the release of Letraset
-      sheetscontaining Lorem Ipsum."
-      >
-        <LoginFormContainer>
-          <SocialBtn>
-            <GoogleButton />
-            <FacebookButton />
-          </SocialBtn>
-          <OrView />
+      <ScreenTemplate img={images.registerImage} pagetitle={"Sign Up"}>
+        <RegisterFormContainer>
           <FormTemplate
             Component={RegisterForm}
             loading={loading}
             onSubmit={onRegisterPress}
           />
-          <RegisterText>
-            Do you have account?
-            <LinkText onPress={() => router.replace("/(public)/login")}>
-              Sign In
-            </LinkText>
-          </RegisterText>
-        </LoginFormContainer>
+          <Spacer size={20} />
+          <OrView />
+          <Spacer size={20} />
+          <SocialBtn>
+            <GoogleButton />
+            <FacebookButton />
+          </SocialBtn>
+          <Spacer size={20} />
+          <RegisterBottomView>
+            <RegisterText>
+              {"Do you have account? "}
+              <LinkText onPress={() => router.replace("/(public)/login")}>
+                Sign In
+              </LinkText>
+            </RegisterText>
+          </RegisterBottomView>
+        </RegisterFormContainer>
       </ScreenTemplate>
       {isModalVisible && (
         <RNModal

@@ -8,5 +8,5 @@ export const ListComponent = styled(FlatList).attrs(
       gap: 10,
       marginVertical: 10,
     },
-  })
+  }),
 )``;

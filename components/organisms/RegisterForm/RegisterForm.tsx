@@ -39,7 +39,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ form, loading }) => {
           keyboardType="default"
           validate={composeValidators(
             (value) => requiredValidator("Username", value),
-            (value) => minLengthValidator("Username", value)
+            (value) => minLengthValidator("Username", value),
           )}
         />
         <Spacer size={16} />
@@ -51,7 +51,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ form, loading }) => {
           validate={composeValidators(
             (value) => requiredValidator("Email address", value),
             (value) => minLengthValidator("Email address", value),
-            emailValidator
+            emailValidator,
           )}
         />
         <Spacer size={16} />
@@ -64,7 +64,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ form, loading }) => {
           validate={composeValidators(
             (value) => requiredValidator("Password", value),
             (value) => minLengthValidator("Password", value),
-            complexPasswordValidator
+            complexPasswordValidator,
           )}
           right={() =>
             secure ? (

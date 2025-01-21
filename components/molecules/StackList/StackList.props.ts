@@ -1,11 +1,6 @@
-export type DataItem = {
-  productId: number;
-  image: string;
-  productName: string;
-  price: number;
-};
+import { ProductType } from "@type/redux/slices/product";
 
-export type ListData = DataItem[];
+export type ListData = ProductType[] | null;
 
 export type StackListProps = {
   data: ListData;

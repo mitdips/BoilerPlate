@@ -14,9 +14,9 @@ const ProductTile = ({ product }: ProductTileProps) => {
   return (
     <TouchableWithoutFeedback onPress={() => {}}>
       <Container>
-        <ProductImage source={product.image} />
+        <ProductImage source={{ uri: product.image }} />
         <ProductDetails>
-          <ProductName numberOfLines={2}>{product.productName}</ProductName>
+          <ProductName numberOfLines={2}>{product.title}</ProductName>
           <Spacer size={10} />
           <ProductPrice numberOfLines={2}>${product.price}</ProductPrice>
         </ProductDetails>

@@ -87,7 +87,6 @@ export default function RootLayout() {
           <MenuProvider>
             {/* Provide context for pop-up menus */}
             <ThemeProvider>
-  
               {/* Provide theme context */}
               {/* Conditionally render NotificationListener for non-web platforms */}
               {/* {!isWeb && <NotificationListener />} */}

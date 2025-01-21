@@ -5,104 +5,58 @@ import {
   RegisterText,
   ScrollViewContainer,
   SocialBtn,
+  LinkText,
+  RegisterBottomView,
 } from "./LoginScreen.styles";
 import images from "../../../assets/index";
-import { LoginFormData } from "./LoginScreen.props";
 import GoogleButton from "@molecules/GoogleButton";
 import FacebookButton from "@molecules/FacebookButton";
 import OrView from "@molecules/OrView";
 import FormTemplate from "@templates/FormTemplate/FormTemplate";
 import LoginForm from "@organisms/LoginForm/LoginForm";
-import { LinkText } from "@organisms/LoginForm/LoginForm.styles";
 import ScreenTemplate from "@templates/ScreenTemplate/ScreenTemplate";
-import { showError, showSuccess } from "@utils/toastMessage";
-import { useDispatch } from "react-redux";
-import { FireBaseAuth, FireStoreDB } from "../../../firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
-import { userData, userToken } from "@redux/slices/auth";
+import { Spacer } from "@atoms/common/common.styles";
+import { useAppDispatch } from "@redux/store";
+import * as WebBrowser from "expo-web-browser";
+import { loginAction } from "@redux/actions/auth";
+import { LoginFormData } from "./LoginScreen.props";
 
-const Login = () => {
+WebBrowser.maybeCompleteAuthSession();
+
+const Login: React.FC = () => {
   const [loading, setLoading] = useState(false);
-  const dispatch = useDispatch();
-  const onLoginPress = async (values: LoginFormData) => {
-    const { email, password } = values;
+  const dispatch = useAppDispatch();
+
+  const onLoginPress = (values: LoginFormData) => {
     setLoading(true);
-    try {
-      const userCredential = await signInWithEmailAndPassword(
-        FireBaseAuth,
-        email,
-        password
-      );
-      const user = userCredential.user;
-
-      if (!user.emailVerified) {
-        showError("Please verify your email before logging in.");
-        setLoading(false);
-        await FireBaseAuth.signOut();
-        return;
-      }
-
-      const token = await user.getIdToken();
-      dispatch(userToken(token));
-
-      const userDocRef = doc(FireStoreDB, "users", user.uid);
-      const userDocSnap = await getDoc(userDocRef);
-
-      if (userDocSnap.exists()) {
-        const userDataFromFirestore = userDocSnap.data();
-        dispatch(userData(userDataFromFirestore));
-      } else {
-        dispatch(
-          userData({
-            uid: user.uid,
-            email: user.email,
-          })
-        );
-      }
-      setLoading(false);
-      showSuccess("Login Successful!");
-      router.replace("/(protected)/(tabs)/Home");
-    } catch (error: any) {
-      if (error.code === "auth/user-not-found") {
-        showError("No user found with this email.");
-      } else if (error.code === "auth/wrong-password") {
-        showError("Incorrect password.");
-      } else if (error.code === "auth/invalid-email") {
-        showError("Invalid email address.");
-      } else if (error.code === "auth/invalid-credential") {
-        showError("Invalid Credential");
-      } else {
-        showError("An error occurred. Please try again.");
-      }
-      setLoading(false);
-    }
+    loginAction(values).finally(() => setLoading(false));
   };
+
   return (
     <ScrollViewContainer showsVerticalScrollIndicator={false}>
-      <ScreenTemplate
-        img={images.loginImage}
-        pagetitle={"Sign In"}
-        description="It was popularised in the 1960s with the release of Letraset
-        sheetscontaining Lorem Ipsum."
-      >
+      <ScreenTemplate img={images.loginImage} pagetitle={"Sign In"}>
         <LoginFormContainer>
-          <SocialBtn>
-            <GoogleButton />
-            <FacebookButton />
-          </SocialBtn>
-          <OrView />
           <FormTemplate
             Component={LoginForm}
             loading={loading}
             onSubmit={onLoginPress}
           />
-          <RegisterText>
-            Don’t have account?
-            <LinkText onPress={() => router.navigate("/(public)/register")}>
-              Sign Up
-            </LinkText>
-          </RegisterText>
+          <Spacer size={20} />
+          <OrView />
+          <Spacer size={20} />
+          <SocialBtn>
+            <GoogleButton />
+            <FacebookButton />
+          </SocialBtn>
+          <Spacer size={20} />
+          <RegisterBottomView>
+            <RegisterText>
+              {"Don’t have account? "}
+              <LinkText onPress={() => router.navigate("/(public)/register")}>
+                Sign Up
+              </LinkText>
+            </RegisterText>
+          </RegisterBottomView>
         </LoginFormContainer>
       </ScreenTemplate>
     </ScrollViewContainer>

@@ -8,7 +8,7 @@ export const composeValidators =
   (value: any, allValues: any, meta: any) =>
     validators.reduce(
       (error, validator) => error || validator(value, allValues, meta),
-      undefined
+      undefined,
     );
 
 export const requiredValidator = (field: string, value: any) => {
@@ -37,7 +37,7 @@ export const emailOrPhoneValidator = (value: any, allValues: any) => {
 
 export const confirmPasswordValidator = (
   confirmPassword: string,
-  allValues: any
+  allValues: any,
 ) => {
   return confirmPassword === allValues.password
     ? undefined
@@ -66,7 +66,7 @@ export const websiteLinkValidator = (value: string) => {
   if (
     value &&
     !/^(?:(?:https?|ftp):\/\/)(?:\w+(?::\w+)?@)?(?:(?:[a-z0-9-\.]+\.[a-z]{2,})(?:[-a-z0-9+\._\%\!\\[\]\(\)\,\*\?\&\=\:]*){1,})|(?:(?:25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?))(?:[:\/#][^#]*)?$/.test(
-      value
+      value,
     )
   ) {
     return "Field must be a website link only";

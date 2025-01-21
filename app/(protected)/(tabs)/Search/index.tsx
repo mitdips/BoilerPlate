@@ -52,7 +52,7 @@ const Search = () => {
     setSearch(text);
     if (text.length > 0) {
       const filtered = users.filter((user) =>
-        user.username.toLowerCase().includes(text.toLowerCase())
+        user.username.toLowerCase().includes(text.toLowerCase()),
       );
       setFilteredUsers(filtered);
     } else {

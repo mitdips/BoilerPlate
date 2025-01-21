@@ -25,7 +25,7 @@ const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
       multiline,
       ...rest
     },
-    ref
+    ref,
   ) => {
     const { colors } = useAppTheme();
     const handleOnChange = (value: string) => {
@@ -97,7 +97,7 @@ const FieldTextInput = forwardRef<CustomTextInputProps, FieldTextInputProps>(
         )}
       </>
     );
-  }
+  },
 );
 
 export default FieldTextInput;

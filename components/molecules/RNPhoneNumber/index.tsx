@@ -100,7 +100,7 @@ const FieldPhoneNumber = forwardRef<PhoneInput, RNPhoneNumberProps>(
         {errorText}
       </>
     );
-  }
+  },
 );
 
 export default FieldPhoneNumber;

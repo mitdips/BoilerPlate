@@ -86,7 +86,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ form, loading }) => {
 
       const imageRef = ref(
         storage,
-        `profileImages/${new Date().toISOString()}`
+        `profileImages/${new Date().toISOString()}`,
       );
       const response = await fetch(selectedImage);
       const blob = await response.blob();
@@ -130,7 +130,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ form, loading }) => {
           keyboardType="default"
           validate={composeValidators(
             (value) => requiredValidator("Username", value),
-            (value) => minLengthValidator("Username", value)
+            (value) => minLengthValidator("Username", value),
           )}
         />
         <Spacer size={16} />
@@ -144,7 +144,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ form, loading }) => {
           validate={composeValidators(
             (value) => requiredValidator("Email address", value),
             (value) => minLengthValidator("Email address", value),
-            emailValidator
+            emailValidator,
           )}
         />
         <Spacer size={16} />
@@ -160,7 +160,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ form, loading }) => {
             ref={phoneInputWeb}
             validate={composeValidators(
               (value) => requiredValidator("Phone Number", value),
-              (value) => mobileValidatorWeb(value, phoneInputWeb)
+              (value) => mobileValidatorWeb(value, phoneInputWeb),
             )}
           />
         ) : (
@@ -176,7 +176,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ form, loading }) => {
             keyboardType="numeric"
             validate={composeValidators(
               (value) => requiredValidator("Phone Number", value),
-              (value) => mobileValidator(value, phoneInput)
+              (value) => mobileValidator(value, phoneInput),
             )}
           />
         )}
@@ -188,7 +188,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ form, loading }) => {
           initialValue={initialValues?.gender}
           component={RNRadioButton}
           validate={composeValidators((value) =>
-            requiredValidator("Gender", value)
+            requiredValidator("Gender", value),
           )}
         />
         <Spacer size={16} />
@@ -197,7 +197,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ form, loading }) => {
           initialValue={initialValues?.hobby}
           component={RNDropdown}
           validate={composeValidators((value) =>
-            requiredValidator("hobby", value)
+            requiredValidator("hobby", value),
           )}
         />
 

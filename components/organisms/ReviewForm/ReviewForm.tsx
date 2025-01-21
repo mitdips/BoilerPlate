@@ -28,7 +28,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ loading, form }) => {
         placeholder={"Name"}
         component={FieldTextInput}
         validate={composeValidators((value) =>
-          requiredValidator("Name", value)
+          requiredValidator("Name", value),
         )}
       />
       <Spacer size={16} />
@@ -40,7 +40,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ loading, form }) => {
         validate={composeValidators(
           (value) => requiredValidator("Email address", value),
           (value) => minLengthValidator("Email address", value),
-          emailValidator
+          emailValidator,
         )}
       />
       <Spacer size={16} />
@@ -49,7 +49,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ loading, form }) => {
         placeholder={"Review"}
         component={FieldTextInput}
         validate={composeValidators((value) =>
-          requiredValidator("Review", value)
+          requiredValidator("Review", value),
         )}
         multiline
         numberOfLines={5}

@@ -123,7 +123,7 @@ const Settings = () => {
     } else if (item.action === "terms") {
       if (Platform.OS === "web") {
         Linking.openURL(
-          "https://www.termsfeed.com/live/2cc0f9b0-8f95-4c1b-9370-a86065ba80d5"
+          "https://www.termsfeed.com/live/2cc0f9b0-8f95-4c1b-9370-a86065ba80d5",
         );
       } else {
         router.push({
@@ -137,7 +137,7 @@ const Settings = () => {
     } else if (item.action === "privacy") {
       if (Platform.OS === "web") {
         Linking.openURL(
-          "https://www.freeprivacypolicy.com/live/6d7fc3e0-cf5d-46c2-8274-94ec23e48852"
+          "https://www.freeprivacypolicy.com/live/6d7fc3e0-cf5d-46c2-8274-94ec23e48852",
         );
       } else {
         router.push({
