@@ -38,7 +38,7 @@ const Login: React.FC = () => {
       >
         <LoginFormContainer>
           <SocialBtn>
-            <GoogleButton title={"Google SignIn"} />
+            <GoogleButton />
             <FacebookButton />
           </SocialBtn>
           <OrView />
@@ -48,7 +48,7 @@ const Login: React.FC = () => {
             onSubmit={onLoginPress}
           />
           <RegisterText>
-            Don’t have account?
+            {`Don’t have account? `}
             <LinkText onPress={() => router.navigate("/(public)/register")}>
               Sign Up
             </LinkText>

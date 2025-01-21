@@ -11,11 +11,7 @@ import { useDispatch } from "react-redux";
 import { userData, userToken } from "@redux/slices/auth";
 import { router } from "expo-router";
 
-interface GoogleProps {
-  title: string;
-}
-
-const GoogleButton: React.FC<GoogleProps> = ({ title }) => {
+const GoogleButton: React.FC = () => {
   const { colors } = useAppTheme();
   const dispatch = useDispatch();
   const [_, response, promptAsync] =
@@ -53,13 +49,13 @@ const GoogleButton: React.FC<GoogleProps> = ({ title }) => {
       labelStyle={{
         fontSize: 16,
         fontWeight: 600,
-        color: colors.black,
+        color: colors.placeholderTextColor,
       }}
       onPress={_onPress}
-      style={{ width: windowWidth / 2.2 }}
+      style={{ width: windowWidth * 0.42 }}
       uppercase={false}
     >
-      {title}
+      Google
     </Button>
   );
 };

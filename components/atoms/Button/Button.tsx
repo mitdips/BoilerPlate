@@ -18,7 +18,7 @@ const Button: React.FC<ButtonProps> = ({
     <RNPButton
       mode={mode}
       onPress={onPress}
-      labelStyle={[styles.labelStyle, labelStyle, { color: colors.textinput }]}
+      labelStyle={[styles.labelStyle, { color: colors.textinput }, labelStyle]}
       contentStyle={[styles.contentStyle, contentStyle]}
       style={[styles.buttonStyle, style]}
       {...rest}
