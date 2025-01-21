@@ -5,6 +5,8 @@ import {
   RegisterText,
   ScrollViewContainer,
   SocialBtn,
+  LinkText,
+  RegisterBottomView,
 } from "./LoginScreen.styles";
 import images from "../../../assets/index";
 import GoogleButton from "@molecules/GoogleButton";
@@ -12,8 +14,9 @@ import FacebookButton from "@molecules/FacebookButton";
 import OrView from "@molecules/OrView";
 import FormTemplate from "@templates/FormTemplate/FormTemplate";
 import LoginForm from "@organisms/LoginForm/LoginForm";
-import { LinkText } from "@organisms/LoginForm/LoginForm.styles";
 import ScreenTemplate from "@templates/ScreenTemplate/ScreenTemplate";
+import { Spacer } from "@atoms/common/common.styles";
+import { useAppDispatch } from "@redux/store";
 import * as WebBrowser from "expo-web-browser";
 import { loginAction } from "@redux/actions/auth";
 import { LoginFormData } from "./LoginScreen.props";
@@ -22,6 +25,8 @@ WebBrowser.maybeCompleteAuthSession();
 
 const Login: React.FC = () => {
   const [loading, setLoading] = useState(false);
+  const dispatch = useAppDispatch();
+
 
   const onLoginPress = (values: LoginFormData) => {
     setLoading(true);
@@ -30,32 +35,32 @@ const Login: React.FC = () => {
 
   return (
     <ScrollViewContainer showsVerticalScrollIndicator={false}>
-      <ScreenTemplate
-        img={images.loginImage}
-        pagetitle={"Sign In"}
-        description="It was popularised in the 1960s with the release of Letraset
-        sheetscontaining Lorem Ipsum."
-      >
+      <ScreenTemplate img={images.loginImage} pagetitle={"Sign In"}>
         <LoginFormContainer>
-          <SocialBtn>
-            <GoogleButton />
-            <FacebookButton />
-          </SocialBtn>
-          <OrView />
           <FormTemplate
             Component={LoginForm}
             loading={loading}
             onSubmit={onLoginPress}
           />
-          <RegisterText>
-            {`Don’t have account? `}
-            <LinkText onPress={() => router.navigate("/(public)/register")}>
-              Sign Up
-            </LinkText>
-          </RegisterText>
-        </LoginFormContainer>
-      </ScreenTemplate>
-    </ScrollViewContainer>
+          <Spacer size={20} />
+          <OrView />
+          <Spacer size={20} />
+          <SocialBtn>
+            <GoogleButton />
+            <FacebookButton />
+          </SocialBtn>
+          <Spacer size={20} />
+          <RegisterBottomView>
+            <RegisterText>
+              {"Don’t have account? "}
+              <LinkText onPress={() => router.navigate("/(public)/register")}>
+                Sign Up
+              </LinkText>
+            </RegisterText>
+          </RegisterBottomView>
+        </LoginFormContainer >
+      </ScreenTemplate >
+    </ScrollViewContainer >
   );
 };
 

@@ -1,21 +1,15 @@
-import { windowHeight } from "@atoms/common/common.styles";
 import Text from "@atoms/Text/Text";
 import { AppTheme } from "@constants/theme";
 import { styled } from "@utils/styled";
-import { Image, KeyboardAvoidingView, ScrollView, View } from "react-native";
+import { KeyboardAvoidingView, ScrollView, View } from "react-native";
 
-export const Container = styled(View)`
-  flex: 1;
-`;
-
-export const ScrollViewContainer = styled(ScrollView)`
+export const ScrollViewContainer = styled(ScrollView).attrs(() => ({
+  contentContainerStyle: {
+    flex: 1,
+  },
+}))`
   background-color: ${({ theme }: { theme: AppTheme }) => theme.colors.white};
-`;
-export const ImageView = styled(Image)`
-  display: flex;
-  align-self: center;
-  height: ${windowHeight * 0.1}px;
-  width: ${windowHeight * 0.1}px;
+  flex: 1;
 `;
 
 export const IntroText = styled(Text)`
@@ -31,25 +25,18 @@ export const DescriptionText = styled(Text)`
   font-weight: 400;
   text-align: center;
 `;
+
 export const SocialBtn = styled(View)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-`;
-
-export const LoginScreenContainer = styled(View)`
-  flex: 1;
-  background-color: ${({ theme }: { theme: AppTheme }) => theme.colors.white};
+  width: 100%;
 `;
 
 export const LoginFormContainer = styled(View)`
-  border-top-right-radius: 24px;
-  border-top-left-radius: 24px;
   padding: 16px;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: ${windowHeight * 0.025}px;
+  flex: 1;
 `;
 
 export const LoginScrollView = styled(KeyboardAvoidingView).attrs(() => ({
@@ -73,9 +60,20 @@ export const ForgotText = styled(Text)`
   font-weight: 500;
 `;
 
+export const RegisterBottomView = styled(View)`
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  flex: 1;
+`;
+
 export const RegisterText = styled(Text)`
   font-size: 16px;
   color: ${({ theme }: { theme: AppTheme }) => theme.colors.black};
-  font-weight: 400;
-  align-self: flex-start;
+`;
+
+export const LinkText = styled(Text)`
+  font-size: 16px;
+  color: ${({ theme }: { theme: AppTheme }) => theme.colors.main};
 `;
