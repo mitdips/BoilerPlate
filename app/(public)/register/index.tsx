@@ -16,13 +16,9 @@ import FormTemplate from "@templates/FormTemplate/FormTemplate";
 import { LinkText } from "@organisms/LoginForm/LoginForm.styles";
 import ScreenTemplate from "@templates/ScreenTemplate/ScreenTemplate";
 import { FireBaseAuth, FireStoreDB } from "../../../firebase";
-import {
-  createUserWithEmailAndPassword,
-  sendEmailVerification,
-} from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
 import { showError, showSuccess } from "@utils/toastMessage";
 import RNModal from "@molecules/RNModal";
+import { registerUser } from "@api/auth";
 
 const Register: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -31,30 +27,19 @@ const Register: React.FC = () => {
     setIsModalVisible(false);
     router.navigate("/(public)/login");
   };
+
   const onRegisterPress = async (values: RegisterFormData) => {
-    const { email, password, username } = values;
     setLoading(true);
-    try {
-      const userCredential = await createUserWithEmailAndPassword(
-        FireBaseAuth,
-        email,
-        password
-      );
-      const user = userCredential.user;
-      await sendEmailVerification(user);
-      const userDocRef = doc(FireStoreDB, "users", user.uid);
-      await setDoc(userDocRef, {
-        username: username,
-        email: email,
-        createdAt: new Date(),
+    registerUser(values)
+      .then(() => {
+        setLoading(false);
+        setIsModalVisible(true);
+        showSuccess("User Created Successfully!");
+      })
+      .catch((error) => {
+        showError(error.message);
+        setLoading(false);
       });
-      setLoading(false);
-      setIsModalVisible(true);
-      showSuccess("User Created Successfully!");
-    } catch (error: any) {
-      showError(error.message);
-      setLoading(false);
-    }
   };
 
   return (
