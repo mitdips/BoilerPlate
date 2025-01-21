@@ -8,42 +8,31 @@ import { showError, showSuccess } from "@utils/toastMessage";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { FireBaseAuth, FireStoreDB } from "../../../../firebase";
 import { ScrollViewContainer } from "../../../(public)/login/LoginScreen.styles";
+import { updateProfile } from "@api/auth";
 
 const Profile = () => {
   const [loading, setLoading] = useState(false);
   const onProfilePress = async (values: ProfileFormData) => {
-    const { username, phone, hobby, gender, countryCode } = values;
     setLoading(true);
-    try {
-      const user = FireBaseAuth.currentUser;
-      if (!user) {
-        showError("User not logged in. Please login first.");
-        setLoading(false);
-        return;
-      }
-      const userDocRef = doc(FireStoreDB, "users", user.uid);
-      const updatedData = {
-        username,
-        phone,
-        hobby,
-        gender,
-        countryCode,
-        updatedAt: new Date(),
-      };
-      await setDoc(userDocRef, updatedData, { merge: true });
-      const updatedUserSnap = await getDoc(userDocRef);
-      if (updatedUserSnap.exists()) {
-        showSuccess("Profile updated successfully!");
-      }
+    const user = FireBaseAuth.currentUser;
+    if (!user) {
+      showError("User not logged in. Please login first.");
       setLoading(false);
-    } catch (error: any) {
-      if (error.code === "permission-denied") {
-        showError("You don't have permission to update this profile.");
-      } else {
-        showError("Failed to update profile. Please try again.");
-      }
-      setLoading(false);
+      return;
     }
+    updateProfile(values, user)
+      .then(() => {
+        setLoading(false);
+        showSuccess("Profile updated successfully!");
+      })
+      .catch((error) => {
+        if (error.code === "permission-denied") {
+          showError("You don't have permission to update this profile.");
+        } else {
+          showError("Failed to update profile. Please try again.");
+        }
+        setLoading(false);
+      });
   };
   return (
     <ScrollViewContainer showsVerticalScrollIndicator={false}>
