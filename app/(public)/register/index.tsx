@@ -40,7 +40,7 @@ const Register: React.FC = () => {
       const userCredential = await createUserWithEmailAndPassword(
         FireBaseAuth,
         email,
-        password
+        password,
       );
       const user = userCredential.user;
       await sendEmailVerification(user);
@@ -60,7 +60,7 @@ const Register: React.FC = () => {
   };
 
   return (
-    <ScrollViewContainer showsVerticalScrollIndicator={false} >
+    <ScrollViewContainer showsVerticalScrollIndicator={false}>
       <ScreenTemplate img={images.registerImage} pagetitle={"Sign Up"}>
         <RegisterFormContainer>
           <FormTemplate

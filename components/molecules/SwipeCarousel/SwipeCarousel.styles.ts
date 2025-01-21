@@ -32,7 +32,7 @@ export const StyledPagination = styled(Pagination).attrs(
     containerStyle: {
       paddingVertical: 16,
     },
-  })
+  }),
 )``;
 
 export const Conatiner = styled(View)`

@@ -31,7 +31,7 @@ export const ListComponent = styled(FlatList).attrs(
       backgroundColor: theme.colors.textinput,
       borderRadius: 10,
     },
-  })
+  }),
 )``;
 
 export const CardView = styled(TouchableOpacity)`

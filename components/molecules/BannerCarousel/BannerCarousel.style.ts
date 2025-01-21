@@ -25,7 +25,7 @@ export const StyledPagination = styled(Pagination).attrs(
     containerStyle: {
       paddingVertical: 16,
     },
-  })
+  }),
 )``;
 
 export const HeroImage = styled(Image)`

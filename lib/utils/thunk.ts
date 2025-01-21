@@ -1,7 +1,7 @@
 import { ApiResponse } from "@type/api/api";
 
 export function withToastForError<Args, Returned extends ApiResponse>(
-  payloadCreator: (args: Args) => Promise<Returned>
+  payloadCreator: (args: Args) => Promise<Returned>,
 ) {
   return async (args: Args, { rejectWithValue }: any) => {
     try {

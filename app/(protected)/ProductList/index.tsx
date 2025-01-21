@@ -8,7 +8,7 @@ import { RootState } from "@redux/store";
 
 const ProductList = () => {
   const { data: productData } = useSelector(
-    (state: RootState) => state.product
+    (state: RootState) => state.product,
   );
   return (
     <ScreenTemplate>

@@ -46,7 +46,7 @@ export const initializeToken = async () => {
  * @param {} remoteMessage
  */
 export const displayNotificationFromCustomData = async (
-  remoteMessage: FirebaseMessagingTypes.RemoteMessage
+  remoteMessage: FirebaseMessagingTypes.RemoteMessage,
 ) => {
   console.log("displayNotificationFromCustomData", remoteMessage);
 };

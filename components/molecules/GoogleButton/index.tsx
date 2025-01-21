@@ -22,7 +22,7 @@ const GoogleButton: React.FC = () => {
       const credential = GoogleAuthProvider.credential(idToken);
       const userCredential = await signInWithCredential(
         FireBaseAuth,
-        credential
+        credential,
       );
       dispatch(userData(userCredential.user));
       dispatch(userToken(idToken));

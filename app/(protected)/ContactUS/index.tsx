@@ -55,7 +55,7 @@ const ContactUS: React.FC = () => {
         setLoading(false);
       }
     },
-    [router] // Include dependencies like `router`
+    [router], // Include dependencies like `router`
   );
   return (
     <ScreenTemplate isHeader title="Contact Us" img={images.changepass}>

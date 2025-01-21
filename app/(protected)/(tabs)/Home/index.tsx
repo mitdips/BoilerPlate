@@ -37,7 +37,7 @@ import { RootState, useAppDispatch, useSelector } from "@redux/store";
 const Home: React.FC = () => {
   const dispatch = useAppDispatch();
   const { data: productData } = useSelector(
-    (state: RootState) => state.product
+    (state: RootState) => state.product,
   );
   const { colors } = useAppTheme();
   const [drawerOpen, setDrawerOpen] = React.useState(false);

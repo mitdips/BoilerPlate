@@ -27,7 +27,6 @@ const Login: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch();
 
-
   const onLoginPress = (values: LoginFormData) => {
     setLoading(true);
     loginAction(values).finally(() => setLoading(false));
@@ -58,9 +57,9 @@ const Login: React.FC = () => {
               </LinkText>
             </RegisterText>
           </RegisterBottomView>
-        </LoginFormContainer >
-      </ScreenTemplate >
-    </ScrollViewContainer >
+        </LoginFormContainer>
+      </ScreenTemplate>
+    </ScrollViewContainer>
   );
 };
 

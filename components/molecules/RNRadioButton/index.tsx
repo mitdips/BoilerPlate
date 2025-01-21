@@ -49,7 +49,7 @@ const RNRadioButton = forwardRef<any, RNRadioButtonProps>(
         )}
       </>
     );
-  }
+  },
 );
 
 export default RNRadioButton;

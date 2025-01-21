@@ -40,7 +40,7 @@ const ChangePasswordForm: React.FC<ChangePasswordFormProps> = ({
           validate={composeValidators(
             (value) => requiredValidator("Current Password", value),
             (value) => minLengthValidator("Current Password", value),
-            complexPasswordValidator
+            complexPasswordValidator,
           )}
           right={() =>
             secure ? (
@@ -66,7 +66,7 @@ const ChangePasswordForm: React.FC<ChangePasswordFormProps> = ({
           validate={composeValidators(
             (value) => requiredValidator("Password", value),
             (value) => minLengthValidator("Password", value),
-            complexPasswordValidator
+            complexPasswordValidator,
           )}
           right={() =>
             secure1 ? (
@@ -93,7 +93,7 @@ const ChangePasswordForm: React.FC<ChangePasswordFormProps> = ({
             (value) => requiredValidator("Confirm Password", value),
             (value) => minLengthValidator("Confirm Password", value),
             confirmPasswordValidator,
-            complexPasswordValidator
+            complexPasswordValidator,
           )}
           right={() =>
             secure2 ? (

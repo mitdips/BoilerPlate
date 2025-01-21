@@ -27,7 +27,7 @@ const ContactUsForm: React.FC<ContactUsFormProps> = ({ form, loading }) => {
           keyboardType="default"
           validate={composeValidators(
             (value) => requiredValidator("Username", value),
-            (value) => minLengthValidator("Username", value)
+            (value) => minLengthValidator("Username", value),
           )}
         />
         <Spacer size={16} />
@@ -39,7 +39,7 @@ const ContactUsForm: React.FC<ContactUsFormProps> = ({ form, loading }) => {
           validate={composeValidators(
             (value) => requiredValidator("Email address", value),
             (value) => minLengthValidator("Email address", value),
-            emailValidator
+            emailValidator,
           )}
         />
         <Spacer size={16} />
@@ -53,7 +53,7 @@ const ContactUsForm: React.FC<ContactUsFormProps> = ({ form, loading }) => {
           keyboardType="default"
           validate={composeValidators(
             (value) => requiredValidator("Message", value),
-            (value) => minLengthValidator("Message", value)
+            (value) => minLengthValidator("Message", value),
           )}
         />
         <Spacer size={16} />

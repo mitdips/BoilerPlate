@@ -29,7 +29,7 @@ const ChangePassword = () => {
 
       const credential = EmailAuthProvider.credential(
         user.email || "",
-        oldpassword
+        oldpassword,
       );
       await reauthenticateWithCredential(user, credential);
 
@@ -42,7 +42,7 @@ const ChangePassword = () => {
           passwordUpdated: true,
           updatedAt: serverTimestamp(),
         },
-        { merge: true }
+        { merge: true },
       );
 
       showSuccess("Password updated successfully!");

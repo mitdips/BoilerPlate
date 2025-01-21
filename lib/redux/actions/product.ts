@@ -7,6 +7,6 @@ import { withToastForError } from "@utils/thunk";
 export const getProductsAction = createAsyncThunk(
   "product/getProductsAction",
   withToastForError<ProductListParams, ApiResponse>(
-    async () => await getProducts()
-  )
+    async () => await getProducts(),
+  ),
 );

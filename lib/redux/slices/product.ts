@@ -21,7 +21,7 @@ const productSlice = createSlice({
         getProductsAction.fulfilled,
         (state, action: PayloadAction<ProductListResponse>) => {
           state.data = action.payload.data;
-        }
+        },
       )
       .addCase(getProductsAction.rejected, (state, action) => {
         state.error = action.error;

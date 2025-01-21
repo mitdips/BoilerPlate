@@ -49,7 +49,7 @@ const Reviews = () => {
     const reviewsCollectionRef = collection(FireStoreDB, "reviews");
     const querySnapshot = await getDocs(reviewsCollectionRef);
     const fetchedReviews = querySnapshot.docs.flatMap(
-      (doc) => doc.data().reviewMessages?.map((item: any) => item) || []
+      (doc) => doc.data().reviewMessages?.map((item: any) => item) || [],
     );
     setReviews(fetchedReviews);
     setLoading(false);
@@ -73,13 +73,13 @@ const Reviews = () => {
       case "date_asc":
         sortedReviews.sort(
           (a, b) =>
-            toDate(a.timestamp).getTime() - toDate(b.timestamp).getTime()
+            toDate(a.timestamp).getTime() - toDate(b.timestamp).getTime(),
         );
         break;
       case "date_desc":
         sortedReviews.sort(
           (a, b) =>
-            toDate(b.timestamp).getTime() - toDate(a.timestamp).getTime()
+            toDate(b.timestamp).getTime() - toDate(a.timestamp).getTime(),
         );
         break;
     }

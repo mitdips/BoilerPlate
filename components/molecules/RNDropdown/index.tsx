@@ -82,7 +82,7 @@ const RNDropdown = forwardRef<any, RNDropdownProps>(
         {errorText}
       </>
     );
-  }
+  },
 );
 
 export default RNDropdown;

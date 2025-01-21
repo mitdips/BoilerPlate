@@ -37,7 +37,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ form, loading }) => {
           validate={composeValidators(
             (value) => requiredValidator("Email address", value),
             (value) => minLengthValidator("Email address", value),
-            emailValidator
+            emailValidator,
           )}
         />
         <Spacer size={16} />
@@ -50,7 +50,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ form, loading }) => {
           validate={composeValidators(
             (value) => requiredValidator("Password", value),
             (value) => minLengthValidator("Password", value),
-            complexPasswordValidator
+            complexPasswordValidator,
           )}
           right={() =>
             secure ? (

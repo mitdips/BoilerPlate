@@ -14,7 +14,7 @@ export const loginAction = async (values: LoginFormData) => {
     const userCredential = await signInWithEmailAndPassword(
       FireBaseAuth,
       email,
-      password
+      password,
     );
     const user = userCredential.user;
 
@@ -38,7 +38,7 @@ export const loginAction = async (values: LoginFormData) => {
         userData({
           uid: user.uid,
           email: user.email,
-        })
+        }),
       );
     }
     showSuccess("Login Successful!");
