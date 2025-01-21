@@ -1,11 +1,5 @@
-export type DataItem = {
-    productId: number;
-    image: string;
-    productName: string;
-    price: number;
-  };
-  
-  export type ProductTileProps = {
-    product: DataItem;
-  };
-  
+import { ProductType } from "@type/redux/slices/product";
+
+export type ProductTileProps = {
+  product: ProductType;
+};
