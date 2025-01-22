@@ -37,7 +37,7 @@ import { RootState, useAppDispatch, useSelector } from "@redux/store";
 const Home: React.FC = () => {
   const dispatch = useAppDispatch();
   const { data: productData } = useSelector(
-    (state: RootState) => state.product,
+    (state: RootState) => state.product
   );
   const { colors } = useAppTheme();
   const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -74,6 +74,7 @@ const Home: React.FC = () => {
   const menuItems = [
     { title: "Home", route: "/(protected)/(tabs)/Home" },
     { title: "Search", route: "/(protected)/(tabs)/Search" },
+    { title: "Movies", route: "/(protected)/Movies" },
     { title: "Settings", route: "/(protected)/(tabs)/Settings" },
     { title: "Reviews", route: "/(protected)/Reviews" },
     { title: "Feedback", route: "/(protected)/FeedBack" },
