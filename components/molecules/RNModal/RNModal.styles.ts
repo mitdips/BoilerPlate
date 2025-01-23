@@ -86,10 +86,9 @@ export const GoToLoginBtn1 = styled(Button)`
 
 export const GoToLoginBtn2 = styled(Button)`
   font-size: ${scale(16)}px;
-  color: ${({ theme }: { theme: AppTheme }) => theme.colors.white};
+  color: ${({ theme }: { theme: AppTheme }) => theme.colors.main};
   text-align: center;
   width: ${windowWidth * 0.3}px;
-  border-color: ${({ theme }: { theme: AppTheme }) => theme.colors.main};
-  border-width: 1px;
+  border: 1px solid ${({ theme }: { theme: AppTheme }) => theme.colors.main};
   background-color: transparent;
 `;

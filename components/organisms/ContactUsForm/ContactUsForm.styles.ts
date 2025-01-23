@@ -7,7 +7,7 @@ import { AppTheme } from "@constants/theme";
 import { windowHeight } from "@atoms/common/common.styles";
 
 export const LoginFormContainer = styled(View)`
-  margin-top: 24px;
+  margin: 24px 16px 0px 16px;
 `;
 
 export const LoginFormView = styled(View)`

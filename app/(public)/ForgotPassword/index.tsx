@@ -10,6 +10,7 @@ import { sendPasswordResetEmail } from "firebase/auth";
 import { showError, showSuccess } from "@utils/toastMessage";
 import { router } from "expo-router";
 import { ScrollViewContainer } from "../login/LoginScreen.styles";
+import { forgotPassword } from "@api/auth";
 
 const ForgotPassword: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -17,20 +18,22 @@ const ForgotPassword: React.FC = () => {
   const onForgotPress = async (values: ForgotPasswordFormData) => {
     const { email } = values;
     setLoading(true);
-    try {
-      await sendPasswordResetEmail(FireBaseAuth, email);
-      showSuccess("Password reset email sent. Please check your inbox.");
-      router.replace("/(public)/login");
-    } catch (error: any) {
-      if (error.code === "auth/user-not-found") {
-        showError("No user found with this email.");
-      } else if (error.code === "auth/invalid-email") {
-        showError("Invalid email address.");
-      } else {
-        showError("Failed to send password reset email. Please try again.");
-      }
-    }
-    setLoading(false);
+    forgotPassword(email, FireBaseAuth)
+      .then(() => {
+        showSuccess("Password reset email sent. Please check your inbox.");
+        setLoading(false);
+        router.replace("/(public)/login");
+      })
+      .catch((error) => {
+        if (error.code === "auth/user-not-found") {
+          showError("No user found with this email.");
+        } else if (error.code === "auth/invalid-email") {
+          showError("Invalid email address.");
+        } else {
+          showError("Failed to send password reset email. Please try again.");
+        }
+        setLoading(false);
+      });
   };
 
   return (
