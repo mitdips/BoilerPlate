@@ -8,7 +8,7 @@ import {
   MovieText,
   MovieTextView,
   MovieTitle,
-} from "./Movies.style";
+} from "./MoviesDetails.style";
 import { useAppTheme } from "@constants/theme";
 import { ScrollView } from "react-native-gesture-handler";
 import { useSearchParams } from "expo-router/build/hooks";

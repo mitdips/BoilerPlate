@@ -1,7 +1,7 @@
 import Button from "@atoms/Button/Button";
 import { AppTheme } from "@constants/theme";
 import { styled } from "@utils/styled";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 
 export const MovieImage = styled(Image)`
   width: 100%;
